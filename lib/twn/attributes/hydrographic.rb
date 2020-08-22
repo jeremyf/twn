@@ -6,7 +6,7 @@ module Twn
       self.notation(dice: "2d6", modifier: -7)
       Entry = Struct.new(:key, :percentage, :description)
 
-      TABLE = {
+      self.table = {
         0 => Entry.new(0, "0%-5%", "Desert world"),
         1 => Entry.new(1, "6%-15%", "Dry world"),
         2 => Entry.new(2, "16%-25%", "A few small seas"),
@@ -22,17 +22,15 @@ module Twn
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
-      def self.roll!(generator:, table: TABLE)
+      def self.roll!(generator:)
         size = generator.fetch(:Size)
-        return new(entry: TABLE.fetch(0)) if ["0","1"].include?(size.to_uwp)
+        return build(roll: 0) if ["0","1"].include?(size.to_uwp)
         roll = generator.roll(notation) +
           size.key +
           modifier_for(
             atmoshpere: generator.fetch(:Atmosphere),
             temperature: generator.fetch(:Temperature))
-        roll = TABLE.keys.min if TABLE.keys.min > roll
-        roll = TABLE.keys.max if TABLE.keys.max < roll
-        new(entry: TABLE.fetch(roll))
+        build(roll: roll)
       end
 
       def initialize(entry:)

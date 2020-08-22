@@ -6,7 +6,7 @@ module Twn
       self.notation(dice: "2d6")
       Entry = Struct.new(:key, :type)
 
-      TABLE = {
+      self.table = {
         "F" => Entry.new("F", "Frozen"),
         "C" => Entry.new("C", "Cold"),
         "T" => Entry.new("T", "Temperate"),
@@ -31,22 +31,21 @@ module Twn
       }
 
 
-      def self.roll!(generator:, table: TABLE)
+      def self.roll!(generator:)
         key = case generator.uwp_for(:Size)
               when "0", "1" then "V"
               else
                 atmosphere = generator.fetch(:Atmosphere)
                 roll = generator.roll(notation) + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
                 case roll
-                when (-10..2) then "F"
+                when (-20..2) then "F"
                 when (3..4) then "C"
                 when (5..9) then "T"
                 when (10..11) then "H"
                 when (12..30) then "R"
                 end
               end
-        entry = table.fetch(key)
-        new(entry: entry)
+        build(roll: key)
       end
 
       def initialize(entry:)

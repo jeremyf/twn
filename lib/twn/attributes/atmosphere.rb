@@ -6,7 +6,7 @@ module Twn
       self.notation(dice: "2d6", modifier: -7)
       Entry = Struct.new(:key, :atomosphere)
 
-      TABLE = {
+      self.table = {
         0 => Entry.new(0, "None"),
         1 => Entry.new(1, "Trace"),
         2 => Entry.new(2, "Very Thin, Tainted"),
@@ -25,10 +25,9 @@ module Twn
         15 => Entry.new(15, "Unusual")
       }
 
-      def self.roll!(generator:, table: TABLE)
+      def self.roll!(generator:)
         roll = generator.roll(notation) + generator.fetch(:Size).key
-        entry = table.fetch(roll) { table.fetch(0) }
-        new(entry: entry)
+        build(roll: roll)
       end
 
       def initialize(entry:)

@@ -6,7 +6,7 @@ module Twn
       self.notation(dice: "2d6", modifier: -2)
       Entry = Struct.new(:key, :entry, :size, :surface_gravity, :example)
 
-      TABLE = {
+      self.table = {
         0 => Entry.new(0, 800, 0, "Asteroid, orbital complex"),
         1 => Entry.new(1, 1600, 0.05, ""),
         2 => Entry.new(2, 3200, 0.15, "Triton, Luna, Europa"),
@@ -22,10 +22,9 @@ module Twn
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
-      def self.roll!(generator:, table: TABLE)
+      def self.roll!(generator:)
         roll = generator.roll(notation)
-        entry = table.fetch(roll)
-        new(entry: entry)
+        build(roll: roll)
       end
 
       def initialize(entry:)
