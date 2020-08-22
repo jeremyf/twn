@@ -8,7 +8,7 @@ module Twn
         let(:generator) { double("Generator") }
         subject { described_class.roll!(generator: generator) }
         before do
-          expect(generator).to receive(:roll).with("2d6", -7, plus: :Size).and_return(2)
+          expect(generator).to receive(:roll).with("2d6", -7, modified_by: :Size).and_return(2)
         end
         it { is_expected.to be_a described_class }
       end

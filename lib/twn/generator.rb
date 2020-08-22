@@ -7,12 +7,15 @@ module Twn
     NOTATION_TO_DICE_ROLLER_MAP = {
       "2d6" => -> { rand(6) + rand(6) + 2 }
     }
-    def roll(notation, modifier, plus: [], minus: [])
-      dice_roller = NOTATION_TO_DICE_ROLLER_MAP.fetch(notation, notation)
+    # @param notation [String, #call]
+    # @param modifier [Integer]
+    # @param modified_by [Array<Symbol>] an array of attribute names
+    def roll(notation, modifier, modified_by: [])
+      dice_roller = NOTATION_TO_DICE_ROLLER_MAP.fetch(notation) { notation }
       result = dice_roller.call + modifier
-      Array(plus).each do |attr|
-        @generated_attributes[attr] ||= Attributes.roll(on: attr, generator: self)
-        result += @generated_attributes[attr].to_i
+      Array(modified_by).each do |attribute_name|
+        @generated_attributes[attribute_name] ||= Attributes.roll(on: attribute_name, generator: self)
+        result += yield(@generated_attributes[attribute_name])
       end
       result
     end
