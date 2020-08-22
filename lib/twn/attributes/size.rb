@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The size of the world
     class Size < Twn::Attribute
-      self.notation(dice: "2d6", modifier: -2)
+      self.notation("2d6", -2)
       Entry = Struct.new(:key, :entry, :size, :surface_gravity, :example)
 
       self.table = {
@@ -23,7 +23,7 @@ module Twn
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
-        roll = generator.roll(notation)
+        roll = generator.roll(*notation)
         build(roll: roll)
       end
 

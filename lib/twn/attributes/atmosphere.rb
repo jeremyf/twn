@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The atmosphere of the world
     class Atmosphere < Twn::Attribute
-      self.notation(dice: "2d6", modifier: -7)
+      self.notation("2d6", -7)
       Entry = Struct.new(:key, :atomosphere)
 
       self.table = {
@@ -26,7 +26,7 @@ module Twn
       }
 
       def self.roll!(generator:)
-        roll = generator.roll(notation) + generator.fetch(:Size).key
+        roll = generator.roll(*notation) + generator.fetch(:Size).key
         build(roll: roll)
       end
 

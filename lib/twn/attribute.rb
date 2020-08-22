@@ -14,9 +14,9 @@ module Twn
       new(entry: entry)
     end
 
-    def self.notation(dice: nil, modifier: 0)
+    def self.notation(dice = nil, modifier = 0)
       return @notation if dice.nil?
-      @notation = { dice: dice, modifier: modifier }
+      @notation = [dice, modifier]
     end
 
     def self.roll!(generator:, **args)

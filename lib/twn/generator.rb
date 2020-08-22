@@ -17,7 +17,7 @@ module Twn
 
     # @param notation [String, #call]
     # @param modifier [Integer]
-    def roll(dice:, modifier:, modified_by: [])
+    def roll(dice, modifier)
       dice_roller = DICE_EXPRESSION_TO_ROLLER_MAP.fetch(dice) { notation }
       dice_roller.call + modifier
     end
