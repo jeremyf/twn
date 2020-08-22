@@ -14,6 +14,10 @@ module Twn
         Builder.new(generator: generator, tech_level_builder: self).build
       end
 
+      def to_uwp
+        @entry.key
+      end
+
       class Builder
         def initialize(generator:, tech_level_builder:)
           @generator = generator
