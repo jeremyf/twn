@@ -26,7 +26,7 @@ module Twn
       }
 
       def self.roll!(generator:)
-        roll = generator.roll(*notation) + generator.fetch(:Size).key
+        roll = generator.roll(*notation) + generator.fetch(:Size).to_i
         build(roll: roll)
       end
     end

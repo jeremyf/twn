@@ -37,6 +37,7 @@ module Twn
     def key
       @entry.key
     end
+    alias to_i key
 
     def notation
       self.class.notation
