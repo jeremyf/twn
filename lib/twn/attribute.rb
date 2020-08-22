@@ -15,15 +15,9 @@ module Twn
       new(entry: entry)
     end
 
-    def self.notation(dice = nil, modifier = 0)
-      return @notation if dice.nil?
-      @notation = [dice, modifier]
-    end
-
-    def self.roll!(generator:, **args)
+    def self.roll!(generator:)
       raise(NotImplementedError.new("Override .roll! in sub-class"))
     end
-
 
     def initialize(entry:)
       @entry = entry
@@ -38,9 +32,5 @@ module Twn
       @entry.key
     end
     alias to_i key
-
-    def notation
-      self.class.notation
-    end
   end
 end

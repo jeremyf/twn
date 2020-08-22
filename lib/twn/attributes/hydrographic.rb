@@ -3,7 +3,6 @@ module Twn
   module Attributes
     # The Hydrographic characteristics of the planet
     class Hydrographic < Twn::Attribute
-      self.notation("2d6", -7)
       Entry = Struct.new(:key, :percentage, :description)
 
       self.table = {
@@ -25,7 +24,7 @@ module Twn
       def self.roll!(generator:)
         size = generator.fetch(:Size)
         return build(roll: 0) if ["0","1"].include?(size.to_uwp)
-        roll = generator.roll(*notation) +
+        roll = generator.roll("2d6", -7) +
           size.key +
           modifier_for(
             atmoshpere: generator.fetch(:Atmosphere),

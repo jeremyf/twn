@@ -3,7 +3,6 @@ module Twn
   module Attributes
     # The government of the world
     class Government < Twn::Attribute
-      self.notation("2d6", -7)
       Entry = Struct.new(:key, :type)
 
       self.table = {
@@ -30,7 +29,7 @@ module Twn
         if population.to_i == 0
           build(roll: 0)
         else
-          roll = generator.roll(*notation) + population.to_i
+          roll = generator.roll("2d6", -7) + population.to_i
           build(roll: roll)
         end
       end

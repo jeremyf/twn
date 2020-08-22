@@ -3,7 +3,6 @@ module Twn
   module Attributes
     # The atmosphere of the world
     class Temperature < Twn::Attribute
-      self.notation("2d6")
       Entry = Struct.new(:key, :type)
 
       self.table = {
@@ -36,7 +35,7 @@ module Twn
               when "0", "1" then "V"
               else
                 atmosphere = generator.fetch(:Atmosphere)
-                roll = generator.roll(*notation) + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
+                roll = generator.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
                 case roll
                 when (-20..2) then "F"
                 when (3..4) then "C"

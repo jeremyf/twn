@@ -3,7 +3,6 @@ module Twn
   module Attributes
     # The population of the world
     class Population < Twn::Attribute
-      self.notation("2d6", -2)
       Entry = Struct.new(:key, :population, :range)
 
       self.table = {
@@ -23,7 +22,7 @@ module Twn
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
-        roll = generator.roll(*notation)
+        roll = generator.roll("2d6", -2)
         build(roll: roll)
       end
     end
