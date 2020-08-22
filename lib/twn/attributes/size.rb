@@ -1,7 +1,8 @@
+require 'twn/attribute'
 module Twn
   module Attributes
     # The size of the world
-    class Size
+    class Size < Twn::Attribute
       # Roll using 2d6-2
       ROLLER = lambda { rand(6) + rand(6) }
       Entry = Struct.new(:key, :entry, :size, :surface_gravity, :example)
@@ -20,8 +21,11 @@ module Twn
         10 => Entry.new(10, 16_000, 1.4, "")
       }
 
-      def self.roll!(roller: ROLLER, table: TABLE)
-        entry = table.fetch(roller.call)
+      # @param generator [Twn::Generator]
+      # @param table [Hash<Integer, Entry>]
+      def self.roll!(generator:, table: TABLE)
+        roll = generator.roll("2d6", -2)
+        entry = table.fetch(roll)
         new(entry: entry)
       end
 
