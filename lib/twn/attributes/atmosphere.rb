@@ -39,6 +39,10 @@ module Twn
       def to_uwp
         sprintf("%X", @entry.key)
       end
+
+      def to_i
+        @entry.key
+      end
     end
   end
 end
