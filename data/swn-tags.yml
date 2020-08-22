@@ -35,7 +35,7 @@
 - :name: Warlords
   :attributes: []
 - :name: Forbidden Tech
-  :attributes: []
+  :attributes:
   - attribute: TechLevel
     uwps: [10,11,12,13,14,15]
 - :name: Cold War
@@ -91,7 +91,7 @@
 - :name: Night World
   :attributes: []
 - :name: Police State
-  :attributes: []
+  :attributes:
   - attribute: LawLevel
     uwps: [6,7,8,9,10,11,12,13,14,15]
 - :name: Unbraked AI
