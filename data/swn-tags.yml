@@ -1,0 +1,248 @@
+---
+- :name: Prison Planet
+  :attributes: []
+- :name: Xenophobes
+  :attributes: []
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Seismic Instability
+  :attributes:
+    - attribute: Size
+      uwps: [4,5,6,7,8,9,10]
+- :name: Hostile Space
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Cyborgs
+  :attributes:
+    - attribute: TechLevel
+      uwps: [9,10,11,12,13,14,15]
+- :name: Preceptor Archive
+  :attributes: []
+- :name: Local Tech
+  :attributes: []
+- :name: Mandate Base
+  :attributes: []
+- :name: Tomb World
+  :attributes: []
+- :name: Anarchists
+  :attributes: []
+- :name: Revanchists
+  :attributes: []
+- :name: Zombies
+  :attributes: []
+- :name: Warlords
+  :attributes: []
+- :name: Forbidden Tech
+  :attributes: []
+  - attribute: TechLevel
+    uwps: [10,11,12,13,14,15]
+- :name: Cold War
+  :attributes: []
+- :name: Pleasure World
+  :attributes: []
+- :name: Badlands World
+  :attributes: []
+- :name: Freak Geology
+  :attributes: []
+- :name: Cybercommunists
+  :attributes: []
+- :name: Quarantined World
+  :attributes: []
+- :name: Hostile Biosphere
+  :attributes: []
+- :name: Freak Weather
+  :attributes: []
+- :name: Local Specialty
+  :attributes: []
+- :name: Out of Contact
+  :attributes: []
+- :name: Exchange Consulate
+  :attributes: []
+- :name: Tyranny
+  :attributes: []
+- :name: Colonized Population
+  :attributes: []
+- :name: Sealed Menace
+  :attributes: []
+- :name: Rigid Culture
+  :attributes: []
+- :name: Post-Scarcity
+  :attributes: []
+- :name: Theocracy
+  :attributes: []
+- :name: Flying Cities
+  :attributes: []
+- :name: Hatred
+  :attributes: []
+- :name: Eugenic Cult
+  :attributes: []
+- :name: Feral World
+  :attributes: []
+- :name: Heavy Industry
+  :attributes: []
+- :name: Ritual Combat
+  :attributes: []
+- :name: Seagoing Cities
+  :attributes:
+    - attribute: Hydrographic
+      uwps: [7,8,9,10]
+- :name: Night World
+  :attributes: []
+- :name: Police State
+  :attributes: []
+  - attribute: LawLevel
+    uwps: [6,7,8,9,10,11,12,13,14,15]
+- :name: Unbraked AI
+  :attributes: []
+- :name: Shackled World
+  :attributes: []
+- :name: Cultural Power
+  :attributes:
+    - attribute: Population
+      uwps: [3,4,5,6,7,8,9,10,11,12]
+- :name: Outpost World
+  :attributes: []
+- :name: Utopia
+  :attributes: []
+- :name: Mandarinate
+  :attributes: []
+- :name: Alien Ruins
+  :attributes: []
+- :name: Minimal Contact
+  :attributes: []
+- :name: Cheap Life
+  :attributes: []
+- :name: Cyclical Doom
+  :attributes: []
+- :name: Mercenaries
+  :attributes: []
+- :name: Societal Despair
+  :attributes: []
+- :name: Major Spaceyard
+  :attributes:
+    - attributes: Starport
+      uwps: ["A"]
+- :name: Taboo Treasure
+  :attributes: []
+- :name: Heavy Mining
+  :attributes: []
+- :name: Sole Supplier
+  :attributes: []
+- :name: Pretech Cultists
+  :attributes: []
+- :name: Robots
+  :attributes:
+    - attribute: TechLevel
+      uwps: [7,8,9,10,11,12,13,14,15]
+- :name: Psionics Academy
+  :attributes: []
+- :name: Rising Hegemon
+  :attributes:
+    - attribute: TechLevel
+      uwps: [11,12,13,14,15]
+- :name: Restrictive Laws
+  :attributes:
+    - attribute: LawLevel
+      uwps: [7,8,9,10,11,12,13,14]
+- :name: Area 51
+  :attributes: []
+- :name: Revolutionaries
+  :attributes: []
+- :name: Primitive Aliens
+  :attributes: []
+- :name: Civil War
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+    - attribute: Faction
+      counts: [1,2]
+- :name: Fallen Hegemon
+  :attributes: []
+- :name: Radioactive World
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Altered Humanity
+  :attributes: []
+- :name: Desert World
+  :attributes:
+    - attribute: Hydrographic
+      uwps: [0,1]
+- :name: Battleground
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Xenophiles
+  :attributes: []
+- :name: Secret Masters
+  :attributes: []
+- :name: Abandoned Colony
+  :attributes: []
+- :name: Regional Hegemon
+  :attributes: []
+- :name: Sectarians
+  :attributes: []
+- :name: Perimeter Agency
+  :attributes: []
+- :name: Beastmasters
+  :attributes: []
+- :name: Psionics Worship
+  :attributes: []
+- :name: Doomed World
+  :attributes: []
+- :name: Hivemind
+  :attributes: []
+- :name: Urbanized Surface
+  :attributes: []
+- :name: Immortals
+  :attributes: []
+- :name: Megacorps
+  :attributes:
+    - attribute: LawLevel
+      uwps: [0,1,3,5,6,7,9,10,11,12,13]
+- :name: Psionics Fear
+  :attributes: []
+- :name: Maneaters
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Refugees
+  :attributes: []
+- :name: Terraform Failure
+  :attributes: []
+- :name: Gold Rush
+  :attributes: []
+- :name: Friendly Foe
+  :attributes: []
+- :name: Holy War
+  :attributes:
+    - attribute: TravelCode
+      uwps: ["A"]
+- :name: Bubble Cities
+  :attributes: []
+- :name: Nomads
+  :attributes: []
+- :name: Oceanic World
+  :attributes:
+    - attribute: Hydrographic
+      uwps: [8,9,10]
+- :name: Dying Race
+  :attributes: []
+- :name: Former Warriors
+  :attributes: []
+- :name: Pilgrimage Site
+  :attributes: []
+- :name: Anthropomorphs
+  :attributes: []
+- :name: Great Work
+  :attributes: []
+- :name: Trade Hub
+  :attributes:
+    - attribute: Atmosphere
+      uwps: [6,8]
+    - attribute: Population
+      uwps: [6,7,8]
+- :name: Misandry/Misogyny
+  :attributes: []
