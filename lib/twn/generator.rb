@@ -12,13 +12,14 @@ module Twn
     alias fetch generate
 
     DICE_EXPRESSION_TO_ROLLER_MAP = {
-      "2d6" => -> { rand(6) + rand(6) + 2 }
+      "2d6" => -> { rand(6) + rand(6) + 2 },
+      "1d6" => -> { rand(6) + 1 }
     }
 
-    # @param notation [String, #call]
+    # @param dice [String, #call]
     # @param modifier [Integer]
     def roll(dice, modifier = 0)
-      dice_roller = DICE_EXPRESSION_TO_ROLLER_MAP.fetch(dice) { notation }
+      dice_roller = DICE_EXPRESSION_TO_ROLLER_MAP.fetch(dice) { dice }
       dice_roller.call + modifier
     end
 
