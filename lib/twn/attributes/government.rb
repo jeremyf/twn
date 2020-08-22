@@ -27,9 +27,12 @@ module Twn
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
         population = generator.fetch(:Population)
-        build(roll: 0) if population.to_i == 0
-        roll = generator.roll(*notation) + population.to_i
-        build(roll: roll)
+        if population.to_i == 0
+          build(roll: 0)
+        else
+          roll = generator.roll(*notation) + population.to_i
+          build(roll: roll)
+        end
       end
     end
   end
