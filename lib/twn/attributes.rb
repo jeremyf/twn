@@ -13,6 +13,10 @@ module Twn
       roller_for(on).roll!(generator: generator)
     end
 
+    def self.each(&block)
+      constants.each(&block)
+    end
+
     # @param on [Symbol]
     # @return [#roll!]
     def self.roller_for(class_name)
