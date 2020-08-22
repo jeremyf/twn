@@ -1,8 +1,8 @@
 module Twn
   class Attribute
-    def self.notation(dice: nil, modifier: 0, modified_by: [])
+    def self.notation(dice: nil, modifier: 0)
       return @notation if dice.nil?
-      @notation = { dice: dice, modifier: modifier, modified_by: modified_by }
+      @notation = { dice: dice, modifier: modifier }
     end
 
     def self.roll!(generator:, **args)
