@@ -47,12 +47,6 @@ module Twn
               end
         build(roll: key)
       end
-
-      def initialize(entry:)
-        @entry = entry
-      end
-
-      # Convert to Universal World Profile (UWP) element.
       def to_uwp
         @entry.key
       end

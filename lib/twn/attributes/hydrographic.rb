@@ -33,15 +33,6 @@ module Twn
         build(roll: roll)
       end
 
-      def initialize(entry:)
-        @entry = entry
-      end
-
-      # Convert to Universal World Profile (UWP) element.
-      def to_uwp
-        sprintf("%X", @entry.key)
-      end
-
       TEMPERATURE_UWP_MODIFIER = {
         "H" => -2,
         "R" => -6,

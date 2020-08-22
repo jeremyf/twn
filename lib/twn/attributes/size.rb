@@ -26,15 +26,6 @@ module Twn
         roll = generator.roll(*notation)
         build(roll: roll)
       end
-
-      def initialize(entry:)
-        @entry = entry
-      end
-
-      # Convert to Universal World Profile (UWP) element.
-      def to_uwp
-        sprintf("%X", @entry.key)
-      end
     end
   end
 end

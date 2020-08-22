@@ -3,6 +3,7 @@ module Twn
     def self.table=(hash)
       @table = hash
     end
+
     def self.table
       @table
     end
@@ -21,6 +22,16 @@ module Twn
 
     def self.roll!(generator:, **args)
       raise(NotImplementedError.new("Override .roll! in sub-class"))
+    end
+
+
+    def initialize(entry:)
+      @entry = entry
+    end
+
+    # Convert to Universal World Profile (UWP) element.
+    def to_uwp
+      sprintf("%X", @entry.key)
     end
 
     def key
