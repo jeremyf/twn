@@ -24,7 +24,7 @@ module Twn
       }
 
       def self.roll!(generator:)
-        roll = generator.roll("2d6")
+        roll = Utility.roll("2d6")
         build(roll: roll)
       end
 

@@ -8,7 +8,7 @@ module Twn
       NAVAL_BASE = Entry.new("N", "Naval Base")
 
       def self.roll!(generator:)
-        roll = generator.roll("2d6")
+        roll = Utility.roll("2d6")
         entry = entry_for(roll: roll, generator: generator)
         new(entry: entry)
       end

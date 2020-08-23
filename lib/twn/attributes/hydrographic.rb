@@ -24,7 +24,7 @@ module Twn
       def self.roll!(generator:)
         size = generator.fetch(:Size)
         return build(roll: 0) if ["0","1"].include?(size.to_uwp)
-        roll = generator.roll("2d6", -7) +
+        roll = Utility.roll("2d6", -7) +
           size.key +
           modifier_for(
             atmoshpere: generator.fetch(:Atmosphere),

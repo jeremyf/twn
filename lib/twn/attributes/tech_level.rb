@@ -34,7 +34,7 @@ module Twn
             threshold_met = false
             ttl = 0
             while ttl > 0 && !threshold_met
-              roll = generator.roll("1d6") +
+              roll = Utility.roll("1d6") +
                      starport_dm +
                      size_dm +
                      atmosphere_dm +

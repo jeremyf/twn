@@ -8,7 +8,7 @@ module Twn
       SCOUT_BASE = Entry.new("S", "Scout base")
 
       def self.roll!(generator:)
-        roll = generator.roll("2d6")
+        roll = Utility.roll("2d6")
         entry = entry_for(roll: roll, generator: generator)
         new(entry: entry)
       end

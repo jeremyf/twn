@@ -35,7 +35,7 @@ module Twn
               when "0", "1" then "V"
               else
                 atmosphere = generator.fetch(:Atmosphere)
-                roll = generator.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
+                roll = Utility.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
                 case roll
                 when (-20..2) then "F"
                 when (3..4) then "C"

@@ -11,18 +11,6 @@ module Twn
     end
     alias fetch generate
 
-    DICE_EXPRESSION_TO_ROLLER_MAP = {
-      "2d6" => -> { rand(6) + rand(6) + 2 },
-      "1d6" => -> { rand(6) + 1 }
-    }
-
-    # @param dice [String, #call]
-    # @param modifier [Integer]
-    def roll(dice, modifier = 0)
-      dice_roller = DICE_EXPRESSION_TO_ROLLER_MAP.fetch(dice) { dice }
-      dice_roller.call + modifier
-    end
-
     def uwp_for(attribute_name)
       build_and_fetch(attribute_name).to_uwp
     end

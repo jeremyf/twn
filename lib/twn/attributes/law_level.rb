@@ -15,7 +15,7 @@ module Twn
         if population.to_i == 0
           build(roll: 0)
         else
-          roll = generator.roll("2d6", -7) + generator.fetch(:Government).to_i
+          roll = Utility.roll("2d6", -7) + generator.fetch(:Government).to_i
           build(roll: roll)
         end
       end

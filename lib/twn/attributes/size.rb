@@ -22,7 +22,7 @@ module Twn
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
-        roll = generator.roll("2d6", -2)
+        roll = Utility.roll("2d6", -2)
         build(roll: roll)
       end
     end
