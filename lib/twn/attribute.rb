@@ -32,5 +32,13 @@ module Twn
       @entry.key
     end
     alias to_i key
+
+    def self.attribute_name
+      to_s.split("::")[-1].to_sym
+    end
+
+    def attribute_name
+      self.class.attribute_name
+    end
   end
 end
