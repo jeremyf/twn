@@ -83,7 +83,7 @@
 - :name: Societal Despair
 - :name: Major Spaceyard
   :constraints:
-    - attributes: Starport
+    - :applies_to: Starport
       :uwp_slug_range: ["A"]
 - :name: Taboo Treasure
 - :name: Heavy Mining

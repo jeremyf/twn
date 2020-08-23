@@ -14,6 +14,16 @@ module Twn
           end
         end
       end
+
+      describe ".swn_tags" do
+        it "has valid data for assigning constraints" do
+          expect {
+            described_class.swn_tags.each do |swn_tag|
+              described_class.roll!(generator: Generator.new, pick: 1, tags: [swn_tag])
+            end
+          }.not_to raise_error
+        end
+      end
     end
   end
 end
