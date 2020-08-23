@@ -13,6 +13,12 @@ module Twn
             expect { subject }.to change { generator.constraints.count }.by(1)
           end
         end
+        describe "without a constraint" do
+          let(:tags) { [{ name: "Fancy Pants" }] }
+          it "will NOT add a constraint to the generator" do
+            expect { subject }.not_to change { generator.constraints.count }
+          end
+        end
       end
 
       describe ".swn_tags" do
