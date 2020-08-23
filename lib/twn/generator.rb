@@ -8,6 +8,7 @@ module Twn
       @generated_attributes = {}
       @constraints = []
     end
+    attr_reader :constraints
 
     # @see Twn::Constraint
     def add_constraint!(applies_to:, uwp_slug_range:)
