@@ -28,7 +28,7 @@ module Twn
   def self.generate(sequence: DEFAULT_SEQUENCE)
     generator = Generator.new
     sequence.each do |attribute|
-      generator.generate(attribute)
+      generator.get!(attribute)
     end
     generator
   end

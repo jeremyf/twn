@@ -18,10 +18,9 @@ module Twn
     # These are included to conform to the Constraint interaction
     def_delegators :@generated_attributes, :key?, :fetch
 
-    def generate(attribute_name)
+    def get!(attribute_name)
       build_and_fetch(attribute_name)
     end
-    alias get! generate
 
     private
 
