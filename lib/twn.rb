@@ -1,6 +1,7 @@
 require "twn/version"
 require "twn/generator"
 require "twn/attributes"
+require "twn/utility"
 module Twn
   class Error < StandardError; end
   # Your code goes here...
