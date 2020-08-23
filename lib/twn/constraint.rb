@@ -11,7 +11,7 @@ module Twn
     # @param state [Hash<Symbol,Twn::Attribute>]
     def initialize(applies_to:, uwp_range:, state:)
       @applies_to = applies_to
-      @uwp_range = uwp_range.map { |u| u.to_s.upcase }
+      @uwp_range = uwp_range.map { |u| Utility.to_uwp(u) }
       @state = state
     end
 
@@ -27,7 +27,7 @@ module Twn
     # @return [Boolean]
     def acceptable?
       return true unless applicable?
-      uwp_range.include?(state.fetch(applies_to).to_uwp)
+      uwp_range.include?(Utility.to_uwp(state.fetch(applies_to)))
     end
   end
 end
