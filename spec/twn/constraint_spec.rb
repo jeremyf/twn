@@ -21,7 +21,7 @@ module Twn
     describe "#acceptable_candidate?" do
       let(:to_uwp_slug) { uwp_slug_range.first }
       let(:candidate) { double(Twn::Attribute, attribute_name: attribute_name, to_uwp_slug: to_uwp_slug) }
-      subject { constraint.acceptable_candidate?(candidate) }
+      subject { constraint.acceptable?(candidate: candidate) }
 
       describe "with candidate that is applicable" do
         let(:attribute_name) { applies_to }

@@ -53,7 +53,13 @@ module Twn
 
     def acceptable?(candidate:)
       @constraints.all? do |constraint|
-        constraint.acceptable_candidate?(candidate)
+        constraint.acceptable?(candidate: candidate)
+      end
+    end
+
+    def acceptable_uwp_slug_range_for(candidate:)
+      @constraints.each do
+
       end
     end
   end

@@ -30,7 +30,7 @@ module Twn
     #
     # @param candidate [#attribute_name]
     # @return [Boolean]
-    def acceptable_candidate?(candidate)
+    def acceptable?(candidate:)
       return true unless applicable?(candidate: candidate)
       uwp_slug_range.include?(Utility.to_uwp_slug(candidate)) # This is or is not acceptable
     end
