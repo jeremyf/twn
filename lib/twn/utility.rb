@@ -33,6 +33,21 @@ module Twn
         when Integer then sprintf("%X",value)
         end
       end
+
+      require 'set'
+      # @param array_of_ranges [Array<Array<String>>]
+      def select_uwp_slug_from(array_of_ranges:)
+        candidates = Set.new
+        intersection = array_of_ranges.shift
+        candidates += intersection
+        array_of_ranges.each do |range|
+          candidates += range
+          intersection = intersection & range
+        end
+        value = intersection.shuffle.first
+        return value if value
+        raise Twn::Error
+      end
     end
   end
 end

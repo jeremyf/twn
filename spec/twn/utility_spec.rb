@@ -29,5 +29,25 @@ module Twn
         expect(described_class.to_uwp_slug(input)).to eq(input.to_uwp_slug)
       end
     end
+
+    describe '.select_uwp_slug_from' do
+      describe 'with only one uwp_slug in all ranges' do
+        it "returns that uwp_slug" do
+          result = described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["A","C"],["A", "C"]])
+          expect(result).to eq("A")
+        end
+      end
+      describe 'with more than one uwp_slug in all ranges' do
+        it "returns a random" do
+          result = described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["A","B", "C"],["A", "C"]])
+          expect(result).to be_a String
+        end
+      end
+      describe 'with no uwl_slugs in all ranges' do
+        it "raises an exception" do
+          expect {  described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["B", "C"],["A", "C"]]) }.to raise_error(Twn::Error)
+        end
+      end
+    end
   end
 end

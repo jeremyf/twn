@@ -58,9 +58,12 @@ module Twn
     end
 
     def acceptable_uwp_slug_range_for(candidate:)
-      @constraints.each do
-
+      array_of_ranges = []
+      @constraints.each do |constraint|
+        next unless constraint.applicable?(candidate: candidate)
+        array_of_ranges << constraint.uwp_slug_range
       end
+      Utility.select_uwp_slug_from(array_of_ranges: array_of_ranges)
     end
   end
 end
