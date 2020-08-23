@@ -18,15 +18,43 @@ module Twn
     # These are included to conform to the Constraint interaction
     def_delegators :@generated_attributes, :key?, :fetch
 
-    def get!(attribute_name)
-      build_and_fetch(attribute_name)
+    TIME_TO_LIVE = 70
+    # Retrieve the existing named attribute if one exists.  Otherwise,
+    # roll to generate that attribute, only accepting attributes that
+    # meet the constraints.
+    #
+    # @param attribute_name [Symbol]
+    #
+    # @param ttl [Integer] The maximum number of attempts to determine
+    #       if the candidate is acceptable.
+    #
+    # @param force [Boolean] If we can't roll an acceptable candidate,
+    #       force the creation of one.
+    #
+    # @todo Apply force within the acceptable range.
+    #
+    # @note Once we generate an attribute, we never again check the
+    #       constraints.  In other words, if you get a :Size and then
+    #       later add a constraint for :Size, we'll never check to see
+    #       if this is a valid size.
+    def get!(attribute_name, ttl: TIME_TO_LIVE, force: false)
+      return fetch(attribute_name) if key?(attribute_name)
+      attribute = nil
+      while ttl > 0 && attribute.nil?
+        candidate = Attributes.roll(on: attribute_name, generator: self)
+        attribute = candidate if acceptable?(candidate: candidate)
+        ttl -= 1
+      end
+      @generated_attributes[attribute_name] = attribute
+      fetch(attribute_name)
     end
 
     private
 
-    def build_and_fetch(attribute_name)
-      @generated_attributes[attribute_name] ||= Attributes.roll(on: attribute_name, generator: self)
-      fetch(attribute_name)
+    def acceptable?(candidate:)
+      @constraints.all? do |constraint|
+        constraint.acceptable_candidate?(candidate)
+      end
     end
   end
 end

@@ -11,6 +11,19 @@ module Twn
           it { is_expected.to be_a Attributes.const_get(attribute) }
         end
       end
+
+      describe 'with a constraint' do
+        let(:uwp_slug_range) { ["1"].map { |i| Utility.to_uwp_slug(i) } }
+        let(:applies_to) { :Size }
+        before do
+          generator.add_constraint!(applies_to: applies_to, uwp_slug_range: uwp_slug_range)
+        end
+
+        it "only allows generation of the applicable attribute within the given uwp_slug_range" do
+          actual = Utility.to_uwp_slug(generator.get!(applies_to))
+          expect(uwp_slug_range).to include(actual)
+        end
+      end
     end
   end
 end
