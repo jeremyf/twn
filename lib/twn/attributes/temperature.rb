@@ -34,7 +34,7 @@ module Twn
         key = case generator.uwp_slug_for(:Size)
               when "0", "1" then "V"
               else
-                atmosphere = generator.fetch(:Atmosphere)
+                atmosphere = generator.get!(:Atmosphere)
                 roll = Utility.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp_slug, 0)
                 case roll
                 when (-20..2) then "F"

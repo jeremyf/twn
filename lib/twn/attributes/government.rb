@@ -25,7 +25,7 @@ module Twn
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
-        population = generator.fetch(:Population)
+        population = generator.get!(:Population)
         if population.to_i == 0
           build(roll: 0)
         else

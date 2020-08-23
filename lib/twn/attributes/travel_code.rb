@@ -12,9 +12,9 @@ module Twn
         # I decided that Red travel advisories should be rare (1/36)
         # chance.  And I may as well make these random.
         return new(entry: RED) if Utility.roll("2d6") == 12
-        return new(entry: AMBER) if generator.fetch(:Atmosphere).to_i > 10
-        return new(entry: AMBER) if [0,7,10].include?(generator.fetch(:Government).to_i)
-        law = generator.fetch(:LawLevel).to_i
+        return new(entry: AMBER) if generator.get!(:Atmosphere).to_i > 10
+        return new(entry: AMBER) if [0,7,10].include?(generator.get!(:Government).to_i)
+        law = generator.get!(:LawLevel).to_i
         return new(entry: AMBER) if law == 0 || law >= 9
         new(entry: NONE)
       end
