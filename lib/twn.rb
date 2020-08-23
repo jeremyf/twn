@@ -23,7 +23,9 @@ module Twn
     :TravellersAidSociety,
     :ResearchBase,
     :ImperialConsulate,
-    :PirateBase
+    :PirateBase,
+    :GasGiant,
+    :TravelCode
   ]
   def self.generate(sequence: DEFAULT_SEQUENCE)
     generator = Generator.new
