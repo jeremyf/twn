@@ -23,11 +23,11 @@ module Twn
 
       # Return the UWP for the given value
       #
-      # @param value [String,Integer, #to_uwp]
+      # @param value [String,Integer, #to_uwp_slug]
       #
       # @return String
-      def to_uwp(value)
-        return value.to_uwp if value.respond_to?(:to_uwp)
+      def to_uwp_slug(value)
+        return value.to_uwp_slug if value.respond_to?(:to_uwp_slug)
         case value
         when String then value.upcase
         when Integer then sprintf("%X",value)

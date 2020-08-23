@@ -31,11 +31,11 @@ module Twn
 
 
       def self.roll!(generator:)
-        key = case generator.uwp_for(:Size)
+        key = case generator.uwp_slug_for(:Size)
               when "0", "1" then "V"
               else
                 atmosphere = generator.fetch(:Atmosphere)
-                roll = Utility.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp, 0)
+                roll = Utility.roll("2d6") + ATMOSPHERE_UWP_MODIFIER.fetch(atmosphere.to_uwp_slug, 0)
                 case roll
                 when (-20..2) then "F"
                 when (3..4) then "C"
@@ -46,7 +46,7 @@ module Twn
               end
         build(roll: key)
       end
-      def to_uwp
+      def to_uwp_slug
         @entry.key
       end
     end

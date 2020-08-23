@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The Imperial Consulate for the world
     class ImperialConsulate < Twn::Attribute
-      Entry = Struct.new(:to_uwp, :description)
+      Entry = Struct.new(:to_uwp_slug, :description)
       NO_IMPERIAL_CONSULATE = Entry.new("", "No Imperial Consulate")
       IMPERIAL_CONSULATE = Entry.new("I", "Imperial Consulate")
 
@@ -14,7 +14,7 @@ module Twn
       end
 
       def self.entry_for(roll:, generator:)
-        case generator.uwp_for(:Starport)
+        case generator.uwp_slug_for(:Starport)
         when "A"
           roll < 6 ? NO_IMPERIAL_CONSULATE : IMPERIAL_CONSULATE
         when "B"
@@ -30,8 +30,8 @@ module Twn
         end
       end
 
-      def to_uwp
-        @entry.to_uwp
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

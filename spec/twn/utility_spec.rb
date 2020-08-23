@@ -10,7 +10,7 @@ module Twn
       end
     end
 
-    describe ".to_uwp" do
+    describe ".to_uwp_slug" do
       [
         [1,"1"],
         [10,"A"],
@@ -20,13 +20,13 @@ module Twn
         [15, "F"]
       ].each do |input, expected|
         it "converts #{input.inspect} to #{expected.inspect}" do
-          expect(described_class.to_uwp(input)).to eq(expected)
+          expect(described_class.to_uwp_slug(input)).to eq(expected)
         end
       end
 
-      it "calls the given input's #to_uwp if it responds to #to_uwp" do
-        input = double(to_uwp: "A")
-        expect(described_class.to_uwp(input)).to eq(input.to_uwp)
+      it "calls the given input's #to_uwp_slug if it responds to #to_uwp_slug" do
+        input = double(to_uwp_slug: "A")
+        expect(described_class.to_uwp_slug(input)).to eq(input.to_uwp_slug)
       end
     end
   end

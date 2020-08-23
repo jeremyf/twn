@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The starport of the world
     class Starport < Twn::Attribute
-      Entry = Struct.new(:to_uwp, :quality)
+      Entry = Struct.new(:to_uwp_slug, :quality)
       X = Entry.new("X", "No Starport")
       A = Entry.new("A", "Excellent")
       B = Entry.new("B", "Good")
@@ -28,8 +28,8 @@ module Twn
         build(roll: roll)
       end
 
-      def to_uwp
-        @entry.to_uwp
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

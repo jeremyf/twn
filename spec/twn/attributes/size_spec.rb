@@ -7,7 +7,7 @@ module Twn
         let(:generator) { double("Generator", roll: 2) }
         subject { described_class.roll!(generator: generator) }
 
-        it { is_expected.to respond_to(:to_uwp) }
+        it { is_expected.to respond_to(:to_uwp_slug) }
       end
     end
   end

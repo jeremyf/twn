@@ -23,7 +23,7 @@ module Twn
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
         size = generator.fetch(:Size)
-        return build(roll: 0) if ["0","1"].include?(size.to_uwp)
+        return build(roll: 0) if ["0","1"].include?(size.to_uwp_slug)
         roll = Utility.roll("2d6", -7) +
           size.key +
           modifier_for(
@@ -46,9 +46,9 @@ module Twn
       }
       def self.modifier_for(atmoshpere:, temperature:)
         modifier = 0
-        return modifier if atmoshpere.to_uwp == "D"
-        modifier += TEMPERATURE_UWP_MODIFIER.fetch(temperature.to_uwp, 0)
-        modifier += ATMOSPHERE_UWP_MODIFIER.fetch(atmoshpere.to_uwp, 0)
+        return modifier if atmoshpere.to_uwp_slug == "D"
+        modifier += TEMPERATURE_UWP_MODIFIER.fetch(temperature.to_uwp_slug, 0)
+        modifier += ATMOSPHERE_UWP_MODIFIER.fetch(atmoshpere.to_uwp_slug, 0)
         return modifier
       end
     end

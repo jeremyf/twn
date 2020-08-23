@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The Travel Code for the world
     class TravelCode < Twn::Attribute
-      Entry = Struct.new(:to_uwp, :description)
+      Entry = Struct.new(:to_uwp_slug, :description)
       NONE = Entry.new("", "No travel code")
       AMBER = Entry.new("A", "Amber travel code")
       RED = Entry.new("R", "Red travel code")
@@ -19,8 +19,8 @@ module Twn
         new(entry: NONE)
       end
 
-      def to_uwp
-        @entry.to_uwp
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

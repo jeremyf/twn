@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The Traveller's Aid Society for the world
     class TravellersAidSociety < Twn::Attribute
-      Entry = Struct.new(:to_uwp, :description)
+      Entry = Struct.new(:to_uwp_slug, :description)
       NO_TAS = Entry.new("", "No Traveller's Aid Society")
       TAS = Entry.new("T", "Traveller's Aid Society")
 
@@ -14,7 +14,7 @@ module Twn
       end
 
       def self.entry_for(roll:, generator:)
-        case generator.uwp_for(:Starport)
+        case generator.uwp_slug_for(:Starport)
         when "A"
           roll < 4 ? NO_TAS : TAS
         when "B"
@@ -30,8 +30,8 @@ module Twn
         end
       end
 
-      def to_uwp
-        @entry.to_uwp
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

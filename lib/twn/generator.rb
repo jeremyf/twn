@@ -11,8 +11,8 @@ module Twn
     end
     alias fetch generate
 
-    def uwp_for(attribute_name)
-      build_and_fetch(attribute_name).to_uwp
+    def uwp_slug_for(attribute_name)
+      build_and_fetch(attribute_name).to_uwp_slug
     end
 
     private

@@ -14,7 +14,7 @@ module Twn
         Builder.new(generator: generator, tech_level_builder: self).build
       end
 
-      def to_uwp
+      def to_uwp_slug
         @entry.key
       end
 
@@ -50,7 +50,7 @@ module Twn
         end
 
         def starport_dm
-          case generator.fetch(:Starport).to_uwp
+          case generator.fetch(:Starport).to_uwp_slug
           when "A" then 6
           when "B" then 4
           when "C" then 2
@@ -61,7 +61,7 @@ module Twn
         end
 
         def size_dm
-          case generator.fetch(:Size).to_uwp
+          case generator.fetch(:Size).to_uwp_slug
           when "0", "1" then 2
           when "2", "3", "4" then 1
           else
@@ -70,7 +70,7 @@ module Twn
         end
 
         def atmosphere_dm
-          case generator.fetch(:Atmosphere).to_uwp
+          case generator.fetch(:Atmosphere).to_uwp_slug
           when "0", "1", "2", "3", "A", "B", "C", "D", "E", "F" then 1
           else
             0
@@ -78,7 +78,7 @@ module Twn
         end
 
         def hydro_dm
-          case generator.fetch(:Hydrographic).to_uwp
+          case generator.fetch(:Hydrographic).to_uwp_slug
           when "0", "9" then 1
           when "A" then 2
           else
@@ -87,7 +87,7 @@ module Twn
         end
 
         def population_dm
-          case generator.fetch(:Population).to_uwp
+          case generator.fetch(:Population).to_uwp_slug
           when "1", "2", "3", "4", "5", "9" then 1
           when "A" then 2
           when "B" then 3
@@ -98,7 +98,7 @@ module Twn
         end
 
         def government_dm
-          case generator.fetch(:Government).to_uwp
+          case generator.fetch(:Government).to_uwp_slug
           when "0", "5" then 1
           when "7" then 2
           when "D", "E" then -2
@@ -109,7 +109,7 @@ module Twn
 
         def threshold
           @threshold ||= begin
-                           case atmosphere.to_uwp
+                           case atmosphere.to_uwp_slug
                            when "0", "1" then 8
                            when "2", "3" then 5
                            when "4", "7", "9" then 3

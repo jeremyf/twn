@@ -24,7 +24,7 @@ module Twn
     end
 
     # Convert to Universal World Profile (UWP) element.
-    def to_uwp
+    def to_uwp_slug
       sprintf("%X", @entry.key)
     end
 

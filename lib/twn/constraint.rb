@@ -7,15 +7,15 @@ module Twn
   # - Acceptability
   class Constraint
     # @param applies_to [Symbol] One of the Twn::Attributes.constants
-    # @param uwp_range [Array<String>] An array of UWPs that are, by rules, acceptable
+    # @param uwp_slug_range [Array<String>] An array of UWPs that are, by rules, acceptable
     # @param state [Hash<Symbol,Twn::Attribute>]
-    def initialize(applies_to:, uwp_range:, state:)
+    def initialize(applies_to:, uwp_slug_range:, state:)
       @applies_to = applies_to
-      @uwp_range = uwp_range.map { |u| Utility.to_uwp(u) }
+      @uwp_slug_range = uwp_slug_range.map { |u| Utility.to_uwp_slug(u) }
       @state = state
     end
 
-    attr_reader :applies_to, :uwp_range, :state
+    attr_reader :applies_to, :uwp_slug_range, :state
 
     # True if this Constraint applies to the given state
     # @return [Boolean]
@@ -27,7 +27,7 @@ module Twn
     # @return [Boolean]
     def acceptable?
       return true unless applicable?
-      uwp_range.include?(Utility.to_uwp(state.fetch(applies_to)))
+      uwp_slug_range.include?(Utility.to_uwp_slug(state.fetch(applies_to)))
     end
   end
 end

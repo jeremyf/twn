@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # The Pirate Base for the world
     class PirateBase < Twn::Attribute
-      Entry = Struct.new(:to_uwp, :description)
+      Entry = Struct.new(:to_uwp_slug, :description)
       NO_PIRATE_BASE = Entry.new("", "No pirate base")
       PIRATE_BASE = Entry.new("P", "Pirate base")
 
@@ -14,7 +14,7 @@ module Twn
       end
 
       def self.entry_for(roll:, generator:)
-        case generator.uwp_for(:Starport)
+        case generator.uwp_slug_for(:Starport)
         when "A"
           NO_PIRATE_BASE
         when "B"
@@ -30,8 +30,8 @@ module Twn
         end
       end
 
-      def to_uwp
-        @entry.to_uwp
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

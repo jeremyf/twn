@@ -5,19 +5,19 @@
   :attributes: []
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Seismic Instability
   :attributes:
     - attribute: Size
-      uwps: [4,5,6,7,8,9,10]
+      uwp_slugs: [4,5,6,7,8,9,10]
 - :name: Hostile Space
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Cyborgs
   :attributes:
     - attribute: TechLevel
-      uwps: [9,10,11,12,13,14,15]
+      uwp_slugs: [9,10,11,12,13,14,15]
 - :name: Preceptor Archive
   :attributes: []
 - :name: Local Tech
@@ -37,7 +37,7 @@
 - :name: Forbidden Tech
   :attributes:
   - attribute: TechLevel
-    uwps: [10,11,12,13,14,15]
+    uwp_slugs: [10,11,12,13,14,15]
 - :name: Cold War
   :attributes: []
 - :name: Pleasure World
@@ -87,13 +87,13 @@
 - :name: Seagoing Cities
   :attributes:
     - attribute: Hydrographic
-      uwps: [7,8,9,10]
+      uwp_slugs: [7,8,9,10]
 - :name: Night World
   :attributes: []
 - :name: Police State
   :attributes:
   - attribute: LawLevel
-    uwps: [6,7,8,9,10,11,12,13,14,15]
+    uwp_slugs: [6,7,8,9,10,11,12,13,14,15]
 - :name: Unbraked AI
   :attributes: []
 - :name: Shackled World
@@ -101,7 +101,7 @@
 - :name: Cultural Power
   :attributes:
     - attribute: Population
-      uwps: [3,4,5,6,7,8,9,10,11,12]
+      uwp_slugs: [3,4,5,6,7,8,9,10,11,12]
 - :name: Outpost World
   :attributes: []
 - :name: Utopia
@@ -123,7 +123,7 @@
 - :name: Major Spaceyard
   :attributes:
     - attributes: Starport
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Taboo Treasure
   :attributes: []
 - :name: Heavy Mining
@@ -135,17 +135,17 @@
 - :name: Robots
   :attributes:
     - attribute: TechLevel
-      uwps: [7,8,9,10,11,12,13,14,15]
+      uwp_slugs: [7,8,9,10,11,12,13,14,15]
 - :name: Psionics Academy
   :attributes: []
 - :name: Rising Hegemon
   :attributes:
     - attribute: TechLevel
-      uwps: [11,12,13,14,15]
+      uwp_slugs: [11,12,13,14,15]
 - :name: Restrictive Laws
   :attributes:
     - attribute: LawLevel
-      uwps: [7,8,9,10,11,12,13,14]
+      uwp_slugs: [7,8,9,10,11,12,13,14]
 - :name: Area 51
   :attributes: []
 - :name: Revolutionaries
@@ -155,7 +155,7 @@
 - :name: Civil War
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
     - attribute: Faction
       counts: [1,2]
 - :name: Fallen Hegemon
@@ -163,17 +163,17 @@
 - :name: Radioactive World
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Altered Humanity
   :attributes: []
 - :name: Desert World
   :attributes:
     - attribute: Hydrographic
-      uwps: [0,1]
+      uwp_slugs: [0,1]
 - :name: Battleground
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Xenophiles
   :attributes: []
 - :name: Secret Masters
@@ -201,13 +201,13 @@
 - :name: Megacorps
   :attributes:
     - attribute: LawLevel
-      uwps: [0,1,3,5,6,7,9,10,11,12,13]
+      uwp_slugs: [0,1,3,5,6,7,9,10,11,12,13]
 - :name: Psionics Fear
   :attributes: []
 - :name: Maneaters
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Refugees
   :attributes: []
 - :name: Terraform Failure
@@ -219,7 +219,7 @@
 - :name: Holy War
   :attributes:
     - attribute: TravelCode
-      uwps: ["A"]
+      uwp_slugs: ["A"]
 - :name: Bubble Cities
   :attributes: []
 - :name: Nomads
@@ -227,7 +227,7 @@
 - :name: Oceanic World
   :attributes:
     - attribute: Hydrographic
-      uwps: [8,9,10]
+      uwp_slugs: [8,9,10]
 - :name: Dying Race
   :attributes: []
 - :name: Former Warriors
@@ -241,8 +241,8 @@
 - :name: Trade Hub
   :attributes:
     - attribute: Atmosphere
-      uwps: [6,8]
+      uwp_slugs: [6,8]
     - attribute: Population
-      uwps: [6,7,8]
+      uwp_slugs: [6,7,8]
 - :name: Misandry/Misogyny
   :attributes: []
