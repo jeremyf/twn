@@ -29,7 +29,9 @@ Or install it yourself as:
 ## TODO
 
 - [ ] Generate a UWP short-code (without coordinates) for https://campaignwiki.org/traveller/
-- [ ] Add SWN tags
-  - [ ] Tags are things to roll first, as they may influence UWP
-  - [ ] Tags apply Twn::Constraint
+- [ ] Add Traveller Trade Codes
+- [ ] Ensure attribute entry can be fetched by `uwp_slug`
+- [X] Add SWN tags
+  - [X] Tags are things to roll first, as they may influence UWP
+  - [X] Tags apply Twn::Constraint
 - [ ] Work on induction of Traveller traits from SWN entries
