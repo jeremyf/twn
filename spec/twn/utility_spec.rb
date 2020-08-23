@@ -9,5 +9,20 @@ module Twn
         it { is_expected.to be_a Integer }
       end
     end
+
+    describe ".to_uwp" do
+      [
+        [1,"1"],
+        [10,"A"],
+        ["A", "A"],
+        ["a", "A"],
+        ["X", "X"],
+        [15, "F"]
+      ].each do |input, expected|
+        it "converts #{input.inspect} to #{expected.inspect}" do
+          expect(described_class.to_uwp(input)).to eq(expected)
+        end
+      end
+    end
   end
 end

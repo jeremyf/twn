@@ -20,6 +20,18 @@ module Twn
         dice_roller = expression_map.fetch(dice) { dice }
         dice_roller.call + modifier
       end
+
+      # Return the UWP for the given value
+      #
+      # @param value [String,Integer]
+      #
+      # @return String
+      def to_uwp(value)
+        case value
+        when String then value.upcase
+        when Integer then sprintf("%X",value)
+        end
+      end
     end
   end
 end
