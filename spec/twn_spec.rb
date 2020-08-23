@@ -12,4 +12,6 @@ RSpec.describe Twn do
       it { is_expected.to be_a Twn::Generator }
     end
   end
+
+  describe ".uwp"
 end

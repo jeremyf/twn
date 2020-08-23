@@ -3,7 +3,7 @@ module Twn
   module Attributes
     # Gas Giant!
     class GasGiant < Twn::Attribute
-      Entry = Struct.new(:key, :description)
+      Entry = Struct.new(:to_uwp_slug, :description)
       NO_GIANT = Entry.new("", "No gas giant")
       GIANT = Entry.new("G", "Gas giant")
 
@@ -17,6 +17,10 @@ module Twn
       def self.roll!(generator:)
         entry = Utility.roll("2d6") < 10 ? GIANT : NO_GIANT
         new(entry: entry)
+      end
+
+      def to_uwp_slug
+        @entry.to_uwp_slug
       end
     end
   end

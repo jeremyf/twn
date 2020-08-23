@@ -3,12 +3,12 @@ require "twn/generator"
 require "twn/attributes"
 require "twn/utility"
 require "twn/constraint"
+require "twn/renderer"
 module Twn
   class Error < StandardError; end
   # Your code goes here...
 
-  DEFAULT_SEQUENCE = [
-    :Tags,
+  TRAVELLER_SEQUENCE = [
     :Size,
     :Atmosphere,
     :Temperature,
@@ -27,6 +27,7 @@ module Twn
     :GasGiant,
     :TravelCode
   ]
+  DEFAULT_SEQUENCE = [:Tags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE)
     generator = Generator.new
     sequence.each do |attribute|

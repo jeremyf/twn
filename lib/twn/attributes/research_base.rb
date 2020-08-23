@@ -5,7 +5,7 @@ module Twn
     class ResearchBase < Twn::Attribute
       Entry = Struct.new(:to_uwp_slug, :description)
       NO_RESEARCH_BASE = Entry.new("", "No research base")
-      RESEARCH_BASE = Entry.new("S", "Research base")
+      RESEARCH_BASE = Entry.new("R", "Research base")
 
       def self.roll!(generator:)
         roll = Utility.roll("2d6")

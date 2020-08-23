@@ -31,4 +31,5 @@ Or install it yourself as:
 - [ ] Generate a UWP short-code (without coordinates) for https://campaignwiki.org/traveller/
 - [ ] Add SWN tags
   - [ ] Tags are things to roll first, as they may influence UWP
+  - [ ] Tags apply Twn::Constraint
 - [ ] Work on induction of Traveller traits from SWN entries

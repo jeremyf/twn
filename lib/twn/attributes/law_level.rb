@@ -5,7 +5,7 @@ module Twn
     class LawLevel < Twn::Attribute
       Entry = Struct.new(:key, :level)
       a_table = {}
-      (0..18).each do |i|
+      (0..15).each do |i|
         a_table[i] = Entry.new(i, "Level #{i}")
       end
       self.table = a_table

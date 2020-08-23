@@ -11,7 +11,8 @@ module Twn
       self.table = a_table
 
       def self.roll!(generator:)
-        Builder.new(generator: generator, tech_level_builder: self).build
+        roll = Builder.new(generator: generator).roll
+        build(roll: roll)
       end
 
       def to_uwp_slug
@@ -19,35 +20,33 @@ module Twn
       end
 
       class Builder
-        def initialize(generator:, tech_level_builder:)
+        def initialize(generator:)
           @generator = generator
-          @tech_level_builder = tech_level_builder
         end
-        attr_reader :generator, :tech_level_builder
 
-        def build
+        attr_reader :generator
+
+        def roll(ttl: 10)
           population = generator.get!(:Population)
-          if population.to_i == 0
-            tech_level_builder.build(roll: 0)
-          else
-            roll = nil
-            threshold_met = false
-            ttl = 0
-            while ttl > 0 && !threshold_met
-              roll = Utility.roll("1d6") +
-                     starport_dm +
-                     size_dm +
-                     atmosphere_dm +
-                     hydro_dm +
-                     population_dm +
-                     government_dm
-              threshold_met = (roll >= threshold)
-              ttl -= 1
-            end
-            roll = threshold if ttl == 0
-            tech_level_builder.build(roll: roll)
+          return 0 if population.to_i == 0
+          roll = nil
+          threshold_met = false
+          while ttl > 0 && !threshold_met
+            roll = Utility.roll("1d6") +
+                   starport_dm +
+                   size_dm +
+                   atmosphere_dm +
+                   hydro_dm +
+                   population_dm +
+                   government_dm
+            threshold_met = (roll >= threshold)
+            ttl -= 1
           end
+          roll = threshold if ttl == 0
+          return roll
         end
+
+        private
 
         def starport_dm
           case generator.get!(:Starport).to_uwp_slug

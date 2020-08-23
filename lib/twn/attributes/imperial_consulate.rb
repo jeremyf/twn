@@ -5,7 +5,7 @@ module Twn
     class ImperialConsulate < Twn::Attribute
       Entry = Struct.new(:to_uwp_slug, :description)
       NO_IMPERIAL_CONSULATE = Entry.new("", "No Imperial Consulate")
-      IMPERIAL_CONSULATE = Entry.new("I", "Imperial Consulate")
+      IMPERIAL_CONSULATE = Entry.new("C", "Imperial Consulate")
 
       def self.roll!(generator:)
         roll = Utility.roll("2d6")
