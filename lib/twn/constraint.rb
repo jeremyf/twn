@@ -6,10 +6,10 @@ module Twn
   # - Applicability
   # - Acceptability
   class Constraint
-    # @param applies_to [Symbol] One of the Twn::Attributes.constants
+    # @param applies_to [Symbol, #to_sym] One of the Twn::Attributes.constants
     # @param uwp_slug_range [Array<String>] An array of UWPs that are, by rules, acceptable
     def initialize(applies_to:, uwp_slug_range:)
-      @applies_to = applies_to
+      @applies_to = applies_to.to_sym
       @uwp_slug_range = uwp_slug_range.map { |u| Utility.to_uwp_slug(u) }
     end
 
