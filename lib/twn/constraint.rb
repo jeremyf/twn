@@ -15,6 +15,14 @@ module Twn
 
     attr_reader :applies_to, :uwp_slug_range
 
+    # Is this an applicable candidate for the constraint?
+    #
+    # @param candidate [#attribute_name]
+    # @return [Boolean]
+    def applicable?(candidate:)
+      candidate.attribute_name == applies_to
+    end
+
     # Answers two questions:
     #
     # - Applicability
@@ -23,7 +31,7 @@ module Twn
     # @param candidate [#attribute_name]
     # @return [Boolean]
     def acceptable_candidate?(candidate)
-      return true unless applies_to == candidate.attribute_name # This is not applicable
+      return true unless applicable?(candidate: candidate)
       uwp_slug_range.include?(Utility.to_uwp_slug(candidate)) # This is or is not acceptable
     end
   end
