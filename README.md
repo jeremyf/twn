@@ -31,6 +31,9 @@ Or install it yourself as:
 - [ ] Generate a UWP short-code (without coordinates) for https://campaignwiki.org/traveller/
 - [ ] Add Traveller Trade Codes
 - [ ] Ensure attribute entry can be fetched by `uwp_slug`
+  - [ ] Verify that each Twn::Attribute has a table
+  - [ ] Verify that each Twn::Attribute table's key is a `uwp_slug`
+  - [ ] Create UWP to Roll map for each attribute
 - [X] Add SWN tags
   - [X] Tags are things to roll first, as they may influence UWP
   - [X] Tags apply Twn::Constraint
