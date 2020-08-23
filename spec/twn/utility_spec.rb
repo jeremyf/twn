@@ -23,6 +23,11 @@ module Twn
           expect(described_class.to_uwp(input)).to eq(expected)
         end
       end
+
+      it "calls the given input's #to_uwp if it responds to #to_uwp" do
+        input = double(to_uwp: "A")
+        expect(described_class.to_uwp(input)).to eq(input.to_uwp)
+      end
     end
   end
 end
