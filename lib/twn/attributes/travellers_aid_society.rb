@@ -14,7 +14,7 @@ module Twn
       end
 
       def self.entry_for(roll:, generator:)
-        case generator.uwp_slug_for(:Starport)
+        case Utility.to_uwp_slug(generator.get!(:Starport))
         when "A"
           roll < 4 ? NO_TAS : TAS
         when "B"

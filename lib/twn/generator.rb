@@ -23,10 +23,6 @@ module Twn
     end
     alias get! generate
 
-    def uwp_slug_for(attribute_name)
-      build_and_fetch(attribute_name).to_uwp_slug
-    end
-
     private
 
     def build_and_fetch(attribute_name)

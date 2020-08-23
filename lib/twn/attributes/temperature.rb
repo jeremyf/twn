@@ -31,7 +31,7 @@ module Twn
 
 
       def self.roll!(generator:)
-        key = case generator.uwp_slug_for(:Size)
+        key = case Utility.to_uwp_slug(generator.get!(:Size))
               when "0", "1" then "V"
               else
                 atmosphere = generator.get!(:Atmosphere)

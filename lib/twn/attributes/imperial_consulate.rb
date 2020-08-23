@@ -14,7 +14,7 @@ module Twn
       end
 
       def self.entry_for(roll:, generator:)
-        case generator.uwp_slug_for(:Starport)
+        case Utility.to_uwp_slug(generator.get!(:Starport))
         when "A"
           roll < 6 ? NO_IMPERIAL_CONSULATE : IMPERIAL_CONSULATE
         when "B"
