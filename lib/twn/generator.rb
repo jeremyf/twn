@@ -11,7 +11,7 @@ module Twn
 
     # @see Twn::Constraint
     def add_constraint!(applies_to:, uwp_slug_range:)
-      @constraints << Constraint.new(applies_to: applies_to, uwp_slug_range: uwp_slug_range, state: self)
+      @constraints << Constraint.new(applies_to: applies_to, uwp_slug_range: uwp_slug_range)
     end
 
     extend Forwardable
