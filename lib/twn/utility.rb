@@ -35,8 +35,12 @@ module Twn
       end
 
       require 'set'
+      # This utility method (extracted because its easier to test)
+      # will find the intersection of all of the given arrays, and
+      # pick a random instance from that array.
+      #
       # @param array_of_ranges [Array<Array<String>>]
-      def select_uwp_slug_from(array_of_ranges:)
+      def select_random_entry_from_intersection_of(array_of_ranges:)
         candidates = Set.new
         intersection = array_of_ranges.shift
         candidates += intersection

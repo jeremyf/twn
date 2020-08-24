@@ -70,7 +70,7 @@ module Twn
         next unless constraint.applies_to == attribute_name
         array_of_ranges << constraint.uwp_slug_range
       end
-      Utility.select_uwp_slug_from(array_of_ranges: array_of_ranges)
+      Utility.select_random_entry_from_intersection_of(array_of_ranges: array_of_ranges)
     end
   end
 end

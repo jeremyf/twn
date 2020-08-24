@@ -30,22 +30,22 @@ module Twn
       end
     end
 
-    describe '.select_uwp_slug_from' do
+    describe '.select_random_entry_from_intersection_of' do
       describe 'with only one uwp_slug in all ranges' do
         it "returns that uwp_slug" do
-          result = described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["A","C"],["A", "C"]])
+          result = described_class.select_random_entry_from_intersection_of(array_of_ranges: [["A","B"],["A","C"],["A", "C"]])
           expect(result).to eq("A")
         end
       end
       describe 'with more than one uwp_slug in all ranges' do
         it "returns a random" do
-          result = described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["A","B", "C"],["A", "C"]])
+          result = described_class.select_random_entry_from_intersection_of(array_of_ranges: [["A","B"],["A","B", "C"],["A", "C"]])
           expect(result).to be_a String
         end
       end
       describe 'with no uwl_slugs in all ranges' do
         it "raises an exception" do
-          expect {  described_class.select_uwp_slug_from(array_of_ranges: [["A","B"],["B", "C"],["A", "C"]]) }.to raise_error(Twn::Error)
+          expect {  described_class.select_random_entry_from_intersection_of(array_of_ranges: [["A","B"],["B", "C"],["A", "C"]]) }.to raise_error(Twn::Error)
         end
       end
     end
