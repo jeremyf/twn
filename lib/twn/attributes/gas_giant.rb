@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # Gas Giant!
-    class GasGiant < Twn::RefactoredAttribute
+    class GasGiant < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: "", description: "No gas giant")
         table.add_row(roll: "G", description: "Gas giant")

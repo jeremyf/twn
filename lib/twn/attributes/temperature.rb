@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The atmosphere of the world
-    class Temperature < Twn::RefactoredAttribute
+    class Temperature < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: "F", type: "Frozen")
         table.add_row(roll: "C", type: "Cold")

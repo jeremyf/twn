@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The starport of the world
-    class Starport < Twn::RefactoredAttribute
+    class Starport < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 2, to_uwp_slug: "X", description: "No Starport")
         table.add_row(roll: 3, to_uwp_slug: "E", description: "Frontier")

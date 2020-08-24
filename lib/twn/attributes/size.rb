@@ -3,7 +3,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The size of the world
-    class Size < Twn::RefactoredAttribute
+    class Size < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")
         table.add_row(roll: 1, size: 1600, surface_gravity: 0.05, example: "")

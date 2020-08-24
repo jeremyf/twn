@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Law Level of the world
-    class LawLevel < Twn::RefactoredAttribute
+    class LawLevel < Twn::Attribute
       initialize_table do |table|
         (0..15).each do |i|
           table.add_row(roll: i, description: "Law level #{i}")

@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The naval base for the world
-    class NavalBase < Twn::RefactoredAttribute
+    class NavalBase < Twn::Attribute
       NO = ""
       YES = "N"
       initialize_table do |table|

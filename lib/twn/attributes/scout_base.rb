@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The scout base for the world
-    class ScoutBase < Twn::RefactoredAttribute
+    class ScoutBase < Twn::Attribute
       NO = ""
       YES = "S"
       initialize_table do |table|

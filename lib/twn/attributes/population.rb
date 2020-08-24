@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The population of the world
-    class Population < Twn::RefactoredAttribute
+    class Population < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 0, population: "None", range: "0")
         table.add_row(roll: 1, population: "Few", range: "1+")

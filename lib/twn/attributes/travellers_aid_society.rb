@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Traveller's Aid Society for the world
-    class TravellersAidSociety < Twn::RefactoredAttribute
+    class TravellersAidSociety < Twn::Attribute
       NO = ""
       YES = "T"
       initialize_table do |table|

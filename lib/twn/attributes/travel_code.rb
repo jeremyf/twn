@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Travel Code for the world
-    class TravelCode < Twn::RefactoredAttribute
+    class TravelCode < Twn::Attribute
       NO = ""
       AMBER = "A"
       RED = "R"

@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The atmosphere of the world
-    class Atmosphere < Twn::RefactoredAttribute
+    class Atmosphere < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 0, atmosphere: "None")
         table.add_row(roll: 1, atmosphere: "Trace")

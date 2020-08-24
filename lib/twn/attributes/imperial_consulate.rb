@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Imperial Consulate for the world
-    class ImperialConsulate < Twn::RefactoredAttribute
+    class ImperialConsulate < Twn::Attribute
       NO = ""
       YES = "C"
       initialize_table do |table|

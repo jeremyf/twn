@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Tech Law Level of the world
-    class TechLevel < Twn::RefactoredAttribute
+    class TechLevel < Twn::Attribute
       Entry = Struct.new(:key, :level)
       initialize_table do |table|
         (0..15).each do |i|

@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The research base for the world
-    class ResearchBase < Twn::RefactoredAttribute
+    class ResearchBase < Twn::Attribute
       NO = ""
       YES = "R"
       initialize_table do |table|

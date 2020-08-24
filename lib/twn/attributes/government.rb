@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The government of the world
-    class Government < Twn::RefactoredAttribute
+    class Government < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 0, type: "None")
         table.add_row(roll: 1, type: "Company/corporation")

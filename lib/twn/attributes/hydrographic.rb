@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Hydrographic characteristics of the planet
-    class Hydrographic < Twn::RefactoredAttribute
+    class Hydrographic < Twn::Attribute
       initialize_table do |table|
         table.add_row(roll: 0, percentage:"0%-5%", description: "Desert world")
         table.add_row(roll: 1, percentage:"6%-15%", description: "Dry world")
