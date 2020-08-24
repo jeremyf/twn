@@ -30,11 +30,11 @@ module Twn
       ].map do |attribute_name|
         Utility.to_uwp_slug(generator.get!(attribute_name))
       end.join("")
-      tech_level = Utility.to_uwp_slug(generator.get!(:TechLevel))
+      tech_level = generator.get!(:TechLevel)
 
       base_codes = bases.map { |a| Utility.to_uwp_slug(generator.get!(a)) }.join.strip
 
-      line = sprintf("%s-%-2d %#{bases.count}s", prefix, tech_level, base_codes)
+      line = sprintf("%s-%-2d %#{bases.count}s", prefix, tech_level.roll, base_codes)
       buffer.puts(line)
     end
   end

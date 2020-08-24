@@ -3,7 +3,7 @@ require "twn/utility"
 module Twn
   class Attribute
     def self.initialize_table(&block)
-      @refactored_table ||= Table.new(attribute_name: attribute_name, &block)
+      @table ||= Table.new(attribute_name: attribute_name, &block)
     end
 
     def self.attribute_name
@@ -19,7 +19,7 @@ module Twn
     end
 
     def self.build(roll:)
-      row = @refactored_table.fetch_by_roll(roll)
+      row = @table.fetch_by_roll(roll)
       new(entry: row)
     end
 
@@ -30,5 +30,6 @@ module Twn
       @entry.roll
     end
     alias to_i key
+    alias roll key
   end
 end
