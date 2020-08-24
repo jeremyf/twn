@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Twn
   module Attributes
-    RSpec.describe Tags do
+    RSpec.describe SwnWorldTags do
       describe ".roll!" do
         let(:generator) { Twn::Generator.new }
         let(:pick) { 1 }

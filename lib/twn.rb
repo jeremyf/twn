@@ -27,7 +27,7 @@ module Twn
     :GasGiant,
     :TravelCode
   ]
-  DEFAULT_SEQUENCE = [:Tags] + TRAVELLER_SEQUENCE
+  DEFAULT_SEQUENCE = [:SwnWorldTags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE)
     generator = Generator.new
     sequence.each do |attribute|

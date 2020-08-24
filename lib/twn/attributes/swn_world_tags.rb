@@ -2,7 +2,7 @@ require 'twn/attribute'
 require 'psych'
 module Twn
   module Attributes
-    class Tags < Twn::Attribute
+    class SwnWorldTags < Twn::Attribute
       def self.swn_tags
         @tags ||= Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))
       end
