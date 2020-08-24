@@ -4,7 +4,13 @@ module Twn
   module Attributes
     class SwnWorldTags < Twn::Attribute
       def self.swn_tags
-        @tags ||= Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))
+        @swn_tags ||= Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))
+      end
+
+      initialize_table do |table|
+        swn_tags.each_with_index do |tag, i|
+          table.add_row(roll: i+1, **tag)
+        end
       end
 
       # Given a list of :tags, randomly :pick from the list of :tags.
@@ -16,7 +22,7 @@ module Twn
       # @param tags [Array]
       #
       # @return Twn::Attributes::Tags
-      def self.roll!(generator:, pick: 2, tags: swn_tags)
+      def self.roll!(generator:, pick: 2, tags: @table)
         applied_tags = tags.shuffle[0..(pick - 1)]
         applied_tags.each do |tag|
           Array(tag[:constraints]).each do |constraint|

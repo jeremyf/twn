@@ -8,7 +8,7 @@ module Twn
         let(:pick) { 1 }
         subject { described_class.roll!(generator: generator, pick: pick, tags: tags) }
         describe "with a constraint" do
-          let(:tags) { [{ name: "Fancy Pants", constraints: [{ applies_to: "Size", uwp_slug_range: [1,2,3] }] }] }
+          let(:tags) { [{ name: "Fancy Pants", to_uwp_slug: "F0", constraints: [{ applies_to: "Size", uwp_slug_range: [1,2,3] }] }] }
           it "adds that constraint to the generator" do
             expect { subject }.to change { generator.constraints.count }.by(1)
           end

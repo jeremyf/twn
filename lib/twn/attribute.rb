@@ -14,10 +14,6 @@ module Twn
       self.class.attribute_name
     end
 
-    def initialize(entry:)
-      @entry = entry
-    end
-
     def self.build(roll:)
       row = @table.fetch_by_roll(roll)
       new(entry: row)
@@ -25,6 +21,10 @@ module Twn
 
     def self.fetch_by_uwp_slug(uwp_slug)
       @table.fetch_by_uwp_slug(uwp_slug)
+    end
+
+    def initialize(entry:)
+      @entry = entry
     end
 
     extend Forwardable

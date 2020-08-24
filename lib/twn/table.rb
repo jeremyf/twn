@@ -1,10 +1,18 @@
 module Twn
+  # A class useful for registering tables associated with each attribute.
   class Table
     def initialize(attribute_name:, &block)
       @attribute_name = attribute_name
       @rows_by_roll = {}
       @rows_by_uwp_slug = {}
-      instance_exec(&block) if block_given?
+      if block_given?
+        instance_exec(&block) if block.arity == 0
+        yield(self) if block.arity == 1
+      end
+    end
+
+    def shuffle
+      rows.shuffle
     end
 
     def rows
@@ -35,6 +43,10 @@ module Twn
         @attributes = attributes
       end
       attr_reader :roll, :to_uwp_slug
+
+      def [](key)
+        @attributes[key]
+      end
     end
   end
 end
