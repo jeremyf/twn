@@ -1,23 +1,22 @@
+require 'twn/utility'
 require 'twn/attribute'
 module Twn
   module Attributes
     # The size of the world
     class Size < Twn::Attribute
-      Entry = Struct.new(:key, :entry, :size, :surface_gravity, :example)
-
-      self.table = {
-        0 => Entry.new(0, 800, 0, "Asteroid, orbital complex"),
-        1 => Entry.new(1, 1600, 0.05, ""),
-        2 => Entry.new(2, 3200, 0.15, "Triton, Luna, Europa"),
-        3 => Entry.new(3, 4800, 0.25, "Mercury, Ganymede"),
-        4 => Entry.new(4, 6400, 0.35, "Mars"),
-        5 => Entry.new(5, 8000, 0.45, ""),
-        6 => Entry.new(6, 9600, 0.7, ""),
-        7 => Entry.new(7, 11_200, 0.9, ""),
-        8 => Entry.new(8, 12_800, 1, "Earth"),
-        9 => Entry.new(9, 14_400, 1.25, ""),
-        10 => Entry.new(10, 16_000, 1.4, "")
-      }
+      initialize_table do |table|
+        table.add_row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")
+        table.add_row(roll: 1, size: 1600, surface_gravity: 0.05, example: "")
+        table.add_row(roll: 2, size: 3200, surface_gravity: 0.15, example: "Triton, Luna, Europa")
+        table.add_row(roll: 3, size: 4800, surface_gravity: 0.25, example: "Mercury, Ganymede")
+        table.add_row(roll: 4, size: 6400, surface_gravity: 0.35, example: "Mars")
+        table.add_row(roll: 5, size: 8000, surface_gravity: 0.45, example: "")
+        table.add_row(roll: 6, size: 9600, surface_gravity: 0.7, example: "")
+        table.add_row(roll: 7, size: 11_200, surface_gravity: 0.9, example: "")
+        table.add_row(roll: 8, size: 12_800, surface_gravity: 1, example: "Earth")
+        table.add_row(roll: 9, size: 14_400, surface_gravity: 1.25, example: "")
+        table.add_row(roll: 10, size: 16_000, surface_gravity: 1.4, example: "")
+      end
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
@@ -25,6 +24,19 @@ module Twn
         roll = Utility.roll("2d6", -2)
         build(roll: roll)
       end
+
+      def self.build(roll:)
+        row = @refactored_table.fetch_by_roll(roll)
+        new(entry: row)
+      end
+
+      extend Forwardable
+      def_delegators :@entry, :to_uwp_slug
+
+      def key
+        @entry.roll
+      end
+      alias to_i key
     end
   end
 end

@@ -1,5 +1,11 @@
+require "twn/table"
 module Twn
   class Attribute
+
+    def self.initialize_table(&block)
+      @refactored_table ||= Table.new(attribute_name: attribute_name, &block)
+    end
+
     def self.table=(hash)
       @table = hash
     end
