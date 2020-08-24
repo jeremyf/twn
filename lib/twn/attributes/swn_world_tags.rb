@@ -2,7 +2,7 @@ require 'twn/attribute'
 require 'psych'
 module Twn
   module Attributes
-    class SwnWorldTags < Twn::Attribute
+    class SwnWorldTags < Twn::CompositeAttribute
       def self.swn_tags
         @swn_tags ||= Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))
       end
@@ -29,7 +29,7 @@ module Twn
             generator.add_constraint!(**constraint)
           end
         end
-        new(entry: applied_tags)
+        new(entries: applied_tags)
       end
     end
   end

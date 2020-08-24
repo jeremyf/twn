@@ -20,7 +20,8 @@ module Twn
 
     def to_uwp
       # Generating SWN world tags, but doing nothing with them
-      _tags = generator.get!(:SwnWorldTags)
+      tags = generator.get!(:SwnWorldTags)
+
       prefix = [
         :Starport,
         :Size,
@@ -36,7 +37,7 @@ module Twn
 
       base_codes = bases.map { |base| generator.get!(base).to_uwp_slug }.join.strip
 
-      line = sprintf("%s-%-2d %#{bases.count}s", prefix, tech_level.roll, base_codes)
+      line = sprintf("%s-%-2d %#{bases.count}s %s", prefix, tech_level.roll, base_codes, tags.to_uwp_slug)
       buffer.puts(line)
     end
   end
