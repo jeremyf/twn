@@ -26,7 +26,8 @@ module Twn
     :ImperialConsulate,
     :PirateBase,
     :GasGiant,
-    :TravelCode
+    :TravelCode,
+    :TradeCodes
   ]
   DEFAULT_SEQUENCE = [:SwnWorldTags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE)

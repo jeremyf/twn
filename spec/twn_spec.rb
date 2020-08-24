@@ -11,7 +11,11 @@ RSpec.describe Twn do
       subject { described_class.generate }
       it { is_expected.to be_a Twn::Generator }
     end
+    it "succeeds at 200 scenarios" do
+      expect { 200.times { described_class.generate } }.not_to raise_error
+    end
   end
+
 
   describe ".uwp"
 end

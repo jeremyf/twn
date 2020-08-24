@@ -15,7 +15,7 @@ module Twn
         [1,"1"],
         [10,"A"],
         ["A", "A"],
-        ["a", "A"],
+        ["a", "a"],
         ["X", "X"],
         [15, "F"]
       ].each do |input, expected|

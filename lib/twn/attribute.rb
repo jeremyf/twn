@@ -42,7 +42,7 @@ module Twn
   # would also need "fetch_by_uwp_code" to rebuild a composite based
   # on the joined "to_uwp_code";  Likewise for roll.
   class CompositeAttribute < Attribute
-    UWP_SLUG_JOIN_CHARACTER = ","
+    UWP_SLUG_JOIN_CHARACTER = " "
 
     # @param rolls [Array<String,Integer>]
     def self.build(rolls:)

@@ -29,7 +29,7 @@ module Twn
       def to_uwp_slug(value)
         return value.to_uwp_slug if value.respond_to?(:to_uwp_slug)
         case value
-        when String then value.upcase
+        when String then value
         when Integer then sprintf("%X",value)
         end
       end

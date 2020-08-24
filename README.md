@@ -29,7 +29,7 @@ Or install it yourself as:
 ## TODO
 
 - [ ] Generate a UWP short-code (without coordinates) for https://campaignwiki.org/traveller/
-- [ ] Add Traveller Trade Codes
+- [X] Add Traveller Trade Codes
 - [X] Ensure attribute entry can be fetched by `uwp_slug`
   - [X] Verify that each Twn::Attribute has a table
   - [X] Verify that each Twn::Attribute table's key is a `uwp_slug`
@@ -41,3 +41,4 @@ Or install it yourself as:
 - [X] Create concept of Composite Attribute; The SwnWorldTags is a composite attribute, in that it has two implicit SwnWorldTag objects associated with it.  I see something similar as necessary for the Trade Codes.
 - [ ] Consider how to render a Row
 - [ ] Add a UWP converter (e.g. print out the UWP's expanded information)
+- [ ] Add Traveller Faction generation

@@ -35,9 +35,11 @@ module Twn
       end.join("")
       tech_level = generator.get!(:TechLevel)
 
+      trade_codes = generator.get!(:TradeCodes)
+
       base_codes = bases.map { |base| generator.get!(base).to_uwp_slug }.join.strip
 
-      line = sprintf("%s-%-2d %#{bases.count}s %s", prefix, tech_level.roll, base_codes, tags.to_uwp_slug)
+      line = sprintf("%s-%-2d %#{bases.count}s %8s {%s}", prefix, tech_level.roll, base_codes, trade_codes.to_uwp_slug, tags.to_uwp_slug)
       buffer.puts(line)
     end
   end
