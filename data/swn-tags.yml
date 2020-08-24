@@ -1,172 +1,372 @@
 ---
-- :name: Prison Planet
-- :name: Xenophobes
+- :name: Abandoned Colony
+  :to_uwp_slug: A0
+- :name: Alien Ruins
+  :to_uwp_slug: A1
+- :name: Altered Humanity
+  :to_uwp_slug: A2
+- :name: Anarchists
+  :to_uwp_slug: A3
+- :name: Anthropomorphs
+  :to_uwp_slug: A4
+- :name: Area 51
+  :to_uwp_slug: A5
+- :name: Badlands World
+  :to_uwp_slug: B0
+- :name: Battleground
   :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
-- :name: Seismic Instability
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: B1
+- :name: Beastmasters
+  :to_uwp_slug: B2
+- :name: Bubble Cities
+  :to_uwp_slug: B3
+- :name: Cheap Life
+  :to_uwp_slug: C0
+- :name: Civil War
   :constraints:
-    - :applies_to: Size
-      :uwp_slug_range: [4,5,6,7,8,9,10]
-- :name: Hostile Space
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: C1
+- :name: Cold War
+  :to_uwp_slug: C2
+- :name: Colonized Population
+  :to_uwp_slug: C3
+- :name: Cultural Power
   :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
+  - :applies_to: Population
+    :uwp_slug_range:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+  :to_uwp_slug: C4
+- :name: Cybercommunists
+  :to_uwp_slug: C5
 - :name: Cyborgs
   :constraints:
-    - :applies_to: TechLevel
-      :uwp_slug_range: [9,10,11,12,13,14,15]
-- :name: Preceptor Archive
-- :name: Local Tech
-- :name: Mandate Base
-- :name: Tomb World
-- :name: Anarchists
-- :name: Revanchists
-- :name: Zombies
-- :name: Warlords
+  - :applies_to: TechLevel
+    :uwp_slug_range:
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+  :to_uwp_slug: C6
+- :name: Cyclical Doom
+  :to_uwp_slug: C7
+- :name: Desert World
+  :constraints:
+  - :applies_to: Hydrographic
+    :uwp_slug_range:
+    - 0
+    - 1
+  :to_uwp_slug: D0
+- :name: Doomed World
+  :to_uwp_slug: D1
+- :name: Dying Race
+  :to_uwp_slug: D2
+- :name: Eugenic Cult
+  :to_uwp_slug: E0
+- :name: Exchange Consulate
+  :to_uwp_slug: E1
+- :name: Fallen Hegemon
+  :to_uwp_slug: F0
+- :name: Feral World
+  :to_uwp_slug: F1
+- :name: Flying Cities
+  :to_uwp_slug: F2
 - :name: Forbidden Tech
   :constraints:
   - :applies_to: TechLevel
-    :uwp_slug_range: [10,11,12,13,14,15]
-- :name: Cold War
-- :name: Pleasure World
-- :name: Badlands World
+    :uwp_slug_range:
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+  :to_uwp_slug: F3
+- :name: Former Warriors
+  :to_uwp_slug: F4
 - :name: Freak Geology
-- :name: Cybercommunists
-- :name: Quarantined World
-- :name: Hostile Biosphere
+  :to_uwp_slug: F5
 - :name: Freak Weather
-- :name: Local Specialty
-- :name: Out of Contact
-- :name: Exchange Consulate
-- :name: Tyranny
-- :name: Colonized Population
-- :name: Sealed Menace
-- :name: Rigid Culture
-- :name: Post-Scarcity
-- :name: Theocracy
-  :constraints:
-    - :applies_to: LawLevel
-      :uwp_slug_range: [13]
-- :name: Flying Cities
+  :to_uwp_slug: F6
+- :name: Friendly Foe
+  :to_uwp_slug: F7
+- :name: Gold Rush
+  :to_uwp_slug: G0
+- :name: Great Work
+  :to_uwp_slug: G1
 - :name: Hatred
-- :name: Eugenic Cult
-- :name: Feral World
+  :to_uwp_slug: H0
 - :name: Heavy Industry
-- :name: Ritual Combat
-- :name: Seagoing Cities
+  :to_uwp_slug: H1
+- :name: Heavy Mining
+  :to_uwp_slug: H2
+- :name: Hivemind
+  :to_uwp_slug: H3
+- :name: Holy War
   :constraints:
-    - :applies_to: Hydrographic
-      :uwp_slug_range: [7,8,9,10]
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: H4
+- :name: Hostile Biosphere
+  :to_uwp_slug: H5
+- :name: Hostile Space
+  :constraints:
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: H6
+- :name: Immortals
+  :to_uwp_slug: I0
+- :name: Local Specialty
+  :to_uwp_slug: L0
+- :name: Local Tech
+  :to_uwp_slug: L1
+- :name: Major Spaceyard
+  :constraints:
+  - :applies_to: Starport
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: M0
+- :name: Mandarinate
+  :to_uwp_slug: M1
+- :name: Mandate Base
+  :to_uwp_slug: M2
+- :name: Maneaters
+  :constraints:
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: M3
+- :name: Megacorps
+  :constraints:
+  - :applies_to: LawLevel
+    :uwp_slug_range:
+    - 0
+    - 1
+    - 3
+    - 5
+    - 6
+    - 7
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+  :to_uwp_slug: M4
+- :name: Mercenaries
+  :to_uwp_slug: M5
+- :name: Minimal Contact
+  :to_uwp_slug: M6
+- :name: Misandry/Misogyny
+  :to_uwp_slug: M7
 - :name: Night World
+  :to_uwp_slug: N0
+- :name: Nomads
+  :to_uwp_slug: N1
+- :name: Oceanic World
+  :constraints:
+  - :applies_to: Hydrographic
+    :uwp_slug_range:
+    - 8
+    - 9
+    - 10
+  :to_uwp_slug: O0
+- :name: Out of Contact
+  :to_uwp_slug: O1
+- :name: Outpost World
+  :constraints:
+  - :applies_to: Population
+    :uwp_slug_range:
+    - 0
+    - 1
+    - 2
+    - 3
+  :to_uwp_slug: O2
+- :name: Perimeter Agency
+  :to_uwp_slug: P0
+- :name: Pilgrimage Site
+  :to_uwp_slug: P1
+- :name: Pleasure World
+  :to_uwp_slug: P2
 - :name: Police State
   :constraints:
   - :applies_to: LawLevel
-    :uwp_slug_range: [6,7,8,9,10,11,12,13,14,15]
-- :name: Unbraked AI
-- :name: Shackled World
-- :name: Cultural Power
-  :constraints:
-    - :applies_to: Population
-      :uwp_slug_range: [3,4,5,6,7,8,9,10,11,12]
-- :name: Outpost World
-  :constraints:
-    - :applies_to: Population
-      :uwp_slug_range: [0,1,2,3]
-- :name: Utopia
-- :name: Mandarinate
-- :name: Alien Ruins
-- :name: Minimal Contact
-- :name: Cheap Life
-- :name: Cyclical Doom
-- :name: Mercenaries
-- :name: Societal Despair
-- :name: Major Spaceyard
-  :constraints:
-    - :applies_to: Starport
-      :uwp_slug_range: ["A"]
-- :name: Taboo Treasure
-- :name: Heavy Mining
-- :name: Sole Supplier
+    :uwp_slug_range:
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+  :to_uwp_slug: P3
+- :name: Post-Scarcity
+  :to_uwp_slug: P4
+- :name: Preceptor Archive
+  :to_uwp_slug: P5
 - :name: Pretech Cultists
-- :name: Robots
-  :constraints:
-    - :applies_to: TechLevel
-      :uwp_slug_range: [7,8,9,10,11,12,13,14,15]
-- :name: Psionics Academy
-- :name: Rising Hegemon
-  :constraints:
-    - :applies_to: TechLevel
-      :uwp_slug_range: [11,12,13,14,15]
-- :name: Restrictive Laws
-  :constraints:
-    - :applies_to: LawLevel
-      :uwp_slug_range: [7,8,9,10,11,12,13,14]
-- :name: Area 51
-- :name: Revolutionaries
+  :to_uwp_slug: P6
 - :name: Primitive Aliens
-- :name: Civil War
-  :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
-- :name: Fallen Hegemon
+  :to_uwp_slug: P7
+- :name: Prison Planet
+  :to_uwp_slug: P8
+- :name: Psionics Academy
+  :to_uwp_slug: P9
+- :name: Psionics Fear
+  :to_uwp_slug: Pa
+- :name: Psionics Worship
+  :to_uwp_slug: Pb
+- :name: Quarantined World
+  :to_uwp_slug: Q0
 - :name: Radioactive World
   :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
-- :name: Altered Humanity
-- :name: Desert World
-  :constraints:
-    - :applies_to: Hydrographic
-      :uwp_slug_range: [0,1]
-- :name: Battleground
-  :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
-- :name: Xenophiles
-- :name: Secret Masters
-- :name: Abandoned Colony
-- :name: Regional Hegemon
-- :name: Sectarians
-- :name: Perimeter Agency
-- :name: Beastmasters
-- :name: Psionics Worship
-- :name: Doomed World
-- :name: Hivemind
-- :name: Urbanized Surface
-- :name: Immortals
-- :name: Megacorps
-  :constraints:
-    - :applies_to: LawLevel
-      :uwp_slug_range: [0,1,3,5,6,7,9,10,11,12,13]
-- :name: Psionics Fear
-- :name: Maneaters
-  :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: R0
 - :name: Refugees
+  :to_uwp_slug: R1
+- :name: Regional Hegemon
+  :to_uwp_slug: R2
+- :name: Restrictive Laws
+  :constraints:
+  - :applies_to: LawLevel
+    :uwp_slug_range:
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+  :to_uwp_slug: R3
+- :name: Revanchists
+  :to_uwp_slug: R4
+- :name: Revolutionaries
+  :to_uwp_slug: R5
+- :name: Rigid Culture
+  :to_uwp_slug: R6
+- :name: Rising Hegemon
+  :constraints:
+  - :applies_to: TechLevel
+    :uwp_slug_range:
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+  :to_uwp_slug: R7
+- :name: Ritual Combat
+  :to_uwp_slug: R8
+- :name: Robots
+  :constraints:
+  - :applies_to: TechLevel
+    :uwp_slug_range:
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+  :to_uwp_slug: R9
+- :name: Seagoing Cities
+  :constraints:
+  - :applies_to: Hydrographic
+    :uwp_slug_range:
+    - 7
+    - 8
+    - 9
+    - 10
+  :to_uwp_slug: S0
+- :name: Sealed Menace
+  :to_uwp_slug: S1
+- :name: Secret Masters
+  :to_uwp_slug: S2
+- :name: Sectarians
+  :to_uwp_slug: S3
+- :name: Seismic Instability
+  :constraints:
+  - :applies_to: Size
+    :uwp_slug_range:
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+  :to_uwp_slug: S4
+- :name: Shackled World
+  :to_uwp_slug: S5
+- :name: Societal Despair
+  :to_uwp_slug: S6
+- :name: Sole Supplier
+  :to_uwp_slug: S7
+- :name: Taboo Treasure
+  :to_uwp_slug: T0
 - :name: Terraform Failure
-- :name: Gold Rush
-- :name: Friendly Foe
-- :name: Holy War
+  :to_uwp_slug: T1
+- :name: Theocracy
   :constraints:
-    - :applies_to: TravelCode
-      :uwp_slug_range: ["A"]
-- :name: Bubble Cities
-- :name: Nomads
-- :name: Oceanic World
-  :constraints:
-    - :applies_to: Hydrographic
-      :uwp_slug_range: [8,9,10]
-- :name: Dying Race
-- :name: Former Warriors
-- :name: Pilgrimage Site
-- :name: Anthropomorphs
-- :name: Great Work
+  - :applies_to: LawLevel
+    :uwp_slug_range:
+    - 13
+  :to_uwp_slug: T2
+- :name: Tomb World
+  :to_uwp_slug: T3
 - :name: Trade Hub
   :constraints:
-    - :applies_to: Atmosphere
-      :uwp_slug_range: [6,8]
-    - :applies_to: Population
-      :uwp_slug_range: [6,7,8]
-- :name: Misandry/Misogyny
+  - :applies_to: Atmosphere
+    :uwp_slug_range:
+    - 6
+    - 8
+  - :applies_to: Population
+    :uwp_slug_range:
+    - 6
+    - 7
+    - 8
+  :to_uwp_slug: T4
+- :name: Tyranny
+  :to_uwp_slug: T5
+- :name: Unbraked AI
+  :to_uwp_slug: U0
+- :name: Urbanized Surface
+  :to_uwp_slug: U1
+- :name: Utopia
+  :to_uwp_slug: U2
+- :name: Warlords
+  :to_uwp_slug: W0
+- :name: Xenophiles
+  :to_uwp_slug: X0
+- :name: Xenophobes
+  :constraints:
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - A
+  :to_uwp_slug: X1
+- :name: Zombies
+  :to_uwp_slug: Z0
