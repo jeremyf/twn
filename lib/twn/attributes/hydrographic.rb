@@ -2,22 +2,20 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Hydrographic characteristics of the planet
-    class Hydrographic < Twn::Attribute
-      Entry = Struct.new(:key, :percentage, :description)
-
-      self.table = {
-        0 => Entry.new(0, "0%-5%", "Desert world"),
-        1 => Entry.new(1, "6%-15%", "Dry world"),
-        2 => Entry.new(2, "16%-25%", "A few small seas"),
-        3 => Entry.new(3, "25%-35%", "Small seas and oceans"),
-        4 => Entry.new(4, "36%-45%", "Wet world"),
-        5 => Entry.new(5, "46%-55%", "Large oceans"),
-        6 => Entry.new(6, "56%-65%", "Large oceans and seas"),
-        7 => Entry.new(7, "66%-75%", "Earth-like world"),
-        8 => Entry.new(8, "76%-85%", "Water world"),
-        9 => Entry.new(9, "86%-95%", "Only a few small islands and archipelagos"),
-        10 => Entry.new(10, "96%-100%", "Almost entirely water.")
-      }
+    class Hydrographic < Twn::RefactoredAttribute
+      initialize_table do |table|
+        table.add_row(roll: 0, percentage:"0%-5%", description: "Desert world")
+        table.add_row(roll: 1, percentage:"6%-15%", description: "Dry world")
+        table.add_row(roll: 2, percentage:"16%-25%", description: "A few small seas")
+        table.add_row(roll: 3, percentage:"25%-35%", description: "Small seas and oceans")
+        table.add_row(roll: 4, percentage:"36%-45%", description: "Wet world")
+        table.add_row(roll: 5, percentage:"46%-55%", description: "Large oceans")
+        table.add_row(roll: 6, percentage:"56%-65%", description: "Large oceans and seas")
+        table.add_row(roll: 7, percentage:"66%-75%", description: "Earth-like world")
+        table.add_row(roll: 8, percentage:"76%-85%", description: "Water world")
+        table.add_row(roll: 9, percentage:"86%-95%", description: "Only a few small islands and archipelagos")
+        table.add_row(roll: 10, percentage:"96%-100%", description: "Almost entirely water.")
+      end
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
