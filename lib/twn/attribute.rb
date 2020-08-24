@@ -24,11 +24,6 @@ module Twn
     end
 
     extend Forwardable
-    def_delegators :@entry, :to_uwp_slug
-
-    def key
-      @entry.roll
-    end
-    alias roll key
+    def_delegators :@entry, :to_uwp_slug, :roll
   end
 end

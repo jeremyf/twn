@@ -23,7 +23,7 @@ module Twn
         size = generator.get!(:Size)
         return build(roll: 0) if ["0","1"].include?(size.to_uwp_slug)
         roll = Utility.roll("2d6", -7) +
-          size.key +
+          size.roll +
           modifier_for(
             atmoshpere: generator.get!(:Atmosphere),
             temperature: generator.get!(:Temperature))
