@@ -1,4 +1,5 @@
 require "twn/table"
+require "twn/utility"
 module Twn
   class Attribute
 

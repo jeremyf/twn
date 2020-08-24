@@ -5,14 +5,14 @@ module Twn
     class Temperature < Twn::Attribute
       Entry = Struct.new(:key, :type)
 
-      self.table = {
-        "F" => Entry.new("F", "Frozen"),
-        "C" => Entry.new("C", "Cold"),
-        "T" => Entry.new("T", "Temperate"),
-        "H" => Entry.new("H", "Hot"),
-        "R" => Entry.new("R", "Roasting"),
-        "V" => Entry.new("V", "Volatile: Frozen at night, Roasting during day")
-      }
+      initialize_table do |table|
+        table.add_row(roll: "F", type: "Frozen")
+        table.add_row(roll: "C", type: "Cold")
+        table.add_row(roll: "T", type: "Temperate")
+        table.add_row(roll: "H", type: "Hot")
+        table.add_row(roll: "R", type: "Roasting")
+        table.add_row(roll: "V", type: "Volatile: Frozen at night, Roasting during day")
+      end
 
       ATMOSPHERE_UWP_MODIFIER = {
         "2" => -2,
@@ -46,9 +46,20 @@ module Twn
               end
         build(roll: key)
       end
-      def to_uwp_slug
-        @entry.key
+
+      def self.build(roll:)
+        row = @refactored_table.fetch_by_roll(roll)
+        new(entry: row)
       end
+
+      extend Forwardable
+      def_delegators :@entry, :to_uwp_slug
+
+      def key
+        @entry.roll
+      end
+      alias to_i key
+
     end
   end
 end

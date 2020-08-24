@@ -11,8 +11,10 @@ module Twn
       @rows_by_roll.values
     end
 
-    def fetch_by_roll(key)
-      @rows_by_roll.fetch(key)
+    def fetch_by_roll(roll)
+      roll = @rows_by_roll.keys.min if roll < @rows_by_roll.keys.min
+      roll = @rows_by_roll.keys.max if roll > @rows_by_roll.keys.max
+      @rows_by_roll.fetch(roll)
     end
 
     def fetch_by_uwp_slug(key)
