@@ -3,24 +3,28 @@ module Twn
   module Attributes
     # Gas Giant!
     class GasGiant < Twn::Attribute
-      Entry = Struct.new(:to_uwp_slug, :description)
-      NO_GIANT = Entry.new("", "No gas giant")
-      GIANT = Entry.new("G", "Gas giant")
-
-      self.table = {
-        "" => NO_GIANT,
-        "G" => GIANT
-      }
+      initialize_table do |table|
+        table.add_row(roll: "", description: "No gas giant")
+        table.add_row(roll: "G", description: "Gas giant")
+      end
 
       # @param generator [Twn::Generator]
       # @param table [Hash<String, Entry>]
       def self.roll!(generator:)
-        entry = Utility.roll("2d6") < 10 ? GIANT : NO_GIANT
-        new(entry: entry)
+        roll = Utility.roll("2d6") < 10 ? "" : "G"
+        build(roll: roll)
       end
 
-      def to_uwp_slug
-        @entry.to_uwp_slug
+      def self.build(roll:)
+        row = @refactored_table.fetch_by_roll(roll)
+        new(entry: row)
+      end
+
+      extend Forwardable
+      def_delegators :@entry, :to_uwp_slug
+
+      def key
+        @entry.roll
       end
     end
   end
