@@ -39,3 +39,5 @@ Or install it yourself as:
   - [X] Tags apply Twn::Constraint
 - [ ] Work on induction of Traveller traits from SWN entries
 - [ ] Create concept of Composite Attribute; The SwnWorldTags is a composite attribute, in that it has two implicit SwnWorldTag objects associated with it.  I see something similar as necessary for the Trade Codes.
+- [ ] Consider how to render a Row
+- [ ] Add a UWP converter (e.g. print out the UWP's expanded information)

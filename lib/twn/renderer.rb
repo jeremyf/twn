@@ -19,6 +19,8 @@ module Twn
     attr_reader :generator, :buffer, :bases
 
     def to_uwp
+      # Generating SWN world tags, but doing nothing with them
+      _tags = generator.get!(:SwnWorldTags)
       prefix = [
         :Starport,
         :Size,

@@ -23,9 +23,14 @@ module Twn
       @table.fetch_by_uwp_slug(uwp_slug)
     end
 
+    def self.roll!(generator:,**)
+      raise "#{self} must implement .#{__method__}"
+    end
+
     def initialize(entry:)
       @entry = entry
     end
+
 
     extend Forwardable
     def_delegators :@entry, :to_uwp_slug, :roll
