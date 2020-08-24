@@ -3,9 +3,9 @@ module Twn
   module Attributes
     # The Law Level of the world
     class LawLevel < Twn::Attribute
-      initialize_table do |table|
+      initialize_table do
         (0..15).each do |i|
-          table.add_row(roll: i, description: "Law level #{i}")
+          add_row(roll: i, description: "Law level #{i}")
         end
       end
 

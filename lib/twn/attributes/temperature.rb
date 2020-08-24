@@ -3,13 +3,13 @@ module Twn
   module Attributes
     # The atmosphere of the world
     class Temperature < Twn::Attribute
-      initialize_table do |table|
-        table.add_row(roll: "F", type: "Frozen")
-        table.add_row(roll: "C", type: "Cold")
-        table.add_row(roll: "T", type: "Temperate")
-        table.add_row(roll: "H", type: "Hot")
-        table.add_row(roll: "R", type: "Roasting")
-        table.add_row(roll: "V", type: "Volatile: Frozen at night, Roasting during day")
+      initialize_table do
+        add_row(roll: "F", type: "Frozen")
+        add_row(roll: "C", type: "Cold")
+        add_row(roll: "T", type: "Temperate")
+        add_row(roll: "H", type: "Hot")
+        add_row(roll: "R", type: "Roasting")
+        add_row(roll: "V", type: "Volatile: Frozen at night, Roasting during day")
       end
 
       ATMOSPHERE_UWP_MODIFIER = {

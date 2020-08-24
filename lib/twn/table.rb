@@ -1,10 +1,10 @@
 module Twn
   class Table
-    def initialize(attribute_name:)
+    def initialize(attribute_name:, &block)
       @attribute_name = attribute_name
       @rows_by_roll = {}
       @rows_by_uwp_slug = {}
-      yield(self) if block_given?
+      instance_exec(&block) if block_given?
     end
 
     def rows

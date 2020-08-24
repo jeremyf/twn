@@ -5,9 +5,9 @@ module Twn
     class PirateBase < Twn::Attribute
       NO = ""
       YES = "P"
-      initialize_table do |table|
-        table.add_row(roll: NO, description: "No pirate base")
-        table.add_row(roll: YES, description: "Pirate base")
+      initialize_table do
+        add_row(roll: NO, description: "No pirate base")
+        add_row(roll: YES, description: "Pirate base")
       end
 
       def self.roll!(generator:)

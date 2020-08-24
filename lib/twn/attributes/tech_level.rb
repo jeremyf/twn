@@ -4,9 +4,9 @@ module Twn
     # The Tech Law Level of the world
     class TechLevel < Twn::Attribute
       Entry = Struct.new(:key, :level)
-      initialize_table do |table|
+      initialize_table do
         (0..15).each do |i|
-          table.add_row(roll: i, description: "Tech level #{i}")
+          add_row(roll: i, description: "Tech level #{i}")
         end
       end
 

@@ -5,9 +5,9 @@ module Twn
     class ImperialConsulate < Twn::Attribute
       NO = ""
       YES = "C"
-      initialize_table do |table|
-        table.add_row(roll: NO, description: "No Imperial Consulate")
-        table.add_row(roll: YES, description: "Imperial Consulate")
+      initialize_table do
+        add_row(roll: NO, description: "No Imperial Consulate")
+        add_row(roll: YES, description: "Imperial Consulate")
       end
 
       def self.roll!(generator:)

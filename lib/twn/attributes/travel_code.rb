@@ -6,10 +6,10 @@ module Twn
       NO = ""
       AMBER = "A"
       RED = "R"
-      initialize_table do |table|
-        table.add_row(roll: NO, description: "No travel code")
-        table.add_row(roll: AMBER, description: "Amber travel code")
-        table.add_row(roll: RED, description: "Red travel code")
+      initialize_table do
+        add_row(roll: NO, description: "No travel code")
+        add_row(roll: AMBER, description: "Amber travel code")
+        add_row(roll: RED, description: "Red travel code")
       end
 
       def self.roll!(generator:)

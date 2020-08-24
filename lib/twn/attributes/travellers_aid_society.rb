@@ -5,9 +5,9 @@ module Twn
     class TravellersAidSociety < Twn::Attribute
       NO = ""
       YES = "T"
-      initialize_table do |table|
-        table.add_row(roll: NO, description: "No Traveller's Aid Society")
-        table.add_row(roll: YES, description: "Traveller's Aid Society")
+      initialize_table do
+        add_row(roll: NO, description: "No Traveller's Aid Society")
+        add_row(roll: YES, description: "Traveller's Aid Society")
       end
 
       def self.roll!(generator:)

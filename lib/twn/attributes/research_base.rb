@@ -5,9 +5,9 @@ module Twn
     class ResearchBase < Twn::Attribute
       NO = ""
       YES = "R"
-      initialize_table do |table|
-        table.add_row(roll: NO, description: "No research base")
-        table.add_row(roll: YES, description: "Research base")
+      initialize_table do
+        add_row(roll: NO, description: "No research base")
+        add_row(roll: YES, description: "Research base")
       end
 
       def self.roll!(generator:)
