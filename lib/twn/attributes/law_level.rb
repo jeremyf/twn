@@ -11,10 +11,10 @@ module Twn
 
       def self.roll!(generator:)
         population = generator.get!(:Population)
-        if population.to_i == 0
+        if population.roll == 0
           build(roll: 0)
         else
-          roll = Utility.roll("2d6", -7) + generator.get!(:Government).to_i
+          roll = Utility.roll("2d6", -7) + generator.get!(:Government).roll
           build(roll: roll)
         end
       end

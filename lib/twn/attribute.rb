@@ -29,7 +29,6 @@ module Twn
     def key
       @entry.roll
     end
-    alias to_i key
     alias roll key
   end
 end

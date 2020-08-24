@@ -24,7 +24,7 @@ module Twn
 
         def roll(ttl: 10)
           population = generator.get!(:Population)
-          return 0 if population.to_i == 0
+          return 0 if population.roll == 0
           roll = nil
           threshold_met = false
           while ttl > 0 && !threshold_met

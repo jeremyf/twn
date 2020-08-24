@@ -24,10 +24,10 @@ module Twn
       # @param table [Hash<Integer, Entry>]
       def self.roll!(generator:)
         population = generator.get!(:Population)
-        if population.to_i == 0
+        if population.roll == 0
           build(roll: 0)
         else
-          roll = Utility.roll("2d6", -7) + population.to_i
+          roll = Utility.roll("2d6", -7) + population.roll
           build(roll: roll)
         end
       end

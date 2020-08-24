@@ -23,7 +23,7 @@ module Twn
       end
 
       def self.roll!(generator:)
-        roll = Utility.roll("2d6", -7) + generator.get!(:Size).to_i
+        roll = Utility.roll("2d6", -7) + generator.get!(:Size).roll
         build(roll: roll)
       end
     end
