@@ -2,7 +2,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The government of the world
-    class Government < Twn::Attribute
+    class Government < Twn::RefactoredAttribute
       initialize_table do |table|
         table.add_row(roll: 0, type: "None")
         table.add_row(roll: 1, type: "Company/corporation")
@@ -31,20 +31,6 @@ module Twn
           build(roll: roll)
         end
       end
-
-      def self.build(roll:)
-        row = @refactored_table.fetch_by_roll(roll)
-        new(entry: row)
-      end
-
-      extend Forwardable
-      def_delegators :@entry, :to_uwp_slug
-
-      def key
-        @entry.roll
-      end
-      alias to_i key
-
     end
   end
 end

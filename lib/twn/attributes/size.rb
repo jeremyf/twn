@@ -3,7 +3,7 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The size of the world
-    class Size < Twn::Attribute
+    class Size < Twn::RefactoredAttribute
       initialize_table do |table|
         table.add_row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")
         table.add_row(roll: 1, size: 1600, surface_gravity: 0.05, example: "")
@@ -24,19 +24,6 @@ module Twn
         roll = Utility.roll("2d6", -2)
         build(roll: roll)
       end
-
-      def self.build(roll:)
-        row = @refactored_table.fetch_by_roll(roll)
-        new(entry: row)
-      end
-
-      extend Forwardable
-      def_delegators :@entry, :to_uwp_slug
-
-      def key
-        @entry.roll
-      end
-      alias to_i key
     end
   end
 end
