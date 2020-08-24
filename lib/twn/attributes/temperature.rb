@@ -3,8 +3,6 @@ module Twn
   module Attributes
     # The atmosphere of the world
     class Temperature < Twn::Attribute
-      Entry = Struct.new(:key, :type)
-
       initialize_table do |table|
         table.add_row(roll: "F", type: "Frozen")
         table.add_row(roll: "C", type: "Cold")
@@ -28,7 +26,6 @@ module Twn
         "B" => 6,
         "C" => 6
       }
-
 
       def self.roll!(generator:)
         key = case Utility.to_uwp_slug(generator.get!(:Size))

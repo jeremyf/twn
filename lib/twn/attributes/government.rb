@@ -3,24 +3,22 @@ module Twn
   module Attributes
     # The government of the world
     class Government < Twn::Attribute
-      Entry = Struct.new(:key, :type)
-
-      self.table = {
-        0 => Entry.new(0, "None"),
-        1 => Entry.new(1, "Company/corporation"),
-        2 => Entry.new(2, "Participating democracy"),
-        3 => Entry.new(3, "Self-perpetuating oligarchy"),
-        4 => Entry.new(4, "Representative democracys"),
-        5 => Entry.new(5, "Feudal technocracy"),
-        6 => Entry.new(6, "Captive government"),
-        7 => Entry.new(7, "Balkanisation"),
-        8 => Entry.new(8, "Civil service bureaucracy"),
-        9 => Entry.new(9, "Impersonal bureaucracy"),
-        10 => Entry.new(10, "Charismatic dictator"),
-        11 => Entry.new(11, "Non-charismatic leaderdictator"),
-        12 => Entry.new(12, "Charismatic oligarchy"),
-        13 => Entry.new(13, "Religious dictatorship")
-      }
+      initialize_table do |table|
+        table.add_row(roll: 0, type: "None")
+        table.add_row(roll: 1, type: "Company/corporation")
+        table.add_row(roll: 2, type: "Participating democracy")
+        table.add_row(roll: 3, type: "Self-perpetuating oligarchy")
+        table.add_row(roll: 4, type: "Representative democracys")
+        table.add_row(roll: 5, type: "Feudal technocracy")
+        table.add_row(roll: 6, type: "Captive government")
+        table.add_row(roll: 7, type: "Balkanisation")
+        table.add_row(roll: 8, type: "Civil service bureaucracy")
+        table.add_row(roll: 9, type: "Impersonal bureaucracy")
+        table.add_row(roll: 10, type: "Charismatic dictator")
+        table.add_row(roll: 11, type: "Non-charismatic leaderdictator")
+        table.add_row(roll: 12, type: "Charismatic oligarchy")
+        table.add_row(roll: 13, type: "Religious dictatorship")
+      end
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]
@@ -33,6 +31,20 @@ module Twn
           build(roll: roll)
         end
       end
+
+      def self.build(roll:)
+        row = @refactored_table.fetch_by_roll(roll)
+        new(entry: row)
+      end
+
+      extend Forwardable
+      def_delegators :@entry, :to_uwp_slug
+
+      def key
+        @entry.roll
+      end
+      alias to_i key
+
     end
   end
 end
