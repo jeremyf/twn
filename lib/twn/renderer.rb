@@ -28,11 +28,11 @@ module Twn
         :Government,
         :LawLevel
       ].map do |attribute_name|
-        Utility.to_uwp_slug(generator.get!(attribute_name))
+        generator.get!(attribute_name).to_uwp_slug
       end.join("")
       tech_level = generator.get!(:TechLevel)
 
-      base_codes = bases.map { |a| Utility.to_uwp_slug(generator.get!(a)) }.join.strip
+      base_codes = bases.map { |base| generator.get!(base).to_uwp_slug }.join.strip
 
       line = sprintf("%s-%-2d %#{bases.count}s", prefix, tech_level.roll, base_codes)
       buffer.puts(line)
