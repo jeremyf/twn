@@ -2,36 +2,26 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The scout base for the world
-    class ScoutBase < Twn::Attribute
-      Entry = Struct.new(:to_uwp_slug, :description)
-      NO_SCOUT_BASE = Entry.new("", "No scout base")
-      SCOUT_BASE = Entry.new("S", "Scout base")
+    class ScoutBase < Twn::RefactoredAttribute
+      NO = ""
+      YES = "S"
+      initialize_table do |table|
+        table.add_row(roll: NO, description: "No scout base")
+        table.add_row(roll: YES, description: "Scout base")
+      end
 
       def self.roll!(generator:)
-        roll = Utility.roll("2d6")
-        entry = entry_for(roll: roll, generator: generator)
-        new(entry: entry)
-      end
-
-      def self.entry_for(roll:, generator:)
-        case Utility.to_uwp_slug(generator.get!(:Starport))
-        when "A"
-          roll < 10 ? NO_SCOUT_BASE : SCOUT_BASE
-        when "B"
-          roll < 8 ? NO_SCOUT_BASE : SCOUT_BASE
-        when "C"
-          roll < 8 ? NO_SCOUT_BASE : SCOUT_BASE
-        when "D"
-          roll < 7 ? NO_SCOUT_BASE : SCOUT_BASE
-        when "E"
-          NO_SCOUT_BASE
-        when "X"
-          NO_SCOUT_BASE
-        end
-      end
-
-      def to_uwp_slug
-        @entry.to_uwp_slug
+        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
+               when "A"
+                 Utility.roll("2d6") < 10 ? NO : YES
+               when "B", "C"
+                 Utility.roll("2d6") < 8 ? NO : YES
+               when "D"
+                 Utility.roll("2d6") < 7 ? NO : YES
+               when "E", "X"
+                 NO
+               end
+        build(roll: roll)
       end
     end
   end

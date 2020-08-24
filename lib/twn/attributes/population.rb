@@ -2,22 +2,20 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The population of the world
-    class Population < Twn::Attribute
-      Entry = Struct.new(:key, :population, :range)
-
-      self.table = {
-        0 => Entry.new(0, "None", "0"),
-        1 => Entry.new(1, "Few", "1+"),
-        2 => Entry.new(2, "Hundreds", "100+"),
-        3 => Entry.new(3, "Thousands", "1,000+"),
-        4 => Entry.new(4, "Tens of thousands", "10,000+"),
-        5 => Entry.new(5, "Hundreds of thousands", "100,000+"),
-        6 => Entry.new(6, "Millions", "1,000,000+"),
-        7 => Entry.new(7, "Tens of millions", "10,000,000+"),
-        8 => Entry.new(8, "Hundreds of millions", "100,000,000+"),
-        9 => Entry.new(9, "Billions", "1,000,000,000+"),
-        10 => Entry.new(10, "Tens of Billions", "10,000,000,000+"),
-      }
+    class Population < Twn::RefactoredAttribute
+      initialize_table do |table|
+        table.add_row(roll: 0, population: "None", range: "0")
+        table.add_row(roll: 1, population: "Few", range: "1+")
+        table.add_row(roll: 2, population: "Hundreds", range: "100+")
+        table.add_row(roll: 3, population: "Thousands", range: "1,000+")
+        table.add_row(roll: 4, population: "Tens of thousands", range: "10,000+")
+        table.add_row(roll: 5, population: "Hundreds of thousands", range: "100,000+")
+        table.add_row(roll: 6, population: "Millions", range: "1,000,000+")
+        table.add_row(roll: 7, population: "Tens of millions", range: "10,000,000+")
+        table.add_row(roll: 8, population: "Hundreds of millions", range: "100,000,000+")
+        table.add_row(roll: 9, population: "Billions", range: "1,000,000,000+")
+        table.add_row(roll: 10, population: "Tens of Billions", range: "10,000,000,000+")
+      end
 
       # @param generator [Twn::Generator]
       # @param table [Hash<Integer, Entry>]

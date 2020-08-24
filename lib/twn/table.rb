@@ -24,7 +24,6 @@ module Twn
     def add_row(roll:, to_uwp_slug: nil, **attributes)
       row = Row.new(roll: roll, to_uwp_slug: to_uwp_slug, **attributes)
       raise Error if @rows_by_roll.key?(row.roll)
-      raise Error if @rows_by_uwp_slug.key?(row.to_uwp_slug)
       @rows_by_roll[row.roll] = row
       @rows_by_uwp_slug[row.to_uwp_slug] = row
     end

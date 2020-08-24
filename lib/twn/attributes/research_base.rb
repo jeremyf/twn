@@ -2,36 +2,24 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The research base for the world
-    class ResearchBase < Twn::Attribute
-      Entry = Struct.new(:to_uwp_slug, :description)
-      NO_RESEARCH_BASE = Entry.new("", "No research base")
-      RESEARCH_BASE = Entry.new("R", "Research base")
+    class ResearchBase < Twn::RefactoredAttribute
+      NO = ""
+      YES = "R"
+      initialize_table do |table|
+        table.add_row(roll: NO, description: "No research base")
+        table.add_row(roll: YES, description: "Research base")
+      end
 
       def self.roll!(generator:)
-        roll = Utility.roll("2d6")
-        entry = entry_for(roll: roll, generator: generator)
-        new(entry: entry)
-      end
-
-      def self.entry_for(roll:, generator:)
-        case Utility.to_uwp_slug(generator.get!(:Starport))
-        when "A"
-          roll < 8 ? NO_RESEARCH_BASE : RESEARCH_BASE
-        when "B"
-          roll < 10 ? NO_RESEARCH_BASE : RESEARCH_BASE
-        when "C"
-          roll < 10 ? NO_RESEARCH_BASE : RESEARCH_BASE
-        when "D"
-          NO_RESEARCH_BASE
-        when "E"
-          NO_RESEARCH_BASE
-        when "X"
-          NO_RESEARCH_BASE
-        end
-      end
-
-      def to_uwp_slug
-        @entry.to_uwp_slug
+        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
+               when "B", "C"
+                 Utility.roll("2d6") < 10 ? NO : YES
+               when "A"
+                 Utility.roll("2d6") < 8 ? NO : YES
+               when "D", "E", "X"
+                 NO
+               end
+        build(roll: roll)
       end
     end
   end

@@ -2,21 +2,17 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Tech Law Level of the world
-    class TechLevel < Twn::Attribute
+    class TechLevel < Twn::RefactoredAttribute
       Entry = Struct.new(:key, :level)
-      a_table = {}
-      (0..15).each do |i|
-        a_table[i] = Entry.new(i, "Level #{i}")
+      initialize_table do |table|
+        (0..15).each do |i|
+          table.add_row(roll: i, description: "Tech level #{i}")
+        end
       end
-      self.table = a_table
 
       def self.roll!(generator:)
         roll = Builder.new(generator: generator).roll
         build(roll: roll)
-      end
-
-      def to_uwp_slug
-        @entry.key
       end
 
       class Builder

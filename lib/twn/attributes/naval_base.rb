@@ -2,36 +2,25 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The naval base for the world
-    class NavalBase < Twn::Attribute
-      Entry = Struct.new(:to_uwp_slug, :description)
-      NO_NAVAL_BASE = Entry.new("", "No naval base")
-      NAVAL_BASE = Entry.new("N", "Naval Base")
+    class NavalBase < Twn::RefactoredAttribute
+      NO = ""
+      YES = "N"
+      initialize_table do |table|
+        table.add_row(roll: NO, description: "No naval base")
+        table.add_row(roll: YES, description: "Naval base")
+      end
 
       def self.roll!(generator:)
-        roll = Utility.roll("2d6")
-        entry = entry_for(roll: roll, generator: generator)
-        new(entry: entry)
-      end
+        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
+               when "A"
+                 Utility.roll("2d6") < 8 ? NO : YES
+               when "B"
+                 Utility.roll("2d6") < 8 ? NO : YES
+               when "C", "D", "E", "X"
+                 NO
+               end
 
-      def self.entry_for(roll:, generator:)
-        case Utility.to_uwp_slug(generator.get!(:Starport))
-        when "A"
-          roll < 8 ? NO_NAVAL_BASE : NAVAL_BASE
-        when "B"
-          roll < 8 ? NO_NAVAL_BASE : NAVAL_BASE
-        when "C"
-          NO_NAVAL_BASE
-        when "D"
-          NO_NAVAL_BASE
-        when "E"
-          NO_NAVAL_BASE
-        when "X"
-          NO_NAVAL_BASE
-        end
-      end
-
-      def to_uwp_slug
-        @entry.to_uwp_slug
+        build(roll: roll)
       end
     end
   end

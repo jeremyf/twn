@@ -2,13 +2,12 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The Law Level of the world
-    class LawLevel < Twn::Attribute
-      Entry = Struct.new(:key, :level)
-      a_table = {}
-      (0..15).each do |i|
-        a_table[i] = Entry.new(i, "Level #{i}")
+    class LawLevel < Twn::RefactoredAttribute
+      initialize_table do |table|
+        (0..15).each do |i|
+          table.add_row(roll: i, description: "Law level #{i}")
+        end
       end
-      self.table = a_table
 
       def self.roll!(generator:)
         population = generator.get!(:Population)

@@ -2,34 +2,24 @@ require 'twn/attribute'
 module Twn
   module Attributes
     # The starport of the world
-    class Starport < Twn::Attribute
-      Entry = Struct.new(:to_uwp_slug, :quality)
-      X = Entry.new("X", "No Starport")
-      A = Entry.new("A", "Excellent")
-      B = Entry.new("B", "Good")
-      C = Entry.new("C", "Routine")
-      D = Entry.new("D", "Poor")
-      E = Entry.new("E", "Frontier")
-      self.table = {
-        2 => X,
-        3 => E,
-        4 => E,
-        5 => D,
-        6 => D,
-        7 => C,
-        8 => C,
-        9 => B,
-        10 => B,
-        11 => A
-      }
+    class Starport < Twn::RefactoredAttribute
+      initialize_table do |table|
+        table.add_row(roll: 2, to_uwp_slug: "X", description: "No Starport")
+        table.add_row(roll: 3, to_uwp_slug: "E", description: "Frontier")
+        table.add_row(roll: 4, to_uwp_slug: "E", description: "Frontier")
+        table.add_row(roll: 5, to_uwp_slug: "D", description: "Poor")
+        table.add_row(roll: 6, to_uwp_slug: "D", description: "Poor")
+        table.add_row(roll: 7, to_uwp_slug: "C", description: "Routine")
+        table.add_row(roll: 8, to_uwp_slug: "C", description: "Routine")
+        table.add_row(roll: 9, to_uwp_slug: "B", description: "Good")
+        table.add_row(roll: 10, to_uwp_slug: "B", description: "Good")
+        table.add_row(roll: 11, to_uwp_slug: "A", description: "Excellent")
+        table.add_row(roll: 12, to_uwp_slug: "A", description: "Excellent")
+      end
 
       def self.roll!(generator:)
         roll = Utility.roll("2d6")
         build(roll: roll)
-      end
-
-      def to_uwp_slug
-        @entry.to_uwp_slug
       end
     end
   end
