@@ -23,6 +23,10 @@ module Twn
       new(entry: row)
     end
 
+    def self.fetch_by_uwp_slug(uwp_slug)
+      @table.fetch_by_uwp_slug(uwp_slug)
+    end
+
     extend Forwardable
     def_delegators :@entry, :to_uwp_slug, :roll
   end

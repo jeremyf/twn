@@ -19,7 +19,7 @@ module Twn
     # These are included to conform to the Constraint interaction
     def_delegators :@generated_attributes, :key?, :fetch
 
-    TIME_TO_LIVE = 70
+    TIME_TO_LIVE = 20
     # Retrieve the existing named attribute if one exists.  Otherwise,
     # roll to generate that attribute, only accepting attributes that
     # meet the constraints.
@@ -38,7 +38,7 @@ module Twn
     #       constraints.  In other words, if you get a :Size and then
     #       later add a constraint for :Size, we'll never check to see
     #       if this is a valid size.
-    def get!(attribute_name, ttl: TIME_TO_LIVE, force: false)
+    def get!(attribute_name, ttl: TIME_TO_LIVE, force: true)
       return fetch(attribute_name) if key?(attribute_name)
       attribute = nil
       while ttl > 0 && attribute.nil?
@@ -46,6 +46,7 @@ module Twn
         attribute = candidate if acceptable?(candidate: candidate)
         ttl -= 1
       end
+      attribute ||= force_attribute(attribute_name: attribute_name) if force
       @generated_attributes[attribute_name] = attribute
       fetch(attribute_name)
     end
@@ -58,10 +59,15 @@ module Twn
       end
     end
 
-    def acceptable_uwp_slug_range_for(candidate:)
+    def force_attribute(attribute_name:)
+      uwp_slug = acceptable_uwp_slug_range_for(attribute_name: attribute_name)
+      Attributes.fetch(from: attribute_name, uwp_slug: uwp_slug)
+    end
+
+    def acceptable_uwp_slug_range_for(attribute_name:)
       array_of_ranges = []
       @constraints.each do |constraint|
-        next unless constraint.applicable?(candidate: candidate)
+        next unless constraint.applies_to == attribute_name
         array_of_ranges << constraint.uwp_slug_range
       end
       Utility.select_uwp_slug_from(array_of_ranges: array_of_ranges)

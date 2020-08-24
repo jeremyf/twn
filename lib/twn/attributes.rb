@@ -22,5 +22,9 @@ module Twn
     def self.roller_for(class_name)
       const_get(class_name)
     end
+
+    def self.fetch(from:, uwp_slug:)
+      const_get(from).fetch_by_uwp_slug(uwp_slug)
+    end
   end
 end
