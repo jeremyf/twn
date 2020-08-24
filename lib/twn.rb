@@ -1,6 +1,7 @@
 require "twn/version"
 require "twn/generator"
 require "twn/attributes"
+require "twn/table"
 require "twn/utility"
 require "twn/constraint"
 require "twn/renderer"
