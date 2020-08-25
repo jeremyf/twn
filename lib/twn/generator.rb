@@ -22,9 +22,10 @@ module Twn
     # The TIME_TO_LIVE constaint defines how many attempts are allowed
     # before we force an answer.
     TIME_TO_LIVE = 30
+
     # Retrieve the existing named attribute if one exists.  Otherwise,
     # roll to generate that attribute, only accepting attributes that
-    # meet the constraints.
+    # meet the constraints.  And finally, cache the result.
     #
     # @param attribute_name [Symbol]
     #
@@ -41,16 +42,28 @@ module Twn
     #       later add a constraint for :Size, we'll never check to see
     #       if this is a valid size.
     def get!(attribute_name, ttl: TIME_TO_LIVE, force: true)
-
       return fetch(attribute_name) if key?(attribute_name)
       attribute = nil
       while ttl > 0 && attribute.nil?
-        candidate = Attributes.roll(on: attribute_name, generator: self)
+        candidate = roll_for(attribute_name)
         attribute = candidate if acceptable?(candidate: candidate)
         ttl -= 1
       end
       attribute ||= get_acceptable_attribute(attribute_name: attribute_name) if force
       set_attribute_and_apply_constraint!(key: attribute_name, attribute: attribute)
+    end
+
+    # @note This will roll on the given table; It will not test if the
+    #       result matches the registered constraints.  It will, however,
+    #       apply the internal logic of rolling for the named attribute.
+    #
+    # Roll for the registered :attribute_name.
+    #
+    # @param attribute_name [Symbol]
+    # @see #get!
+    # @see #add_constraint!
+    def roll_for(attribute_name)
+      Attributes.roll(on: attribute_name, generator: self)
     end
 
     # Sets the given named attribute to the given uwp_slug.

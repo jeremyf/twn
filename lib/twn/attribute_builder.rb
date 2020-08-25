@@ -75,8 +75,12 @@ module Twn
         Utility.to_uwp_slug(*args)
       end
 
-      def get!(key)
-        @generator.get!(key)
+      def get!(*args)
+        @generator.get!(*args)
+      end
+
+      def roll_for(*args)
+        @generator.roll_for(*args)
       end
     end
     private_constant :RollEvaluator
