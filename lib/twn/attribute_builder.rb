@@ -71,6 +71,10 @@ module Twn
         Utility.roll(*args)
       end
 
+      def to_uwp_slug(*args)
+        Utility.to_uwp_slug(*args)
+      end
+
       def get!(key)
         @generator.get!(key)
       end
