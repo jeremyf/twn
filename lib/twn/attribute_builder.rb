@@ -1,20 +1,26 @@
 require 'twn/table'
 
 module Twn
+  # Having hand-crafted about 15 attributes, I've come upon a common
+  # builder pattern that eschews inheritence.  By leveraging a builder
+  # pattern, I should more easily be able to add attributes into the
+  # ecosystem.
+  #
+  # @todo Fully implement the example
+  # @example
+  #   Twn::Attributes.register(:Size) do
+  #     initialize_table do
+  #       row(roll: 1, name: "Small")
+  #       row(roll: 2, name: "Medium").constraints do
+  #         appplies_to(:Atmosphere, uwp_slug_range: [1,2])
+  #       row(roll: 3, name: "Large")
+  #     end
+  #
+  #     roller do
+  #       roll("1d3")
+  #     end
+  #   end
   class AttributeBuilder
-    #   Twn::Attributes.register(:Size) do
-    #     # yielding an attribute builder
-    #     initialize_table do
-    #       row(roll: 1, name: "Small")
-    #       row(roll: 2, name: "Medium").constraints do
-    #         appplies_to(:Atmosphere, uwp_slug_range: [1,2])
-    #       row(roll: 3, name: "Large")
-    #     end
-    #
-    #     roller do
-    #       roll("1d3")
-    #     end
-    #   end
     def initialize(attribute_name:, &block)
       @attribute_name = attribute_name
       instance_exec(&block)
