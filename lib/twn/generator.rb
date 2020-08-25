@@ -19,7 +19,7 @@ module Twn
     # These are included to conform to the Constraint interaction
     def_delegators :@generated_attributes, :key?, :fetch
 
-    TIME_TO_LIVE = 20
+    TIME_TO_LIVE = 100
     # Retrieve the existing named attribute if one exists.  Otherwise,
     # roll to generate that attribute, only accepting attributes that
     # meet the constraints.

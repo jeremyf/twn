@@ -22,6 +22,7 @@ module Twn
                when 11 then "TL4+"
                when 12 then "TL5"
                end
+        build(roll: roll)
       end
     end
   end
