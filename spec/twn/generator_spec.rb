@@ -15,7 +15,7 @@ module Twn
       Attributes.each do |attribute|
         describe "for #{attribute}" do
           subject { generator.get!(attribute) }
-          it { is_expected.to be_a Attributes.const_get(attribute) }
+          it { is_expected.to be_a Attribute }
         end
       end
 

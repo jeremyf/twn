@@ -23,6 +23,7 @@ module Twn
 
     def self.each(&block)
       constants.each(&block)
+      registry.each_key(&block)
     end
 
     # @param on [Symbol]
