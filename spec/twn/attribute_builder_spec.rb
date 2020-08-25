@@ -10,10 +10,34 @@ module Twn
           described_class.new(attribute_name: attribute_name) do
             table do
               row(roll: 1, name: "Small")
-              row(roll: 2, name: "Medium")
-              row(roll: 3, name: "Large")
+              row(roll: 2, name: "Small")
+              row(roll: 3, name: "Medium")
+              row(roll: 4, name: "Medium")
+              row(roll: 5, name: "Large")
+              row(roll: 6, name: "Large")
             end
-            roller { rand(3) + 1 }
+            roller do
+              roll("1d6")
+            end
+          end
+        end
+        it { is_expected.to be_a Twn::Attribute }
+      end
+
+      describe 'with external class collaborator' do
+        let(:builder) do
+          described_class.new(attribute_name: attribute_name) do
+            table do
+              row(roll: 1, name: "Small")
+              row(roll: 2, name: "Small")
+              row(roll: 3, name: "Medium")
+              row(roll: 4, name: "Medium")
+              row(roll: 5, name: "Large")
+              row(roll: 6, name: "Large")
+            end
+            roller do
+              Utility.roll("1d6")
+            end
           end
         end
         it { is_expected.to be_a Twn::Attribute }
@@ -23,10 +47,13 @@ module Twn
           described_class.new(attribute_name: attribute_name) do
             table do
               row(roll: 1, name: "Small")
-              row(roll: 2, name: "Medium")
-              row(roll: 3, name: "Large")
+              row(roll: 2, name: "Small")
+              row(roll: 3, name: "Medium")
+              row(roll: 4, name: "Medium")
+              row(roll: 5, name: "Large")
+              row(roll: 6, name: "Large")
             end
-            roller { [1,2] }
+            roller { [roll("1d6"), roll("1d6")] }
           end
         end
         it { is_expected.to be_a Twn::CompositeAttribute }

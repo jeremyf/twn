@@ -1,5 +1,7 @@
+require 'twn/utility'
 require 'twn/table'
 require 'twn/attribute'
+require 'twn/generator'
 
 module Twn
   # Having hand-crafted about 15 attributes, I've come upon a common
@@ -10,15 +12,16 @@ module Twn
   # @todo Fully implement the example
   # @example
   #   Twn::Attributes.register(:Size) do
-  #     initialize_table do
+  #     table do
   #       row(roll: 1, name: "Small")
-  #       row(roll: 2, name: "Medium").constraints do
-  #         appplies_to(:Atmosphere, uwp_slug_range: [1,2])
+  #       row(roll: 2, name: "Medium") do
+  #         constraint(:Atmosphere).to_uwp_slug_range(1,2)
+  #       end
   #       row(roll: 3, name: "Large")
   #     end
   #
   #     roller do
-  #       roll("1d3")
+  #       roll("1d3") + roll_for(:Value) + uwp_slug_for(:Cost)
   #     end
   #   end
   class AttributeBuilder
@@ -29,7 +32,7 @@ module Twn
     attr_reader :attribute_name
 
     def roll_on_table
-      roll = roller.call
+      roll = RollEvaluator.new.instance_exec(&roller)
       if roll.is_a?(Array)
         rows = roll.map {|r| table.fetch_by_roll(r) }
         CompositeAttribute.new(entries: rows)
@@ -51,6 +54,20 @@ module Twn
       return @roller if @roller
       raise Error if callable and block_given?
       @roller = callable || block
+    end
+
+    class RollEvaluator < BasicObject
+      def initialize(generator: Generator.new)
+        @generator = generator
+      end
+
+      def roll(*args)
+        Utility.roll(*args)
+      end
+
+      def get!(key)
+        generator.get!(key)
+      end
     end
   end
 end
