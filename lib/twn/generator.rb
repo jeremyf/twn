@@ -51,6 +51,16 @@ module Twn
       fetch(attribute_name)
     end
 
+    # Sets the given named attribute to the given uwp_slug.
+    #
+    # @param attribute_name [Symbol]
+    # @param uwp_slug [String,Integer]
+    #
+    # @note This is destructive and skips all of the constraints!
+    def set!(attribute_name, uwp_slug:)
+      @generated_attributes[attribute_name] = force_attribute(attribute_name: attribute_name, uwp_slug: uwp_slug)
+    end
+
     private
 
     def acceptable?(candidate:)
@@ -59,8 +69,8 @@ module Twn
       end
     end
 
-    def force_attribute(attribute_name:)
-      uwp_slug = acceptable_uwp_slug_range_for(attribute_name: attribute_name)
+    def force_attribute(attribute_name:, uwp_slug: nil)
+      uwp_slug = acceptable_uwp_slug_range_for(attribute_name: attribute_name) if uwp_slug.nil?
       Attributes.fetch(from: attribute_name, uwp_slug: uwp_slug)
     end
 

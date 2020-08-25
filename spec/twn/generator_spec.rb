@@ -4,6 +4,13 @@ module Twn
   RSpec.describe Generator do
     let(:generator) { described_class.new }
 
+    describe '#set!' do
+      let(:uwp_slug) { Utility.to_uwp_slug(10) }
+      it "forces the entry" do
+        generator.set!(:Size, uwp_slug: uwp_slug)
+        expect(generator.get!(:Size).to_uwp_slug).to eq(uwp_slug)
+      end
+    end
     describe '#get!' do
       Attributes.each do |attribute|
         describe "for #{attribute}" do
