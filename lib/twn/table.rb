@@ -49,6 +49,11 @@ module Twn
       def [](key)
         @attributes[key]
       end
+
+      def merge(with:, to_uwp_slug: @to_uwp_slug)
+        @attributes = with.merge(@attributes)
+        self.class.new(roll: roll, to_uwp_slug: to_uwp_slug, constraints: constraints, attributes: @attributes)
+      end
     end
   end
 end

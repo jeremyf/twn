@@ -34,10 +34,10 @@ module Twn
     def roll!(generator: Generator.new)
       roll = RollEvaluator.new(generator: generator).instance_exec(&roller)
       if roll.is_a?(Array)
-        rows = roll.map {|r| table.fetch_by_roll(r) }
+        rows = roll.map {|r| fetch_by_roll(r) }
         CompositeAttribute.new(attribute_name: attribute_name, entries: rows)
       else
-        row = table.fetch_by_roll(roll)
+        row = fetch_by_roll(roll)
         Attribute.new(attribute_name: attribute_name, entry: row)
       end
     end
@@ -47,6 +47,14 @@ module Twn
     def_delegators :@table, :fetch_by_uwp_slug
 
     protected
+
+    def fetch_by_roll(r)
+      return table.fetch_by_roll(r) unless r.is_a?(Hash)
+      roll = r.fetch(:roll)
+      r.delete(:roll)
+      row = table.fetch_by_roll(roll)
+      row.merge(with: r)
+    end
 
     def table(&block)
       return @table if @table

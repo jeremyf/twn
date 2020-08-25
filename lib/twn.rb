@@ -17,6 +17,7 @@ module Twn
     :Population,
     :Government,
     :LawLevel,
+    :Factions,
     :Starport,
     :TechLevel,
     :NavalBase,
