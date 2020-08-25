@@ -1,28 +1,23 @@
-require 'twn/attribute'
-module Twn
-  module Attributes
-    # The scout base for the world
-    class ScoutBase < Twn::Attribute
-      NO = ""
-      YES = "S"
-      initialize_table do
-        add_row(roll: NO, description: "No scout base")
-        add_row(roll: YES, description: "Scout base")
-      end
+require 'twn/attributes'
+Twn::Attributes.register(:ScoutBase) do
+  no = ""
+  yes = "S"
 
-      def self.roll!(generator:)
-        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
-               when "A"
-                 Utility.roll("2d6") < 10 ? NO : YES
-               when "B", "C"
-                 Utility.roll("2d6") < 8 ? NO : YES
-               when "D"
-                 Utility.roll("2d6") < 7 ? NO : YES
-               when "E", "X"
-                 NO
-               end
-        build(roll: roll)
-      end
+  table do
+    row(roll: no, description: "No scout base")
+    row(roll: yes, description: "Scout base")
+  end
+
+  roller do
+    case get!(:Starport).to_uwp_slug
+    when "A"
+      roll("2d6") < 10 ? no : yes
+    when "B", "C"
+      roll("2d6") < 8 ? no : yes
+    when "D"
+      roll("2d6") < 7 ? no : yes
+    when "E", "X"
+      no
     end
   end
 end

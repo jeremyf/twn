@@ -1,27 +1,21 @@
-require 'twn/attribute'
-module Twn
-  module Attributes
-    # The naval base for the world
-    class NavalBase < Twn::Attribute
-      NO = ""
-      YES = "N"
-      initialize_table do
-        add_row(roll: NO, description: "No naval base")
-        add_row(roll: YES, description: "Naval base")
-      end
+require 'twn/attributes'
+Twn::Attributes.register(:NavalBase) do
+  no = ""
+  yes = "N"
 
-      def self.roll!(generator:)
-        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
-               when "A"
-                 Utility.roll("2d6") < 8 ? NO : YES
-               when "B"
-                 Utility.roll("2d6") < 8 ? NO : YES
-               when "C", "D", "E", "X"
-                 NO
-               end
+  table do
+    row(roll: no, description: "No naval base")
+    row(roll: yes, description: "Naval base")
+  end
 
-        build(roll: roll)
-      end
+  roller do
+    case get!(:Starport).to_uwp_slug
+    when "A"
+      roll("2d6") < 8 ? no : yes
+    when "B"
+      roll("2d6") < 8 ? no : yes
+    when "C", "D", "E", "X"
+      no
     end
   end
 end

@@ -1,28 +1,23 @@
-require 'twn/attribute'
-module Twn
-  module Attributes
-    # The Imperial Consulate for the world
-    class ImperialConsulate < Twn::Attribute
-      NO = ""
-      YES = "C"
-      initialize_table do
-        add_row(roll: NO, description: "No Imperial Consulate")
-        add_row(roll: YES, description: "Imperial Consulate")
-      end
+require 'twn/attributes'
+Twn::Attributes.register(:ImperialConsulate) do
+  no = ""
+  yes = "C"
 
-      def self.roll!(generator:)
-        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
-               when "A"
-                 Utility.roll("2d6") < 6 ? NO : YES
-               when "B"
-                 Utility.roll("2d6") < 8 ? NO : YES
-               when "C"
-                 Utility.roll("2d6") < 10 ? NO : YES
-               when "D", "E", "X"
-                 NO
-               end
-        build(roll: roll)
-      end
+  table do
+    add_row(roll: no, description: "No Imperial Consulate")
+    add_row(roll: yes, description: "Imperial Consulate")
+  end
+
+  roller do
+    case get!(:Starport).to_uwp_slug
+    when "A"
+      roll("2d6") < 6 ? no : yes
+    when "B"
+      roll("2d6") < 8 ? no : yes
+    when "C"
+      roll("2d6") < 10 ? no : yes
+    when "D", "E", "X"
+      no
     end
   end
 end

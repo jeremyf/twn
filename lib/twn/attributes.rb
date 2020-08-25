@@ -5,6 +5,7 @@ module Twn
   # @todo Refactor so that we are using an instance instead of a class
   module Attributes
     def self.register(attribute_name, &block)
+      raise Error if registry.key?(attribute_name)
       registry[attribute_name] ||= AttributeBuilder.new(attribute_name: attribute_name, &block)
     end
 

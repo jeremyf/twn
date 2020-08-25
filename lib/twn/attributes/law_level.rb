@@ -1,23 +1,17 @@
-require 'twn/attribute'
-module Twn
-  module Attributes
-    # The Law Level of the world
-    class LawLevel < Twn::Attribute
-      initialize_table do
-        (0..15).each do |i|
-          add_row(roll: i, description: "Law level #{i}")
-        end
-      end
+require 'twn/attributes'
+Twn::Attributes.register(:LawLevel) do
+  table do
+    (0..15).each do |i|
+      row(roll: i, description: "Law level #{i}")
+    end
+  end
 
-      def self.roll!(generator:)
-        population = generator.get!(:Population)
-        if population.roll == 0
-          build(roll: 0)
-        else
-          roll = Utility.roll("2d6", -7) + generator.get!(:Government).roll
-          build(roll: roll)
-        end
-      end
+  roller do
+    population = get!(:Population)
+    if population.roll == 0
+      0
+    else
+      roll("2d6", -7) + get!(:Government).roll
     end
   end
 end

@@ -1,26 +1,21 @@
-require 'twn/attribute'
-module Twn
-  module Attributes
-    # The research base for the world
-    class ResearchBase < Twn::Attribute
-      NO = ""
-      YES = "R"
-      initialize_table do
-        add_row(roll: NO, description: "No research base")
-        add_row(roll: YES, description: "Research base")
-      end
+require 'twn/attributes'
+Twn::Attributes.register(:ResearchBase) do
+  no = ""
+  yes = "R"
 
-      def self.roll!(generator:)
-        roll = case Utility.to_uwp_slug(generator.get!(:Starport))
-               when "B", "C"
-                 Utility.roll("2d6") < 10 ? NO : YES
-               when "A"
-                 Utility.roll("2d6") < 8 ? NO : YES
-               when "D", "E", "X"
-                 NO
-               end
-        build(roll: roll)
-      end
+  table do
+    row(roll: no, description: "No research base")
+    row(roll: yes, description: "Research base")
+  end
+
+  roller do
+    case get!(:Starport).to_uwp_slug
+    when "B", "C"
+      roll("2d6") < 10 ? no : yes
+    when "A"
+      roll("2d6") < 8 ? no : yes
+    when "D", "E", "X"
+      no
     end
   end
 end
