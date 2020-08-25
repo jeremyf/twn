@@ -12,10 +12,11 @@ RSpec.describe Twn do
       subject { described_class.generate(buffer: buffer) }
       it { is_expected.to be_a Twn::Generator }
     end
-    it "succeeds at 200 scenarios" do
+    TIMES = 500
+    it "succeeds at #{TIMES} scenarios" do
       failures = 0
       successes = 0
-      200.times do
+      TIMES.times do
         begin
           described_class.generate(buffer: buffer)
           successes += 1

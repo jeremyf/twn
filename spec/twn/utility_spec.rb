@@ -44,8 +44,16 @@ module Twn
         end
       end
       describe 'with no uwl_slugs in all ranges' do
-        it "raises an exception" do
-          expect {  described_class.select_random_entry_from_intersection_of(array_of_ranges: [["A","B"],["B", "C"],["A", "C"]]) }.to raise_error(Twn::Error)
+        describe 'with no pick_on_fail' do
+          it "raises an exception" do
+            expect {  described_class.select_random_entry_from_intersection_of(array_of_ranges: [["A","B"],["B", "C"],["A", "C"]]) }.to raise_error(Twn::Error)
+          end
+        end
+        describe 'with pick_on_fail' do
+          it  "returns a random one" do
+            array_of_ranges = [["A","B"],["B", "C"],["A", "C"]]
+            expect(array_of_ranges.flatten).to include(described_class.select_random_entry_from_intersection_of(array_of_ranges: array_of_ranges, pick_on_fail: true))
+          end
         end
       end
     end

@@ -40,7 +40,9 @@ module Twn
       # pick a random instance from that array.
       #
       # @param array_of_ranges [Array<Array<String>>]
-      def select_random_entry_from_intersection_of(array_of_ranges:)
+      # @param pick_on_fail [Boolean] when true, if we have no intersection, pick a candidate.
+      def select_random_entry_from_intersection_of(array_of_ranges:, pick_on_fail: false)
+        all_candidates = array_of_ranges.flatten
         candidates = Set.new
         intersection = array_of_ranges.shift
         candidates += intersection
@@ -50,6 +52,7 @@ module Twn
         end
         value = intersection.shuffle.first
         return value if value
+        return all_candidates.shuffle[0] if pick_on_fail
         raise Twn::Error
       end
     end

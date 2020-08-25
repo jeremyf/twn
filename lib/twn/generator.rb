@@ -19,7 +19,9 @@ module Twn
     # These are included to conform to the Constraint interaction
     def_delegators :@generated_attributes, :key?, :fetch
 
-    TIME_TO_LIVE = 100
+    # The TIME_TO_LIVE constaint defines how many attempts are allowed
+    # before we force an answer.
+    TIME_TO_LIVE = 30
     # Retrieve the existing named attribute if one exists.  Otherwise,
     # roll to generate that attribute, only accepting attributes that
     # meet the constraints.
@@ -74,13 +76,13 @@ module Twn
       Attributes.fetch(from: attribute_name, uwp_slug: uwp_slug)
     end
 
-    def acceptable_uwp_slug_range_for(attribute_name:)
+    def acceptable_uwp_slug_range_for(attribute_name:, pick_on_fail: true)
       array_of_ranges = []
       @constraints.each do |constraint|
         next unless constraint.applies_to == attribute_name
         array_of_ranges << constraint.uwp_slug_range
       end
-      Utility.select_random_entry_from_intersection_of(array_of_ranges: array_of_ranges)
+      Utility.select_random_entry_from_intersection_of(array_of_ranges: array_of_ranges, pick_on_fail: pick_on_fail)
     end
   end
 end
