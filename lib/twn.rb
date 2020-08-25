@@ -5,6 +5,7 @@ require "twn/table"
 require "twn/utility"
 require "twn/constraint"
 require "twn/renderer"
+require "twn/attribute_builder"
 module Twn
   class Error < StandardError; end
 

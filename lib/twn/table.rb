@@ -35,6 +35,7 @@ module Twn
       @rows_by_roll[row.roll] = row
       @rows_by_uwp_slug[row.to_uwp_slug] = row
     end
+    alias row add_row
 
     class Row
       def initialize(roll:, to_uwp_slug: nil, **attributes)
