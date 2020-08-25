@@ -50,8 +50,7 @@ module Twn
         ttl -= 1
       end
       attribute ||= force_attribute(attribute_name: attribute_name) if force
-      @generated_attributes[attribute_name] = attribute
-      fetch(attribute_name)
+      set_attribute_and_apply_constraint!(key: attribute_name, attribute: attribute)
     end
 
     # Sets the given named attribute to the given uwp_slug.
@@ -61,10 +60,19 @@ module Twn
     #
     # @note This is destructive and skips all of the constraints!
     def set!(attribute_name, uwp_slug:)
-      @generated_attributes[attribute_name] = force_attribute(attribute_name: attribute_name, uwp_slug: uwp_slug)
+      attribute = force_attribute(attribute_name: attribute_name, uwp_slug: uwp_slug)
+      set_attribute_and_apply_constraint!(key: attribute_name, attribute: attribute)
     end
 
     private
+
+    def set_attribute_and_apply_constraint!(key:, attribute:)
+      @generated_attributes[key] = attribute
+      attribute.constraints.each do |constraint|
+        add_constraint!(**constraint)
+      end
+      attribute
+    end
 
     def acceptable?(candidate:)
       @constraints.all? do |constraint|
