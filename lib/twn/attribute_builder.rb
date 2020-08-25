@@ -53,12 +53,18 @@ module Twn
       roll = r.fetch(:roll)
       r.delete(:roll)
       row = table.fetch_by_roll(roll)
-      row.merge(with: r)
+      row.merge(with: r, to_uwp_slug: to_uwp_slug)
     end
 
     def table(&block)
       return @table if @table
       @table = Table.new(attribute_name: attribute_name, &block)
+    end
+
+    def to_uwp_slug(callable = nil, &block)
+      return @to_uwp_slug if @to_uwp_slug
+      raise Error if callable and block_given?
+      @to_uwp_slug = callable || block
     end
 
     # @example

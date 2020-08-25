@@ -34,6 +34,11 @@ Twn::Attributes.register(:Factions) do
     row(roll: 11, strength: "Signficant - nearly as powerful as the government")
     row(roll: 12, strength: "Overwhelming popular support - more powerful than the government")
   end
+
+  to_uwp_slug do |row|
+    "F#{row[:strength][0..1]}#{row[:government].to_uwp_slug}"
+  end
+
   roller do
     government = get!(:Government)
     how_many_rolls = roll("1d3")

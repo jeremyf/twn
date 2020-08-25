@@ -40,7 +40,8 @@ module Twn
 
       travel_code = generator.get!(:TravelCode)
 
-      line = sprintf("%s-%-2d %#{bases.count}s %14s %2s [%s]", prefix, tech_level.roll, base_codes, trade_codes.to_uwp_slug, travel_code.to_uwp_slug, tags.to_uwp_slug)
+      factions = generator.get!(:Factions)
+      line = sprintf("%s-%-2d %#{bases.count}s %14s %2s [%s %s]", prefix, tech_level.roll, base_codes, trade_codes.to_uwp_slug, travel_code.to_uwp_slug, factions.to_uwp_slug, tags.to_uwp_slug)
       buffer.puts(line)
     end
   end

@@ -1,3 +1,4 @@
+require 'twn/row'
 module Twn
   # A class useful for registering tables associated with each attribute.
   class Table
@@ -36,24 +37,5 @@ module Twn
       @rows_by_uwp_slug[row.to_uwp_slug] = row
     end
     alias row add_row
-
-    class Row
-      def initialize(roll:, to_uwp_slug: nil, constraints: [], **attributes)
-        @roll = roll
-        @to_uwp_slug = to_uwp_slug || Utility.to_uwp_slug(roll)
-        @constraints = Array(constraints)
-        @attributes = attributes
-      end
-      attr_reader :roll, :to_uwp_slug, :constraints
-
-      def [](key)
-        @attributes[key]
-      end
-
-      def merge(with:, to_uwp_slug: @to_uwp_slug)
-        @attributes = with.merge(@attributes)
-        self.class.new(roll: roll, to_uwp_slug: to_uwp_slug, constraints: constraints, attributes: @attributes)
-      end
-    end
   end
 end
