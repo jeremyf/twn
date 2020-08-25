@@ -29,11 +29,12 @@ module Twn
     :TradeCodes
   ]
   DEFAULT_SEQUENCE = [:SwnWorldTags] + TRAVELLER_SEQUENCE
-  def self.generate(sequence: DEFAULT_SEQUENCE)
+  def self.generate(sequence: DEFAULT_SEQUENCE, buffer: $stdout)
     generator = Generator.new
     sequence.each do |attribute|
       generator.get!(attribute)
     end
+    Renderer.new(generator: generator, buffer: buffer).to_uwp
     generator
   end
 end

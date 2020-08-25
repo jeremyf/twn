@@ -42,3 +42,4 @@ Or install it yourself as:
 - [ ] Consider how to render a Row
 - [ ] Add a UWP converter (e.g. print out the UWP's expanded information)
 - [ ] Add Traveller Faction generation
+- [ ] Handle exception one occassional non-reconcilable intersection of constraints.
