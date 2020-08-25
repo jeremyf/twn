@@ -42,6 +42,6 @@ Or install it yourself as:
 - [ ] Consider how to render a Row
 - [ ] Add a UWP converter (e.g. print out the UWP's expanded information)
 - [ ] Add Traveller Faction generation
-- [ ] Handle exception one occassional non-reconcilable intersection of constraints.
-- [ ] Add constraints to Row builder and apply those constraints at Attribute initialization.
-- [ ] Extract a ".roll" macro that captures the results
+- [X] Handle exception on occassional non-reconcilable intersection of constraints.
+- [X] Add constraints to Row builder and apply those constraints at Attribute initialization.
+- [X] Extract a ".roll" macro that captures the results
