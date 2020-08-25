@@ -43,3 +43,5 @@ Or install it yourself as:
 - [ ] Add a UWP converter (e.g. print out the UWP's expanded information)
 - [ ] Add Traveller Faction generation
 - [ ] Handle exception one occassional non-reconcilable intersection of constraints.
+- [ ] Add constraints to Row builder and apply those constraints at Attribute initialization.
+- [ ] Extract a ".roll" macro that captures the results
