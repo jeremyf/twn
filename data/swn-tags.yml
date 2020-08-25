@@ -7,12 +7,26 @@
   :to_uwp_slug: "#A2"
 - :name: Anarchists
   :to_uwp_slug: "#A3"
+  :constraints:
+  - :applies_to: LawLevel
+    :uwp_slug_range:
+    - 0
 - :name: Anthropomorphs
   :to_uwp_slug: "#A4"
 - :name: Area 51
   :to_uwp_slug: "#A5"
 - :name: Badlands World
   :to_uwp_slug: "#B0"
+  :constraints:
+  - :applies_to: Hydrographic
+    :uwp_slug_range:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
 - :name: Battleground
   :constraints:
   - :applies_to: TravelCode
@@ -146,6 +160,17 @@
   :to_uwp_slug: "#M0"
 - :name: Mandarinate
   :to_uwp_slug: "#M1"
+  :constraints:
+  - :applies_to: LawLevel
+    :uwp_slug_range:
+    - 1
+    - 3
+    - 5
+    - 6
+    - 8
+    - 9
+    - 11
+    - 13
 - :name: Mandate Base
   :to_uwp_slug: "#M2"
 - :name: Maneaters
@@ -222,6 +247,12 @@
   :to_uwp_slug: "#P3"
 - :name: Post-Scarcity
   :to_uwp_slug: "#P4"
+  :constraints:
+  - :applies_to: TechLevel
+    :uwp_slug_range:
+    - 13
+    - 14
+    - 15
 - :name: Preceptor Archive
   :to_uwp_slug: "#P5"
 - :name: Pretech Cultists
@@ -238,6 +269,10 @@
   :to_uwp_slug: "#Pb"
 - :name: Quarantined World
   :to_uwp_slug: "#Q0"
+  :constraints:
+  - :applies_to: TravelCode
+    :uwp_slug_range:
+    - R
 - :name: Radioactive World
   :constraints:
   - :applies_to: TravelCode
@@ -297,6 +332,8 @@
   :constraints:
   - :applies_to: Hydrographic
     :uwp_slug_range:
+    - 5
+    - 6
     - 7
     - 8
     - 9
@@ -334,23 +371,25 @@
   :constraints:
   - :applies_to: LawLevel
     :uwp_slug_range:
+    - 6
+    - 10
+    - 11
+    - 12
     - 13
   :to_uwp_slug: "#T2"
 - :name: Tomb World
   :to_uwp_slug: "#T3"
 - :name: Trade Hub
   :constraints:
-  - :applies_to: Atmosphere
+  - :applies_to: Starport
     :uwp_slug_range:
-    - 6
-    - 8
-  - :applies_to: Population
-    :uwp_slug_range:
-    - 6
-    - 7
-    - 8
+    - A
+    - B
   :to_uwp_slug: "#T4"
 - :name: Tyranny
+  :constraints:
+  - :applies_to: LawLevel
+    :uwp_slug_range: [3,6,9,10,11,12,13]
   :to_uwp_slug: "#T5"
 - :name: Unbraked AI
   :to_uwp_slug: "#U0"

@@ -22,12 +22,12 @@ module Twn
       end
 
       describe ".swn_tags" do
-        it "has valid data for assigning constraints" do
-          expect {
-            described_class.swn_tags.each do |swn_tag|
-              described_class.roll!(generator: Generator.new, pick: 1, tags: [swn_tag])
+        described_class.swn_tags.each do |swn_tag|
+          describe "for #{swn_tag.fetch(:name)}" do
+            it "is valid" do
+              expect { described_class.roll!(generator: Generator.new, pick: 1, tags: [swn_tag]) }.not_to raise_error
             end
-          }.not_to raise_error
+          end
         end
       end
     end

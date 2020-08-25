@@ -7,7 +7,6 @@ require "twn/constraint"
 require "twn/renderer"
 module Twn
   class Error < StandardError; end
-  # Your code goes here...
 
   TRAVELLER_SEQUENCE = [
     :Size,
