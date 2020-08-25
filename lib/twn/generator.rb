@@ -11,8 +11,8 @@ module Twn
     attr_reader :constraints
 
     # @see Twn::Constraint
-    def add_constraint!(applies_to:, uwp_slug_range:)
-      @constraints << Constraint.new(applies_to: applies_to, uwp_slug_range: uwp_slug_range)
+    def add_constraint!(applies_to:, uwp_slug_range:, from: :unkown)
+      @constraints << Constraint.new(applies_to: applies_to, uwp_slug_range: uwp_slug_range, from: from)
     end
 
     extend Forwardable
@@ -69,7 +69,7 @@ module Twn
     def set_attribute_and_apply_constraint!(key:, attribute:)
       @generated_attributes[key] = attribute
       attribute.constraints.each do |constraint|
-        add_constraint!(**constraint)
+        add_constraint!(from: attribute, **constraint)
       end
       attribute
     end
