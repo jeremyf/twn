@@ -1,4 +1,5 @@
 require 'twn/table'
+require 'twn/attribute'
 
 module Twn
   # Having hand-crafted about 15 attributes, I've come upon a common
