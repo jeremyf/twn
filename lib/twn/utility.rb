@@ -3,6 +3,7 @@ module Twn
   module Utility
     class << self
       DICE_EXPRESSION_TO_ROLLER_MAP = {
+        "1d3" => -> { rand(3) + 1 },
         "2d6" => -> { rand(6) + rand(6) + 2 },
         "1d6" => -> { rand(6) + 1 },
         "1d100" => -> { rand(100) + 1 }
