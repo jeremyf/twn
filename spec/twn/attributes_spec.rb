@@ -18,7 +18,7 @@ module Twn
       context 'with a non-existing Twn::Attribute' do
         let(:class_name) { :ChickenNugget }
         it "is expected to raise a NameError" do
-          expect { subject }.to raise_error(NameError)
+          expect { subject }.to raise_error(KeyError)
         end
       end
     end

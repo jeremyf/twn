@@ -23,14 +23,13 @@ module Twn
     end
 
     def self.each(&block)
-      constants.each(&block)
       registry.each_key(&block)
     end
 
     # @param on [Symbol]
     # @return [#roll!]
     def self.roller_for(class_name)
-      registry.fetch(class_name) { const_get(class_name) }
+      registry.fetch(class_name)
     end
 
     def self.fetch(from:, uwp_slug:)
