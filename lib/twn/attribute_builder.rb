@@ -31,16 +31,20 @@ module Twn
     end
     attr_reader :attribute_name
 
-    def roll_on_table
-      roll = RollEvaluator.new.instance_exec(&roller)
+    def roll!(generator: Generator.new)
+      roll = RollEvaluator.new(generator: generator).instance_exec(&roller)
       if roll.is_a?(Array)
         rows = roll.map {|r| table.fetch_by_roll(r) }
-        CompositeAttribute.new(entries: rows)
+        CompositeAttribute.new(attribute_name: attribute_name, entries: rows)
       else
         row = table.fetch_by_roll(roll)
-        Attribute.new(entry: row)
+        Attribute.new(attribute_name: attribute_name, entry: row)
       end
     end
+    alias roll_on_table roll!
+
+    extend Forwardable
+    def_delegators :@table, :fetch_by_uwp_slug
 
     protected
 
@@ -56,8 +60,10 @@ module Twn
       @roller = callable || block
     end
 
+    # A "clean room" object that exposes only the most basic of
+    # methods
     class RollEvaluator < BasicObject
-      def initialize(generator: Generator.new)
+      def initialize(generator:)
         @generator = generator
       end
 
@@ -66,8 +72,9 @@ module Twn
       end
 
       def get!(key)
-        generator.get!(key)
+        @generator.get!(key)
       end
     end
+    private_constant :RollEvaluator
   end
 end

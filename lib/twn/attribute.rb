@@ -10,10 +10,6 @@ module Twn
       to_s.split("::")[-1].to_sym
     end
 
-    def attribute_name
-      self.class.attribute_name
-    end
-
     def self.build(roll:)
       row = @table.fetch_by_roll(roll)
       new(entry: row)
@@ -28,9 +24,12 @@ module Twn
     end
 
     # @param entry [Twn::Table::Row]
-    def initialize(entry:)
+    def initialize(entry:, attribute_name: self.class.attribute_name)
       @entry = entry
+      @attribute_name = attribute_name
     end
+
+    attr_reader :attribute_name
 
     extend Forwardable
     def_delegators :@entry, :to_uwp_slug, :roll
@@ -58,8 +57,9 @@ module Twn
     end
 
     # @param entry [Array<Twn::Table::Row>]
-    def initialize(entries:)
+    def initialize(entries:, attribute_name: self.class.attribute_name)
       @entries = Array(entries)
+      @attribute_name = attribute_name
     end
 
     def to_uwp_slug

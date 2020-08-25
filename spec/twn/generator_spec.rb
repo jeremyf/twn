@@ -27,8 +27,7 @@ module Twn
         end
 
         it "only allows generation of the applicable attribute within the given uwp_slug_range" do
-          actual = Utility.to_uwp_slug(generator.get!(applies_to))
-          expect(uwp_slug_range).to include(actual)
+          expect(uwp_slug_range).to include(generator.get!(applies_to).to_uwp_slug)
         end
       end
     end

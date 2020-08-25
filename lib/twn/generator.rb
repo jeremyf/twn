@@ -41,6 +41,7 @@ module Twn
     #       later add a constraint for :Size, we'll never check to see
     #       if this is a valid size.
     def get!(attribute_name, ttl: TIME_TO_LIVE, force: true)
+
       return fetch(attribute_name) if key?(attribute_name)
       attribute = nil
       while ttl > 0 && attribute.nil?

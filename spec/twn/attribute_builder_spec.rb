@@ -13,7 +13,7 @@ module Twn
       }
     end
 
-    describe "#roll_on_table" do
+    describe "#roll!" do
       let(:builder) do
         given_table = table # Need the lexical binding
         given_roller = roller # Need the lexical binding
@@ -22,7 +22,7 @@ module Twn
           roller(&given_roller)
         end
       end
-      subject { builder.roll_on_table }
+      subject { builder.roll! }
       describe 'with a single roll' do
         let(:roller) { -> { roll("1d6") } }
         it { is_expected.to be_a Twn::Attribute }
