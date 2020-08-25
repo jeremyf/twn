@@ -49,7 +49,7 @@ module Twn
         attribute = candidate if acceptable?(candidate: candidate)
         ttl -= 1
       end
-      attribute ||= force_attribute(attribute_name: attribute_name) if force
+      attribute ||= get_acceptable_attribute(attribute_name: attribute_name) if force
       set_attribute_and_apply_constraint!(key: attribute_name, attribute: attribute)
     end
 
@@ -60,7 +60,7 @@ module Twn
     #
     # @note This is destructive and skips all of the constraints!
     def set!(attribute_name, uwp_slug:)
-      attribute = force_attribute(attribute_name: attribute_name, uwp_slug: uwp_slug)
+      attribute = Attributes.fetch(from: attribute_name, uwp_slug: uwp_slug)
       set_attribute_and_apply_constraint!(key: attribute_name, attribute: attribute)
     end
 
@@ -80,8 +80,8 @@ module Twn
       end
     end
 
-    def force_attribute(attribute_name:, uwp_slug: nil)
-      uwp_slug = acceptable_uwp_slug_range_for(attribute_name: attribute_name) if uwp_slug.nil?
+    def get_acceptable_attribute(attribute_name:)
+      uwp_slug = acceptable_uwp_slug_range_for(attribute_name: attribute_name)
       Attributes.fetch(from: attribute_name, uwp_slug: uwp_slug)
     end
 
