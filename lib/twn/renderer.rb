@@ -19,7 +19,6 @@ module Twn
     attr_reader :generator, :buffer, :bases
 
     def to_uwp
-      # Generating SWN world tags, but doing nothing with them
       tags = generator.get!(:SwnWorldTags)
 
       prefix = [
@@ -39,7 +38,9 @@ module Twn
 
       base_codes = bases.map { |base| generator.get!(base).to_uwp_slug }.join.strip
 
-      line = sprintf("%s-%-2d %#{bases.count}s %8s {%s}", prefix, tech_level.roll, base_codes, trade_codes.to_uwp_slug, tags.to_uwp_slug)
+      travel_code = generator.get!(:TravelCode)
+
+      line = sprintf("%s-%-2d %#{bases.count}s %14s %2s [%s]", prefix, tech_level.roll, base_codes, trade_codes.to_uwp_slug, travel_code.to_uwp_slug, tags.to_uwp_slug)
       buffer.puts(line)
     end
   end
