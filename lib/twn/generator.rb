@@ -22,7 +22,16 @@ module Twn
 
     # The TIME_TO_LIVE constaint defines how many attempts are allowed
     # before we force an answer.
-    TIME_TO_LIVE = 30
+    #
+    # Based on my tests, anything above 40 for TTL does not improve
+    # add a noticeable improvement to finding a result within the
+    # TTL. (e.g. a TTL of 40 has about a 1.55% chance of running past
+    # the TTL where as a TTL of 1000 has a 1.44% chance of running
+    # past TTL).
+    #
+    # On the flip side 15 appears to get us a 2% chance of running
+    # past TTL and a 10 gets us a 2.5% chance of running past the TTL.
+    TIME_TO_LIVE = 15
 
     # Retrieve the existing named attribute if one exists.  Otherwise,
     # roll to generate that attribute, only accepting attributes that
