@@ -30,7 +30,7 @@ module Twn
     :TravelCode,
     :TradeCodes
   ]
-  DEFAULT_SEQUENCE = [:SwnWorldTags] + TRAVELLER_SEQUENCE
+  DEFAULT_SEQUENCE = [:SwnAtmosphere, :SwnWorldTags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE, buffer: $stdout)
     generator = Generator.new
     sequence.each do |attribute|
