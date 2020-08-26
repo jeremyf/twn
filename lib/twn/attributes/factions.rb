@@ -30,8 +30,8 @@ Twn::Attributes.register(:Factions) do
     to_uwp_slug { |row| "F#{row.fetch(:strength)[0..1]}#{row.fetch(:government).to_uwp_slug}" }
     row(roll: 2, strength: "Obscure group - few have heard of them, no popular support")
     row(roll: 3, strength: "Obscure group - few have heard of them, no popular support")
-    row(roll: 4, strength: "Finger group - few supporters")
-    row(roll: 5, strength: "Finger group - few supporters")
+    row(roll: 4, strength: "Fringe group - few supporters")
+    row(roll: 5, strength: "Fringe group - few supporters")
     row(roll: 6, strength: "Minor group - some supporters")
     row(roll: 7, strength: "Minor group - some supporters")
     row(roll: 8, strength: "Notable group - significant support, well known")
