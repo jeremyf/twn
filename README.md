@@ -45,4 +45,8 @@ Or install it yourself as:
 - [X] Handle exception on occassional non-reconcilable intersection of constraints.
 - [X] Add constraints to Row builder and apply those constraints at Attribute initialization.
 - [X] Extract a ".roll" macro that captures the results
-- [ ] Constraints should apply to composite attributes?
+- [X] Constraints should apply to composite attributes?  They do
+
+## Example
+
+`C875346-7       SR          Ga Lo  A [FOb2 FFi8 #H6 #H0]`
