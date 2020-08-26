@@ -3,11 +3,12 @@ require 'twn/row'
 module Twn
   # A class useful for registering tables associated with each attribute.
   class Table
-    def initialize(attribute_name:, &block)
+    # @param attribute_name [Symbol] the name of the table.
+    # @yield the configuration block for this table.
+    def initialize(attribute_name:, &configuration)
       @attribute_name = attribute_name
       @raw_rows = []
-      instance_exec(&block) if block.arity == 0
-      yield(self) if block.arity == 1
+      instance_exec(&configuration)
       finish!
     end
 
@@ -26,7 +27,7 @@ module Twn
     end
 
     def fetch_by_uwp_slug(key)
-      rows.find {|r| r.to_uwp_slug == key }
+      @from_uwp_slug.call(key)
     end
 
     protected
@@ -36,9 +37,19 @@ module Twn
     end
 
     def to_uwp_slug(callable = nil, &block)
-      return @to_uwp_slug if @to_uwp_slug
-      # raise Error if callable and block_given?
+      raise Error if callable && block_given?
+      raise Error if !callable && !block_given?
       @to_uwp_slug = callable || block
+    end
+
+    def from_uwp_slug(callable = nil, &block)
+      raise Error if callable && block_given?
+      raise Error if !callable && !block_given?
+      @from_uwp_slug = callable || block
+    end
+
+    def default_from_uwp_slug(key)
+      rows.find {|r| r.to_uwp_slug == key }
     end
 
     private
@@ -51,6 +62,7 @@ module Twn
         raise Error if @rows_by_roll.key?(row.roll)
         @rows_by_roll[row.roll] = row
       end
+      @from_uwp_slug ||= method(:default_from_uwp_slug)
     end
   end
 end
