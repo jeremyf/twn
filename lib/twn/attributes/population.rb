@@ -11,6 +11,8 @@ Twn::Attributes.register(:Population) do
     row(roll: 8, population: "Hundreds of millions", range: "100,000,000+")
     row(roll: 9, population: "Billions", range: "1,000,000,000+")
     row(roll: 10, population: "Tens of Billions", range: "10,000,000,000+")
+    row(roll: 11, population: "Hundreds of Billions", range: "100,000,000+")
+    row(roll: 12, population: "Trillions", range: "1,000,000,000+")
   end
 
   roller { roll("2d6", -2) }
