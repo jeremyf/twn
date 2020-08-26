@@ -15,6 +15,8 @@ Twn::Attributes.register(:Government) do
     row(roll: 11, type: "Non-charismatic leaderdictator")
     row(roll: 12, type: "Charismatic oligarchy")
     row(roll: 13, type: "Religious dictatorship")
+    row(roll: 14, type: "Religious autocracy")
+    row(roll: 15, type: "Totalitarian oligarchy")
   end
 
   roller do
