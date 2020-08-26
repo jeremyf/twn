@@ -1,11 +1,13 @@
+require 'twn/error'
 require 'twn/attribute_builder'
 module Twn
+  class DuplicateRegistrationError < Error; end
   # This module is a container for all of the types of world attributes.
   #
   # @todo Refactor so that we are using an instance instead of a class
   module Attributes
     def self.register(attribute_name, &block)
-      raise Error if registry.key?(attribute_name)
+      raise DuplicateRegistrationError.new("Already registered #{attribute_name.inspect}") if registry.key?(attribute_name)
       registry[attribute_name] ||= AttributeBuilder.new(attribute_name: attribute_name, &block)
     end
 
