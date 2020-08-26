@@ -10,10 +10,15 @@ Twn::Attributes.register(:SecurityStance) do
     to_uwp_slug do |row|
       if row[:population] == 0
         "·"
+      elsif row[:government] == 7
+        # Balkanized government
+        "B#{Twn::Utility.to_uwp_slug(row.roll)}"
       else
         Twn::Utility.to_uwp_slug(row.roll)
       end
     end
+
+    # @todo Add from_uwp_slug to handle Balkanization
   end
 
   roller do
@@ -35,12 +40,14 @@ Twn::Attributes.register(:SecurityStance) do
       return { roll: 0, population: 0 } if get!(:Population).roll == 0
       return 0 if get!(:Government).roll == 0
       return 0 if get!(:LawLevel).roll == 0
-      roll("2d6", -7) +
-        law_level_dm +
-        starport_dm +
-        government_dm +
-        trade_codes_dm +
-        gas_giants_dm
+      result = roll("2d6", -7) +
+               law_level_dm +
+               starport_dm +
+               government_dm +
+               trade_codes_dm +
+               gas_giants_dm
+      return result if get!(:Government).roll != 7
+      { roll: result, government: 7 }
     end
 
     private
