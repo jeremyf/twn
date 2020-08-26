@@ -1,10 +1,10 @@
 require 'forwardable'
 require 'twn/utility'
 # From Journal of the Traveller's Aid Society: Volume 5
-Twn::Attributes.register(:SecurityPlanetary) do
+Twn::Attributes.register(:SecurityOrbital) do
   table do
     (0..15).each do |i|
-      row(roll: i, description: "Security: Planetary presence #{i}")
+      row(roll: i, description: "Security: Orbital presence #{i}")
     end
 
     to_uwp_slug do |row|
@@ -17,10 +17,10 @@ Twn::Attributes.register(:SecurityPlanetary) do
   end
 
   roller do
-    SecurityPlanetaryRoller.call(context: self)
+    SecurityOrbitalRoller.call(context: self)
   end
 
-  class SecurityPlanetaryRoller
+  class SecurityOrbitalRoller
     def self.call(context:)
       new(context: context).call
     end
@@ -33,13 +33,16 @@ Twn::Attributes.register(:SecurityPlanetary) do
 
     def call
       return { roll: 0, population: 0 } if get!(:Population).roll == 0
+      return 0 if get!(:Starport).to_uwp_slug == "X"
       return 0 if get!(:Government).roll == 0
       return 0 if get!(:LawLevel).roll == 0
-       roll("2d6", -7) +
+      roll("2d6", -7) +
         law_level_dm +
+        starport_dm +
         size_dm +
         government_dm +
-        trade_codes_dm
+        trade_codes_dm +
+        base_present_dm
     end
 
     private
@@ -48,11 +51,22 @@ Twn::Attributes.register(:SecurityPlanetary) do
       get!(:LawLevel).roll
     end
 
+    def starport_dm
+      case get!(:Starport).to_uwp_slug
+      when "E" then -2
+      when "D" then -1
+      when "B" then 1
+      when "A" then 2
+      else
+        0
+      end
+    end
+
     def size_dm
       case get!(:Size).roll
-      when 0,1 then 2
-      when 2,3 then 1
-      when 9,10,11,12,13,14,15 then -1
+      when 0,1,2 then 2
+      when 3,4 then 1
+      when 10,11,12,13,14,15 then -1
       else
         0
       end
@@ -60,8 +74,8 @@ Twn::Attributes.register(:SecurityPlanetary) do
 
     def government_dm
       case get!(:Government).roll
-      when 2,12 then -2
-      when 7,10 then -1
+      when 2,7,12 then -2
+      when 10 then -1
       when 1,5,11 then 1
       when 6,13,14,15 then 2
       else
@@ -71,11 +85,19 @@ Twn::Attributes.register(:SecurityPlanetary) do
 
     def trade_codes_dm
       trade_codes_to_uwp_slug = get!(:TradeCodes).to_uwp_slug
-      return -2 if trade_codes_to_uwp_slug.include?("Hi")
-      return -1 if trade_codes_to_uwp_slug.include?("Lo")
+      return -2 if trade_codes_to_uwp_slug.include?("Lo")
+      return -2 if trade_codes_to_uwp_slug.include?("Lt")
+      return -1 if trade_codes_to_uwp_slug.include?("Po")
+      return 1 if trade_codes_to_uwp_slug.include?("Ag")
+      return 1 if trade_codes_to_uwp_slug.include?("In")
       return 1 if trade_codes_to_uwp_slug.include?("Ht")
-      return 1 if trade_codes_to_uwp_slug.include?("Ri")
+      return 2 if trade_codes_to_uwp_slug.include?("Ri")
       0
+    end
+
+    def base_present_dm
+      return 0 if get!(:NavalBase).roll == ""
+      1
     end
   end
 end

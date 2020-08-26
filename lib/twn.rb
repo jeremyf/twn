@@ -29,7 +29,8 @@ module Twn
     :GasGiant,
     :TravelCode,
     :TradeCodes,
-    :SecurityPlanetary
+    :SecurityPlanetary,
+    :SecurityOrbital,
   ]
   DEFAULT_SEQUENCE = [:SwnAtmosphere, :SwnTemperature, :SwnBiosphere, :SwnPopulation, :SwnWorldTags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE, buffer: $stdout)
