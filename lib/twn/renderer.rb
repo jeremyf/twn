@@ -28,8 +28,8 @@ module Twn
         :Population,
         :Government,
         :LawLevel
-      ].map do |attribute_name|
-        generator.get!(attribute_name).to_uwp_slug
+      ].map do |name|
+        generator.get!(name).to_uwp_slug
       end.join("")
       tech_level = generator.get!(:TechLevel)
 

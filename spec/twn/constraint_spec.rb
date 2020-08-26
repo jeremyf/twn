@@ -7,25 +7,25 @@ module Twn
     let(:uwp_slug_range) { ["1", "A"] }
     let(:constraint) { described_class.new(applies_to: applies_to, uwp_slug_range: uwp_slug_range) }
     describe "#applicable?" do
-      let(:candidate) { double(Twn::Attribute, attribute_name: attribute_name) }
+      let(:candidate) { double(Twn::Attribute, name: name) }
       subject { constraint.applicable?(candidate: candidate) }
       describe "with match" do
-        let(:attribute_name) { applies_to }
+        let(:name) { applies_to }
         it { is_expected.to be_truthy }
       end
 
       describe "with a non-match" do
-        let(:attribute_name) { :Wonky }
+        let(:name) { :Wonky }
         it { is_expected.to be_falsey }
       end
     end
     describe "#acceptable_candidate?" do
       let(:to_uwp_slug) { uwp_slug_range.first }
-      let(:candidate) { double(Twn::Attribute, attribute_name: attribute_name, to_uwp_slug: to_uwp_slug) }
+      let(:candidate) { double(Twn::Attribute, name: name, to_uwp_slug: to_uwp_slug) }
       subject { constraint.acceptable?(candidate: candidate) }
 
       describe "with candidate that is applicable" do
-        let(:attribute_name) { applies_to }
+        let(:name) { applies_to }
         context "and is in the given range" do
           let(:to_uwp_slug) { uwp_slug_range.first }
           it { is_expected.to be_truthy }
@@ -38,7 +38,7 @@ module Twn
       end
 
       describe "with candidate that is not applicable" do
-        let(:attribute_name) { :SomethingElse }
+        let(:name) { :SomethingElse }
         it { is_expected.to be_truthy }
       end
     end

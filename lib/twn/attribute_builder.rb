@@ -25,21 +25,21 @@ module Twn
   #     end
   #   end
   class AttributeBuilder
-    def initialize(attribute_name:, &block)
-      @attribute_name = attribute_name
+    def initialize(name:, &block)
+      @name = name
       instance_exec(&block)
     end
-    attr_reader :attribute_name
+    attr_reader :name
 
     # @param generator [Twn::Generator]
     def roll!(generator:)
       roll = RollEvaluator.new(generator: generator).instance_exec(&roller)
       if roll.is_a?(Array)
         rows = roll.map {|r| fetch_by_roll(r) }
-        CompositeAttribute.new(attribute_name: attribute_name, entries: rows)
+        CompositeAttribute.new(name: name, entries: rows)
       else
         row = fetch_by_roll(roll)
-        Attribute.new(attribute_name: attribute_name, entry: row)
+        Attribute.new(name: name, entry: row)
       end
     end
     alias roll_on_table roll!
@@ -59,7 +59,7 @@ module Twn
 
     def table(&block)
       return @table if @table
-      @table = Table.new(attribute_name: attribute_name, &block)
+      @table = Table.new(name: name, &block)
     end
 
     # @example

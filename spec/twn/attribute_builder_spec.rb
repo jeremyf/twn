@@ -3,7 +3,7 @@ require 'twn/attribute_builder'
 module Twn
   RSpec.describe AttributeBuilder do
     let(:generator) { double }
-    let(:attribute_name) { :BeverageSize }
+    let(:name) { :BeverageSize }
     let(:expected_uwp_slug_range) { ["S", "M", "L"] }
     let(:table) do -> {
         to_uwp_slug ->(row) { row.fetch(:name)[0] }
@@ -19,7 +19,7 @@ module Twn
     let(:builder) do
       given_table = table # Need the lexical binding
       given_roller = roller # Need the lexical binding
-      described_class.new(attribute_name: attribute_name) do
+      described_class.new(name: name) do
         table(&given_table)
         roller(&given_roller)
       end

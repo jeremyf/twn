@@ -20,10 +20,10 @@ module Twn
 
     # Is this an applicable candidate for the constraint?
     #
-    # @param candidate [#attribute_name]
+    # @param candidate [#name]
     # @return [Boolean]
     def applicable?(candidate:)
-      candidate.attribute_name == applies_to
+      candidate.name == applies_to
     end
 
     # Answers two questions:
@@ -31,7 +31,7 @@ module Twn
     # - Applicability
     # - Acceptability
     #
-    # @param candidate [#attribute_name]
+    # @param candidate [#name]
     # @return [Boolean]
     def acceptable?(candidate:)
       return true unless applicable?(candidate: candidate)

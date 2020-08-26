@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'twn/table'
 module Twn
   RSpec.describe Table do
-    let(:table) { described_class.new(attribute_name: :Size, &configuration) }
+    let(:table) { described_class.new(name: :Size, &configuration) }
     describe "#initialize" do
       describe 'with row' do
         let(:configuration) do

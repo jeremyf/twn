@@ -62,8 +62,8 @@ Twn::Attributes.register(:TradeCodes) do
     private
 
     def meets?(constraints:)
-      constraints.all? do |attribute_name, uwp_slug_range|
-        attribute = get!(attribute_name)
+      constraints.all? do |name, uwp_slug_range|
+        attribute = get!(name)
         Array(uwp_slug_range).map { |slug| to_uwp_slug(slug) }.include?(attribute.to_uwp_slug)
       end
     end

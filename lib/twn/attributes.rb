@@ -6,9 +6,9 @@ module Twn
   #
   # @todo Refactor so that we are using an instance instead of a class
   module Attributes
-    def self.register(attribute_name, &block)
-      raise DuplicateRegistrationError.new("Already registered #{attribute_name.inspect}") if registry.key?(attribute_name)
-      registry[attribute_name] ||= AttributeBuilder.new(attribute_name: attribute_name, &block)
+    def self.register(name, &block)
+      raise DuplicateRegistrationError.new("Already registered #{name.inspect}") if registry.key?(name)
+      registry[name] ||= AttributeBuilder.new(name: name, &block)
     end
 
     def self.registry

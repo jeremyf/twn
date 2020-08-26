@@ -3,12 +3,12 @@ require 'twn/row'
 module Twn
   # A class to build a table for lookup
   class Table
-    # @param attribute_name [Symbol] the name of the table.
+    # @param name [Symbol] the name of the table.
     # @yield the configuration block for this table.
     #
     #
     # @example
-    #   Twn::Table.new(attribute_name: :Faction) do
+    #   Twn::Table.new(name: :Faction) do
     #     from_uwp_slug do |uwp_slug|
     #       strength = uwp_slug[1..2]
     #       government = uwp_slug[3]
@@ -31,8 +31,8 @@ module Twn
     #     row(roll: 11, strength: "Signficant - nearly as powerful as the government")
     #     row(roll: 12, strength: "Overwhelming popular support - more powerful than the government")
     #   end
-    def initialize(attribute_name:, &configuration)
-      @attribute_name = attribute_name
+    def initialize(name:, &configuration)
+      @name = name
       @raw_rows = []
       instance_exec(&configuration)
       finish!
