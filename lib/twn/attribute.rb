@@ -1,16 +1,12 @@
 require 'forwardable'
 module Twn
   class Attribute
-    def self.name
-      to_s.split("::")[-1].to_sym
-    end
-
     def self.fetch_by_uwp_slug(uwp_slug)
       new(entry: @table.fetch_by_uwp_slug(uwp_slug))
     end
 
     # @param entry [Twn::Table::Row]
-    def initialize(entry:, name: self.class.name)
+    def initialize(entry:, name:)
       @entry = entry
       @name = name
     end
@@ -37,7 +33,7 @@ module Twn
     end
 
     # @param entry [Array<Twn::Table::Row>]
-    def initialize(entries:, name: self.class.name)
+    def initialize(entries:, name:)
       @entries = Array(entries)
       @name = name
     end
