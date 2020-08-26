@@ -5,7 +5,7 @@ Twn::Attributes.register(:Government) do
     row(roll: 1, type: "Company/corporation")
     row(roll: 2, type: "Participating democracy")
     row(roll: 3, type: "Self-perpetuating oligarchy")
-    row(roll: 4, type: "Representative democracys")
+    row(roll: 4, type: "Representative democracy")
     row(roll: 5, type: "Feudal technocracy")
     row(roll: 6, type: "Captive government")
     row(roll: 7, type: "Balkanisation")
