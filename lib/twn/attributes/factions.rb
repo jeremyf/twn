@@ -22,6 +22,14 @@ require 'twn/attributes'
 #     setup.
 Twn::Attributes.register(:Factions) do
   table do
+    # from_uwp_slug do |uwp_slug|
+    #   strength = uwp_slug[1..2]
+    #   government = uwp_slug[3]
+    #   row = rows.find { |r| r.fetch(:strength).start_with?(strength) }
+    #   government = find(:Government, uwp_slug: government)
+    #   row.merge(government: government)
+    # end
+    to_uwp_slug { |row| "F#{row.fetch(:strength)[0..1]}#{row.fetch(:government).to_uwp_slug}" }
     row(roll: 2, strength: "Obscure group - few have heard of them, no popular support")
     row(roll: 3, strength: "Obscure group - few have heard of them, no popular support")
     row(roll: 4, strength: "Finger group - few supporters")
@@ -35,9 +43,6 @@ Twn::Attributes.register(:Factions) do
     row(roll: 12, strength: "Overwhelming popular support - more powerful than the government")
   end
 
-  to_uwp_slug do |row|
-    "F#{row[:strength][0..1]}#{row[:government].to_uwp_slug}"
-  end
 
   roller do
     government = get!(:Government)

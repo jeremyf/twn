@@ -4,12 +4,10 @@ module Twn
   class Table
     def initialize(attribute_name:, &block)
       @attribute_name = attribute_name
-      @rows_by_roll = {}
-      @rows_by_uwp_slug = {}
-      if block_given?
-        instance_exec(&block) if block.arity == 0
-        yield(self) if block.arity == 1
-      end
+      @raw_rows = []
+      instance_exec(&block) if block.arity == 0
+      yield(self) if block.arity == 1
+      finish!
     end
 
     def shuffle
@@ -27,15 +25,31 @@ module Twn
     end
 
     def fetch_by_uwp_slug(key)
-      @rows_by_uwp_slug.fetch(key)
+      rows.find {|r| r.to_uwp_slug == key }
     end
 
-    def add_row(roll:, to_uwp_slug: nil, constraints: [], **attributes)
-      row = Row.new(roll: roll, to_uwp_slug: to_uwp_slug, constraints: constraints, **attributes)
-      raise Error if @rows_by_roll.key?(row.roll)
-      @rows_by_roll[row.roll] = row
-      @rows_by_uwp_slug[row.to_uwp_slug] = row
+    protected
+
+    def row(roll:, to_uwp_slug: @to_uwp_slug, constraints: [], **attributes)
+      @raw_rows << { roll: roll, to_uwp_slug: to_uwp_slug, constraints: constraints, **attributes }
     end
-    alias row add_row
+
+    def to_uwp_slug(callable = nil, &block)
+      return @to_uwp_slug if @to_uwp_slug
+      # raise Error if callable and block_given?
+      @to_uwp_slug = callable || block
+    end
+
+    private
+
+    def finish!
+      @rows_by_roll = {}
+      @raw_rows.each do |raw_row|
+        raw_row[:to_uwp_slug] ||= @to_uwp_slug
+        row = Row.new(**raw_row)
+        raise Error if @rows_by_roll.key?(row.roll)
+        @rows_by_roll[row.roll] = row
+      end
+    end
   end
 end

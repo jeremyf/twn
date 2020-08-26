@@ -4,8 +4,8 @@ Twn::Attributes.register(:ImperialConsulate) do
   yes = "C"
 
   table do
-    add_row(roll: no, description: "No Imperial Consulate")
-    add_row(roll: yes, description: "Imperial Consulate")
+    row(roll: no, description: "No Imperial Consulate")
+    row(roll: yes, description: "Imperial Consulate")
   end
 
   roller do
