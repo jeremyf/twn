@@ -27,7 +27,7 @@ module Twn
 
     def self.fetch_by_uwp_slug(uwp_slug)
       entries = uwp_slug.split(UWP_SLUG_JOIN_CHARACTER).map do |uwp_slug|
-        @table.fetch(uwp_slug_range)
+        @table.fetch_by_uwp_slug(uwp_slug_range)
       end
       new(entries: entries)
     end
