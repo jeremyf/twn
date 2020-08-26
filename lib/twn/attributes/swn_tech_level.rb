@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:SwnTechLevel) do
   table do
     row(roll: "TL0", constraints: [ { applies_to: :TechLevel, uwp_slug_range: [0,1] }])

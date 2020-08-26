@@ -1,4 +1,5 @@
 require "twn/version"
+require "twn/error"
 require "twn/generator"
 require "twn/attributes"
 require "twn/table"
@@ -7,7 +8,6 @@ require "twn/constraint"
 require "twn/renderer"
 require "twn/attribute_builder"
 module Twn
-  class Error < StandardError; end
 
   TRAVELLER_SEQUENCE = [
     :Size,

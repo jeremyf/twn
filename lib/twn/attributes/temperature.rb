@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Temperature) do
   table do
     row(roll: "F", type: "Frozen")

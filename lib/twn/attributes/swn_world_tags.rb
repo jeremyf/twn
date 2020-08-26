@@ -1,4 +1,3 @@
-require 'twn/attributes'
 require 'psych'
 Twn::Attributes.register(:SwnWorldTags) do
   swn_tags = Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))

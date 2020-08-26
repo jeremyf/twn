@@ -1,7 +1,8 @@
 require 'spec_helper'
-
+require 'twn/attribute_builder'
 module Twn
   RSpec.describe AttributeBuilder do
+    let(:generator) { double }
     let(:attribute_name) { :BeverageSize }
     let(:expected_uwp_slug_range) { ["S", "M", "L"] }
     let(:table) do -> {
@@ -25,7 +26,7 @@ module Twn
     end
 
     describe "#roll!" do
-      subject { builder.roll! }
+      subject { builder.roll!(generator: generator) }
 
       describe 'with a single roll' do
         let(:roller) { -> { roll("1d6") } }

@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:ResearchBase) do
   no = ""
   yes = "R"

@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:TradeCodes) do
   table do
     row(roll: "Ag", classification: "Agricultural")

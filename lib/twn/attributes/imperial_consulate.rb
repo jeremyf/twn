@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:ImperialConsulate) do
   no = ""
   yes = "C"

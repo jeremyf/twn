@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:GasGiant) do
   table do
     row(roll: "", description: "No gas giant")

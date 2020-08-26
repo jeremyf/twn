@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Hydrographic) do
   table do
     row(roll: 0, percentage:"0%-5%", description: "Desert world")

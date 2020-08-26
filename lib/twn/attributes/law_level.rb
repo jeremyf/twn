@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:LawLevel) do
   table do
     (0..15).each do |i|

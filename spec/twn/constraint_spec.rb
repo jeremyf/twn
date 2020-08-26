@@ -1,5 +1,6 @@
 require 'spec_helper'
-
+require 'twn/constraint'
+require 'twn/attributes'
 module Twn
   RSpec.describe Constraint do
     let(:applies_to) { :Size }

@@ -1,5 +1,6 @@
 require 'spec_helper'
-
+require 'twn/utility'
+require 'twn/generator'
 module Twn
   RSpec.describe Generator do
     let(:generator) { described_class.new }

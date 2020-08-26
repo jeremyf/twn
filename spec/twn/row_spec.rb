@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'twn/row'
 module Twn
   RSpec.describe Row do
     let(:given_roll) { 1 }

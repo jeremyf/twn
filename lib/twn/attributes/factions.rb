@@ -1,5 +1,3 @@
-require 'twn/attributes'
-
 # Factions are a lot more complicated.
 #
 # 1.  The number of factions keys off of the current government.

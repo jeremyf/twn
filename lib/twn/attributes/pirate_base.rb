@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:PirateBase) do
   no = ""
   yes = "P"

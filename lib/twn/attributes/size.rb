@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Size) do
   table do
     row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")

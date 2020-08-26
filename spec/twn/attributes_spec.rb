@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'twn/attributes'
 module Twn
   RSpec.describe Attributes do
     describe '.roll' do

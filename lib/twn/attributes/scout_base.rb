@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:ScoutBase) do
   no = ""
   yes = "S"

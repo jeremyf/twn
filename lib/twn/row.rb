@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'twn/utility'
 
 module Twn
   class Row

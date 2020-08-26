@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby -w
+
+Dir.glob(File.expand_path("**/*_spec.rb", __dir__)).each do |filename|
+  system("bundle exec rspec #{filename}")
+end

@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Starport) do
   table do
     row(roll: 2, to_uwp_slug: "X", description: "No Starport")

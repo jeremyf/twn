@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'twn/utility'
 
 module Twn
   RSpec.describe Utility do

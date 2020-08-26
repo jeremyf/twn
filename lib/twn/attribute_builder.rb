@@ -1,7 +1,7 @@
+require 'twn/error'
 require 'twn/utility'
 require 'twn/table'
 require 'twn/attribute'
-require 'twn/generator'
 
 module Twn
   # Having hand-crafted about 15 attributes, I've come upon a common
@@ -31,7 +31,8 @@ module Twn
     end
     attr_reader :attribute_name
 
-    def roll!(generator: Generator.new)
+    # @param generator [Twn::Generator]
+    def roll!(generator:)
       roll = RollEvaluator.new(generator: generator).instance_exec(&roller)
       if roll.is_a?(Array)
         rows = roll.map {|r| fetch_by_roll(r) }

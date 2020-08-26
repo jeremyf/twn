@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'twn/renderer'
 module Twn
   RSpec.describe Renderer do
     let(:buffer) { double }

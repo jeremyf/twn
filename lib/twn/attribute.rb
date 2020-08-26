@@ -1,5 +1,4 @@
-require "twn/table"
-require "twn/utility"
+require 'forwardable'
 module Twn
   class Attribute
     def self.attribute_name

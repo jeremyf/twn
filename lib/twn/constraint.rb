@@ -1,3 +1,4 @@
+require 'twn/utility'
 module Twn
   # A constraint is something that is either met or rejected.
   #

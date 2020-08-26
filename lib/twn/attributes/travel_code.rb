@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:TravelCode) do
   no = ""
   amber = "A"

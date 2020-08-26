@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:NavalBase) do
   no = ""
   yes = "N"

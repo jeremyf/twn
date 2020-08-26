@@ -1,4 +1,5 @@
 require 'forwardable'
+require "twn/utility"
 require 'twn/attributes'
 require 'twn/constraint'
 module Twn

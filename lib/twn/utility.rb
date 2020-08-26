@@ -1,3 +1,4 @@
+require 'twn/error'
 module Twn
   # A Utility Module of state-less methods to call
   module Utility

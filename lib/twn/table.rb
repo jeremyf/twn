@@ -1,3 +1,4 @@
+require 'twn/error'
 require 'twn/row'
 module Twn
   # A class useful for registering tables associated with each attribute.

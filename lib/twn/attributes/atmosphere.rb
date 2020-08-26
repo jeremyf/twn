@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Atmosphere) do
   table do
     row(roll: 0, atmosphere: "None")

@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:Population) do
   table do
     row(roll: 0, population: "None", range: "0")

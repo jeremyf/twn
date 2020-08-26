@@ -1,4 +1,3 @@
-require 'twn/attributes'
 Twn::Attributes.register(:TravellersAidSociety) do
   no = ""
   yes = "T"

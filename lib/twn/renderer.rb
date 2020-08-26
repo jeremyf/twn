@@ -1,4 +1,3 @@
-require 'twn/utility'
 require 'twn/generator'
 module Twn
   class Renderer
