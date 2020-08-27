@@ -46,7 +46,26 @@ Or install it yourself as:
 - [X] Add constraints to Row builder and apply those constraints at Attribute initialization.
 - [X] Extract a ".roll" macro that captures the results
 - [X] Constraints should apply to composite attributes?  They do
+- [ ] Add concept of "15+" to account for greater law levels.
+- [ ] Add generator to consider location in hot/cold temperature band
 
 ## Example
 
-`C875346-7       SR          Ga Lo  A [FOb2 FFi8 #H6 #H0]`
+```
+A0C0857-15     RTC  De  A {FNo9 FNo9 FNo6 #N1 #M0} S8D9-3 Pe Te
+||||||| |        |  |   |  |----------/    |---/   |
+||||||| |        |  |   |  |               |       +- Security Code and tags
+||||||| |        |  |   |  |               +- Stars without Number tags
+||||||| |        |  |   |  +- Faction tag (F, 2-char for support,
+||||||| |        |  |   +- Travel code     1-hexdecimal for Government
+||||||| |        |  +- Trade code(s)       type)
+||||||| |        +- Bases
+||||||| +- Tech level
+||||||+- Law
+|||||+- Government
+||||+- Population
+|||+- Hydrographic
+||+- Atmosphere
+|+- Size
++- Starport
+```
