@@ -1,6 +1,7 @@
 require "twn/version"
 require "twn/generator"
 require "twn/renderer"
+require "twn/config"
 module Twn
 
   TRAVELLER_SEQUENCE = [

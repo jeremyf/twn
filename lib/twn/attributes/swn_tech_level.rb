@@ -1,3 +1,12 @@
+# Of all of the SWN attributes, this one will mess with the
+# distribution of what I suspect to be the core Traveller system
+# generation experience.
+#
+# I had tested changing the TL5 constraint to have a larger tech
+# range.  The result was a significant distribution of TL 15+; The
+# logic of the constraint is such that when you generate an attribute
+# that has a constraint, when you then generate the constrained
+# attribute you will get a value within that range.
 Twn::Attributes.register(:SwnTechLevel) do
   table do
     row(roll: "TL0", constraints: [ { applies_to: :TechLevel, uwp_slug_range: [0,1] }])
