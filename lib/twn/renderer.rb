@@ -41,7 +41,7 @@ module Twn
 
       factions = generator.get!(:Factions)
       line = sprintf(
-        "%s-%-2d %#{bases.count}s %14s %2s {%s %s} S%s%s%s-%s",
+        "%s-%-2d %#{bases.count}s %14s %2s {%s %s} S%s%s%s-%s %s",
         prefix,
         tech_level.roll,
         base_codes,
@@ -53,7 +53,8 @@ module Twn
         generator.get!(:SecurityOrbital).to_uwp_slug,
         generator.get!(:SecuritySystem).to_uwp_slug,
         generator.get!(:SecurityStance).to_uwp_slug,
-      )
+        generator.get!(:SecurityCodes).to_uwp_slug
+      ).strip
       buffer.puts(line)
     end
   end

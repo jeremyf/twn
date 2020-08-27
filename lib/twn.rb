@@ -32,7 +32,8 @@ module Twn
     :SecurityPlanetary,
     :SecurityOrbital,
     :SecuritySystem,
-    :SecurityStance
+    :SecurityStance,
+    :SecurityCodes
   ]
   DEFAULT_SEQUENCE = [:SwnAtmosphere, :SwnTemperature, :SwnBiosphere, :SwnPopulation, :SwnWorldTags] + TRAVELLER_SEQUENCE
   def self.generate(sequence: DEFAULT_SEQUENCE, buffer: $stdout)
