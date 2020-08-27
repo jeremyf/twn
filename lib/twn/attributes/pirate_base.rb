@@ -1,4 +1,4 @@
-Twn::Attributes.register(:PirateBase) do
+Twn::Attributes.register(:PirateBase, package: :Core) do
   no = ""
   yes = "P"
 

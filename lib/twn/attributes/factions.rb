@@ -18,7 +18,7 @@
 #     The support level is rather easy (as is).  However, adding to
 #     the row the type of government is a bit beyond what I have
 #     setup.
-Twn::Attributes.register(:Factions) do
+Twn::Attributes.register(:Factions, package: :Factions) do
   table do
     from_uwp_slug do |uwp_slug|
       strength = uwp_slug[1..2]

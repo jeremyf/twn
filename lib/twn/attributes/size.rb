@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Size) do
+Twn::Attributes.register(:Size, package: :Core) do
   table do
     row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")
     row(roll: 1, size: 1600, surface_gravity: 0.05, example: "")

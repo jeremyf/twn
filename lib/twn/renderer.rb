@@ -10,6 +10,8 @@ module Twn
       :PirateBase,
       :GasGiant
     ]
+
+    # @todo Use packages instead of the generator
     def initialize(generator: Generator.new, buffer: $stdout, bases: BASES)
       @generator = generator
       @buffer = buffer
@@ -17,6 +19,7 @@ module Twn
     end
     attr_reader :generator, :buffer, :bases
 
+    # @todo separate the modules
     def to_uwp
       tags = generator.get!(:SwnWorldTags)
 

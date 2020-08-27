@@ -1,4 +1,4 @@
-Twn::Attributes.register(:TravelCode) do
+Twn::Attributes.register(:TravelCode, package: :Core) do
   no = ""
   amber = "A"
   red = "R"

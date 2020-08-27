@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Atmosphere) do
+Twn::Attributes.register(:Atmosphere, package: :Core) do
   table do
     row(roll: 0, atmosphere: "None")
     row(roll: 1, atmosphere: "Trace")

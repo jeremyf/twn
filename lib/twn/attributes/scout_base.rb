@@ -1,4 +1,4 @@
-Twn::Attributes.register(:ScoutBase) do
+Twn::Attributes.register(:ScoutBase, package: :Core) do
   no = ""
   yes = "S"
 

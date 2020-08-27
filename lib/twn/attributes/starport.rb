@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Starport) do
+Twn::Attributes.register(:Starport, package: :Core) do
   table do
     row(roll: 2, to_uwp_slug: "X", description: "No Starport")
     row(roll: 3, to_uwp_slug: "E", description: "Frontier")

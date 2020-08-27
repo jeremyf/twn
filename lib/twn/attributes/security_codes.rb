@@ -1,7 +1,7 @@
 require 'forwardable'
 require 'twn/utility'
 # From Journal of the Traveller's Aid Society: Volume 5
-Twn::Attributes.register(:SecurityCodes) do
+Twn::Attributes.register(:SecurityCodes, package: :Security) do
   table do
     row(roll: "Cr", name: "Corrupt")
     row(roll: "Co", name: "Covert")

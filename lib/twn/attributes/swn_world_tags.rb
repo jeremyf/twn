@@ -1,6 +1,6 @@
 require 'twn/config'
 require 'psych'
-Twn::Attributes.register(:SwnWorldTags) do
+Twn::Attributes.register(:SwnWorldTags, package: :SWN) do
   swn_tags = Psych.load(File.read(File.expand_path("../../../data/swn-tags.yml", __dir__)))
 
   table do

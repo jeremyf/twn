@@ -1,4 +1,4 @@
-Twn::Attributes.register(:SwnTemperature) do
+Twn::Attributes.register(:SwnTemperature, package: :SWN) do
   table do
     row(roll: "Fr", type: "Frozen", constraints: [ { applies_to: :Temperature, uwp_slug_range: ["F"] }])
     row(roll: "Co", type: "Cold", constraints: [ { applies_to: :Temperature, uwp_slug_range: ["C"] }])

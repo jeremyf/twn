@@ -1,4 +1,4 @@
-Twn::Attributes.register(:SwnAtmosphere) do
+Twn::Attributes.register(:SwnAtmosphere, package: :SWN) do
   table do
     row(roll: "Co", type: "Corrosive", constraints: [ { applies_to: :Atmosphere, uwp_slug_range: [11,15] }])
     row(roll: "Ir", type: "Inert", constraints: [ { applies_to: :Atmosphere, uwp_slug_range: [4,10,7,9] }])

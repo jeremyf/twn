@@ -1,4 +1,4 @@
-Twn::Attributes.register(:SwnBiosphere) do
+Twn::Attributes.register(:SwnBiosphere, package: :SWN) do
   table do
     row(roll: "Re", type: "Remnant")
     row(roll: "Mi", type: "Microbial")

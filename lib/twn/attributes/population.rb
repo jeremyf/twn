@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Population) do
+Twn::Attributes.register(:Population, package: :Core) do
   table do
     row(roll: 0, population: "None", range: "0")
     row(roll: 1, population: "Few", range: "1+")

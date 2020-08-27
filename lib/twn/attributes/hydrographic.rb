@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Hydrographic) do
+Twn::Attributes.register(:Hydrographic, package: :Core) do
   table do
     row(roll: 0, percentage:"0%-5%", description: "Desert world")
     row(roll: 1, percentage:"6%-15%", description: "Dry world")

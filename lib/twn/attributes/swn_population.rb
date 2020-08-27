@@ -1,4 +1,4 @@
-Twn::Attributes.register(:SwnPopulation) do
+Twn::Attributes.register(:SwnPopulation, package: :SWN) do
   table do
     row(roll: "FC", type: "Failed colony", constraints: [ { applies_to: :Population, uwp_slug_range: [0,1,2] }])
     row(roll: "Ou", type: "Outpost", constraints: [ { applies_to: :Population, uwp_slug_range: [2,3,4] }])

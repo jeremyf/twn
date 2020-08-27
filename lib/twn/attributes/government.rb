@@ -1,5 +1,5 @@
 require 'twn/attributes'
-Twn::Attributes.register(:Government) do
+Twn::Attributes.register(:Government, package: :Core) do
   table do
     row(roll: 0, type: "None")
     row(roll: 1, type: "Company/corporation")

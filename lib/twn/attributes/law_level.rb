@@ -1,4 +1,4 @@
-Twn::Attributes.register(:LawLevel) do
+Twn::Attributes.register(:LawLevel, package: :Core) do
   table do
     (0..15).each do |i|
       row(roll: i, description: "Law level #{i}")

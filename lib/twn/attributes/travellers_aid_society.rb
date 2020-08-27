@@ -1,4 +1,4 @@
-Twn::Attributes.register(:TravellersAidSociety) do
+Twn::Attributes.register(:TravellersAidSociety, package: :Core) do
   no = ""
   yes = "T"
   table do

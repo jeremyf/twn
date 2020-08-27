@@ -1,4 +1,4 @@
-Twn::Attributes.register(:NavalBase) do
+Twn::Attributes.register(:NavalBase, package: :Core) do
   no = ""
   yes = "N"
 

@@ -1,4 +1,4 @@
-Twn::Attributes.register(:TradeCodes) do
+Twn::Attributes.register(:TradeCodes, package: :Core) do
   table do
     row(roll: "Ag", classification: "Agricultural")
     row(roll: "As", classification: "Asteroid")

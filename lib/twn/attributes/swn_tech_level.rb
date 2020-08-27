@@ -7,7 +7,7 @@
 # logic of the constraint is such that when you generate an attribute
 # that has a constraint, when you then generate the constrained
 # attribute you will get a value within that range.
-Twn::Attributes.register(:SwnTechLevel) do
+Twn::Attributes.register(:SwnTechLevel, package: :SWN) do
   table do
     row(roll: "TL0", constraints: [ { applies_to: :TechLevel, uwp_slug_range: [0,1] }])
     row(roll: "TL1", constraints: [ { applies_to: :TechLevel, uwp_slug_range: [2,3] }])

@@ -1,4 +1,4 @@
-Twn::Attributes.register(:ImperialConsulate) do
+Twn::Attributes.register(:ImperialConsulate, package: :Core) do
   no = ""
   yes = "C"
 

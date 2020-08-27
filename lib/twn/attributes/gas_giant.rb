@@ -1,4 +1,4 @@
-Twn::Attributes.register(:GasGiant) do
+Twn::Attributes.register(:GasGiant, package: :Core) do
   table do
     row(roll: "", description: "No gas giant")
     row(roll: "G", description: "Gas giant")

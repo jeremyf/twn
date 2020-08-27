@@ -1,7 +1,7 @@
 require 'forwardable'
 require 'twn/utility'
 # From Journal of the Traveller's Aid Society: Volume 5
-Twn::Attributes.register(:SecurityOrbital) do
+Twn::Attributes.register(:SecurityOrbital, package: :Security) do
   table do
     (0..15).each do |i|
       row(roll: i, description: "Security: Orbital presence #{i}")

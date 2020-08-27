@@ -1,5 +1,5 @@
 require 'twn/config'
-Twn::Attributes.register(:TechLevel) do
+Twn::Attributes.register(:TechLevel, package: :Core) do
   table do
     (0..Twn::Config.max_tech_level).each do |i|
       row(roll: i, description: "Tech level #{i}")

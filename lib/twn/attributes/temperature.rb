@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Temperature) do
+Twn::Attributes.register(:Temperature, package: :Core) do
   table do
     row(roll: "F", type: "Frozen")
     row(roll: "C", type: "Cold")

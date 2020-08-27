@@ -1,4 +1,4 @@
-Twn::Attributes.register(:ResearchBase) do
+Twn::Attributes.register(:ResearchBase, package: :Core) do
   no = ""
   yes = "R"
 

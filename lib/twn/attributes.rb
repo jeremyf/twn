@@ -1,3 +1,4 @@
+require 'set'
 require 'twn/error'
 require 'twn/attribute_builder'
 module Twn
@@ -6,9 +7,15 @@ module Twn
   #
   # @todo Refactor so that we are using an instance instead of a class
   module Attributes
-    def self.register(name, &block)
+    def self.register(name, package: :Unknown, &configuration)
       raise DuplicateRegistrationError.new("Already registered #{name.inspect}") if registry.key?(name)
-      registry[name] ||= AttributeBuilder.new(name: name, &block)
+      registry[name] ||= AttributeBuilder.new(name: name, &configuration)
+      packages[package] ||= Set.new
+      packages[package] << name
+    end
+
+    def self.packages
+      @packages ||= {}
     end
 
     def self.registry
