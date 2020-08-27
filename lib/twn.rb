@@ -22,15 +22,33 @@ module Twn
     :PirateBase,
     :GasGiant,
     :TravelCode,
-    :TradeCodes,
+    :TradeCodes
+  ]
+
+  TRAVELLER_SECURITY_SEQUENCE = [
     :SecurityPlanetary,
     :SecurityOrbital,
     :SecuritySystem,
     :SecurityStance,
     :SecurityCodes
   ]
-  DEFAULT_SEQUENCE = [:SwnAtmosphere, :SwnTemperature, :SwnBiosphere, :SwnPopulation, :SwnWorldTags] + TRAVELLER_SEQUENCE
-  def self.generate(sequence: DEFAULT_SEQUENCE, buffer: $stdout)
+
+  STARS_WITHOUT_NUMBER_SEQUENCE = [
+    :SwnAtmosphere,
+    :SwnTemperature,
+    :SwnBiosphere,
+    :SwnPopulation,
+    :SwnWorldTags
+  ]
+
+  MAP = {
+    stars_without_number: STARS_WITHOUT_NUMBER_SEQUENCE,
+    traveller_security: TRAVELLER_SECURITY_SEQUENCE,
+    traveller: TRAVELLER_SEQUENCE
+  }
+
+  def self.generate(sources: MAP.keys, buffer: $stdout)
+    sequence = sources.map { |s| MAP.fetch(s) }.flatten
     generator = Generator.new
     sequence.each do |attribute|
       generator.get!(attribute)

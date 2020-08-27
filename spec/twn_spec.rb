@@ -7,7 +7,7 @@ RSpec.describe Twn do
 
   describe ".generate" do
     let(:buffer) { double(puts: nil) }
-    subject { described_class.generate(sequence: [], buffer: buffer) }
+    subject { described_class.generate(sources: [], buffer: buffer) }
     it { is_expected.to be_a Twn::Generator }
 
     context "with default sequence" do
