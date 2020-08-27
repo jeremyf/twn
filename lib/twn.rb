@@ -53,7 +53,7 @@ module Twn
     sequence.each do |attribute|
       generator.get!(attribute)
     end
-    Renderer.new(generator: generator, buffer: buffer).to_uwp
+    Renderer.new(generator: generator, buffer: buffer).to_uwp if buffer
     generator
   end
 end
