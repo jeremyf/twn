@@ -12,7 +12,7 @@ I envision that you should be able to feed in an already existing Stars without 
 
 ## Modularity
 
-TWN comes with four modules: Core, Factions, Security Profile, and Stars without Number.
+TWN comes with four packages: Core, Factions, Security Profile, and Stars without Number.
 
 <dl>
     <dt>Core</dt>
@@ -26,6 +26,8 @@ TWN comes with four modules: Core, Factions, Security Profile, and Stars without
     <dt>Stars without Number</dt>
     <dd>The Stars without Number module comes from <a href="https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181">Stars without Number</a>  When using this module, if you first generate Stars without Number elements, those generated elements impact the generation of Core elements.  In this way, if you already have a Stars without Number world, you can overlay Traveller information onto that world.  The Core overlay will conform to the constraints established by the Stars without Number module.</dd>
 </dl>
+
+I do plan to add more packages as I find more extensions for UWP.
 
 ## Example
 
@@ -59,6 +61,8 @@ The segments enclosed in `{…}` are additional non-core UWP codes.  Each UWP mo
 <dt>SWN Tags</dt>
 <dd><a href="https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181">Stars without Number</a> provides a rich set of tags for describing a world.  Each tag is 3 characters.  Character one (1) is always <code>#</code>.  Character two (2) is the first letter of the tag, character three (3) is a hexdecimal value indicating the number of tagsthat start with the same character and are alphabetically sorted before the current tag.  For example the <code>#N1</code> means it's the second tag that starts with <code>N</code>.  In this case <code>#N1</code> means the world tag "Nomads."
 </dl>
+
+It is relatively simple to add new
 
 ## Installation
 
