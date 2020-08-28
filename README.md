@@ -1,14 +1,64 @@
 # TWN
 
-A Traveller and Stars without Number world generator.
+A Traveller and Stars without Number world generator and glossary.
 
 ## About
 
-Stars without Number and Traveller both have world creation processes.  Each generating a different and somewhat overlapping overview of a system.
+Traveller and Stars without Number both have world creation processes.  Each generating a different and somewhat overlapping overview of a system.
 
 The goal of TWN is to use both processes to generate an even more descriptive world.
 
 I envision that you should be able to feed in an already existing Stars without Number system and output the remaining Traveller attributes.  Those generated Traveller attributes would be informed by the Stars without Number attributes.  In other words, if you gave a Stars without Number system that has a Tech Level of 4, then the Traveller attributes that feed into Tech Level would need to be able to create the conditions so you could get that Tech Level.
+
+## Modularity
+
+TWN comes with four modules: Core, Factions, Security Profile, and Stars without Number.
+
+<dl>
+    <dt>Core</dt>
+    <dd>The world generation from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).</dd>
+    <dt>Factions</dt>
+    <dd>
+    The faction generation from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).  The faction generation depends on portions of the Core module.
+    </dd>
+    <dt>Security Profile</dt>
+    <dd>The security profile comes from [Journal of the Travellers' Aid Society Volume 5](https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171).  The security profile generation depends on portions of the Core module.</dd>
+    <dt>Stars without Number</dt>
+    <dd>The Stars without Number module comes from [Stars without Number](https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181).  When using this module, if you first generate Stars without Number elements, those generated elements impact the generation of Core elements.  In this way, if you already have a Stars without Number world, you can overlay Traveller information onto that world.  The Core overlay will conform to the constraints established by the Stars without Number module.</dd>
+</dl>
+
+## Example
+
+```
+A0C0857-15     RTC  De  A {FNo9 FNo9 FNo6} {S8D9-3 Pe Te} {#N1 #M0}
+||||||| |        |  |   |  |----------/     |              |---/
+||||||| |        |  |   |  |                |              +- SWN Tags
+||||||| |        |  |   |  |                +- Security Profile
+||||||| |        |  |   |  +- Faction tags
+||||||| |        |  |   +- Travel code
+||||||| |        |  +- Trade code(s)
+||||||| |        +- Bases
+||||||| +- Tech level
+||||||+- Law
+|||||+- Government
+||||+- Population
+|||+- Hydrographic
+||+- Atmosphere
+|+- Size
++- Starport
+```
+
+The segments enclosed in `{…}` are additional non-core UWP codes.  Each UWP module is contained within separate `{…}`.
+
+<dl>
+<dt>Faction Tags</dt>
+<dd>Each faction tag is four characters.  Character one (1) is always `F`.  Characters two and three (2-3) represent the support level.  And Character four (4) is the government level.  In the above example, `FNo9` is a Notable (`No`) sized Impersonal Bureaucracy (`9`) faction.  Faction tags are from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).</dd>
+<dt>
+<dt>Security Profile</dt>
+<dd>Each security tag has a leading segment (e.g. `S8D9-3`) and any number of tags (e.g. `Pe Te`).  The segment starts with an `S`, to signify Security.  The next three characters represent the security presence for the planet, orbital, and system.  The digit after the `-` is the security's stance.  The stance may be prefixed with a `B`, representing balkanisation.  The next characters are the security codes.  A security code is two characters.  Multiple security codes will be separated by spaces.  The security profile comes from [Journal of the Travellers' Aid Society Volume 5](https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171).</dt>
+<dt>SWN Tags</dt>
+<dd>[Stars without Number](https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181) provides a rich set of tags for describing a world.  Each tag is 3 characters.  Character one (1) is always `#`.  Character two (2) is the first letter of the tag, character three (3) is a hexdecimal value indicating the number of tagsthat start with the same character and are alphabetically sorted before the current tag.  For example the `#N1` means it's the second tag that starts with `N`.  In this case `#N1` means the world tag "Nomads."
+</dl>
 
 ## Installation
 
@@ -26,7 +76,9 @@ Or install it yourself as:
 
     $ gem install twn
 
-## TODO
+## Checklist
+
+This is a scattering of tasks, some complete and some unfinished.  It is not representative of the complete set of work.  Instead its my scratchpad.
 
 - [ ] Generate a UWP short-code (without coordinates) for https://campaignwiki.org/traveller/
 - [X] Add Traveller Trade Codes
@@ -48,24 +100,9 @@ Or install it yourself as:
 - [X] Constraints should apply to composite attributes?  They do
 - [ ] Add concept of "15+" to account for greater law levels.
 - [ ] Add generator to consider location in hot/cold temperature band
-
-## Example
-
-```
-A0C0857-15     RTC  De  A {FNo9 FNo9 FNo6 #N1 #M0} S8D9-3 Pe Te
-||||||| |        |  |   |  |----------/    |---/   |
-||||||| |        |  |   |  |               |       +- Security Code and tags
-||||||| |        |  |   |  |               +- Stars without Number tags
-||||||| |        |  |   |  +- Faction tag (F, 2-char for support,
-||||||| |        |  |   +- Travel code     1-hexdecimal for Government
-||||||| |        |  +- Trade code(s)       type)
-||||||| |        +- Bases
-||||||| +- Tech level
-||||||+- Law
-|||||+- Government
-||||+- Population
-|||+- Hydrographic
-||+- Atmosphere
-|+- Size
-+- Starport
-```
+- [ ] Implement the conceptual modules identified in the [Modularity](#modularity) section.
+- [ ] Implement a `:contrained_by` concept.  When a value is
+      `constraint_by` by something, it will hook into the registry and
+      add those contraints.  I suspect this to be a major refactor.
+      (I don't want :Core to know about :SWN, so :SWN would have
+      constraints applied to it).  **This is a nice to have feature.**
