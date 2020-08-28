@@ -16,15 +16,15 @@ TWN comes with four modules: Core, Factions, Security Profile, and Stars without
 
 <dl>
     <dt>Core</dt>
-    <dd>The world generation from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).</dd>
+    <dd>The world generation from the <a href="https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171">Traveller Core Rulebook</a>.</dd>
     <dt>Factions</dt>
     <dd>
-    The faction generation from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).  The faction generation depends on portions of the Core module.
+    The faction generation from the <a href="https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171">Traveller Core Rulebook</a>.  The faction generation depends on portions of the Core module.
     </dd>
     <dt>Security Profile</dt>
-    <dd>The security profile comes from [Journal of the Travellers' Aid Society Volume 5](https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171).  The security profile generation depends on portions of the Core module.</dd>
+    <dd>The security profile comes from <a href="https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171">Journal of the Travellers' Aid Society Volume 5</a>.  The security profile generation depends on portions of the Core module.</dd>
     <dt>Stars without Number</dt>
-    <dd>The Stars without Number module comes from [Stars without Number](https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181).  When using this module, if you first generate Stars without Number elements, those generated elements impact the generation of Core elements.  In this way, if you already have a Stars without Number world, you can overlay Traveller information onto that world.  The Core overlay will conform to the constraints established by the Stars without Number module.</dd>
+    <dd>The Stars without Number module comes from <a href="https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181">Stars without Number</a>  When using this module, if you first generate Stars without Number elements, those generated elements impact the generation of Core elements.  In this way, if you already have a Stars without Number world, you can overlay Traveller information onto that world.  The Core overlay will conform to the constraints established by the Stars without Number module.</dd>
 </dl>
 
 ## Example
@@ -52,12 +52,12 @@ The segments enclosed in `{…}` are additional non-core UWP codes.  Each UWP mo
 
 <dl>
 <dt>Faction Tags</dt>
-<dd>Each faction tag is four characters.  Character one (1) is always `F`.  Characters two and three (2-3) represent the support level.  And Character four (4) is the government level.  In the above example, `FNo9` is a Notable (`No`) sized Impersonal Bureaucracy (`9`) faction.  Faction tags are from the [Traveller Core Rulebook](https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171).</dd>
+<dd>Each faction tag is four characters.  Character one (1) is always <code>F</code>.  Characters two and three (2-3) represent the support level.  And Character four (4) is the government level.  In the above example, <code>FNo9</code> is a Notable (<code>No</code>) sized Impersonal Bureaucracy (<code>9</code>) faction.  Faction tags are from the <a href="https://www.drivethrurpg.com/product/171643/Traveller-Core-Rulebook?affiliate_id=318171">Traveller Core Rulebook</a>.</dd>
 <dt>
 <dt>Security Profile</dt>
-<dd>Each security tag has a leading segment (e.g. `S8D9-3`) and any number of tags (e.g. `Pe Te`).  The segment starts with an `S`, to signify Security.  The next three characters represent the security presence for the planet, orbital, and system.  The digit after the `-` is the security's stance.  The stance may be prefixed with a `B`, representing balkanisation.  The next characters are the security codes.  A security code is two characters.  Multiple security codes will be separated by spaces.  The security profile comes from [Journal of the Travellers' Aid Society Volume 5](https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171).</dt>
+<dd>Each security tag has a leading segment (e.g. <code>S8D9-3</code>) and any number of tags (e.g. <code>Pe Te</code>).  The segment starts with an <code>S</code>, to signify Security.  The next three characters represent the security presence for the planet, orbital, and system.  The digit after the <code>-</code> is the security's stance.  The stance may be prefixed with a <code>B</code>, representing balkanisation.  The next characters are the security codes.  A security code is two characters.  Multiple security codes will be separated by spaces.  The security profile comes from <a href="https://www.drivethrurpg.com/product/309499/Journal-of-the-Travellers-Aid-Society-Volume-5?affiliate_id=318171">Journal of the Travellers' Aid Society Volume 5</a>.</dt>
 <dt>SWN Tags</dt>
-<dd>[Stars without Number](https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181) provides a rich set of tags for describing a world.  Each tag is 3 characters.  Character one (1) is always `#`.  Character two (2) is the first letter of the tag, character three (3) is a hexdecimal value indicating the number of tagsthat start with the same character and are alphabetically sorted before the current tag.  For example the `#N1` means it's the second tag that starts with `N`.  In this case `#N1` means the world tag "Nomads."
+<dd><a href="https://www.drivethrurpg.com/product/226996/Stars-Without-Number-Revised-Edition?affiliate_id=317181">Stars without Number</a> provides a rich set of tags for describing a world.  Each tag is 3 characters.  Character one (1) is always <code>#</code>.  Character two (2) is the first letter of the tag, character three (3) is a hexdecimal value indicating the number of tagsthat start with the same character and are alphabetically sorted before the current tag.  For example the <code>#N1</code> means it's the second tag that starts with <code>N</code>.  In this case <code>#N1</code> means the world tag "Nomads."
 </dl>
 
 ## Installation
