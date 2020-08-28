@@ -1,11 +1,14 @@
 module Twn
-  module Config
-    def self.max_tech_level
-      @max_tech_level = 20
-    end
+  class Config
+    DEFAULT_MAX_TECH_LEVEL = 20
+    DEFAULT_PACKAGE_GENERATION_SEQUENCE = [:SWN, :Core, :Security, :Factions]
 
-    def self.max_tech_level=(input)
-      @max_tech_level = input
+    def initialize
+      @max_tech_level = DEFAULT_MAX_TECH_LEVEL
+      @package_generation_sequence = DEFAULT_PACKAGE_GENERATION_SEQUENCE
+      yield(self) if block_given?
     end
+    attr_accessor :package_generation_sequence
+    attr_accessor :max_tech_level
   end
 end

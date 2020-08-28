@@ -1,60 +1,50 @@
 require "twn/version"
-require "twn/generator"
-require "twn/renderer"
 require "twn/config"
 module Twn
 
-  TRAVELLER_SEQUENCE = [
-    :Size,
-    :Atmosphere,
-    :Temperature,
-    :Hydrographic,
-    :Population,
-    :Government,
-    :LawLevel,
-    :Factions,
-    :Starport,
-    :TechLevel,
-    :NavalBase,
-    :ScoutBase,
-    :TravellersAidSociety,
-    :ResearchBase,
-    :ImperialConsulate,
-    :PirateBase,
-    :GasGiant,
-    :TravelCode,
-    :TradeCodes
-  ]
+  # @api public
+  # @since v0.2.0
+  #
+  # An array of the available packages to build your TWN world.
+  #
+  # @example
+  #   Twn.available_package_names.include?(:Core)
+  #   => true
+  #
+  # @return [Array<Symbol>]
+  # @see Twn::Attributes.packages
+  #
+  # @todo Extract :CoreBases into separate package, this makes it
+  #       easier for rendering
+  def self.available_package_names
+    require 'twn/attributes'
+    Attributes.packages.keys.sort
+  end
 
-  TRAVELLER_SECURITY_SEQUENCE = [
-    :SecurityPlanetary,
-    :SecurityOrbital,
-    :SecuritySystem,
-    :SecurityStance,
-    :SecurityCodes
-  ]
+  def self.config(&configuration)
+    @config ||= Config.new(&configuration)
+  end
 
-  STARS_WITHOUT_NUMBER_SEQUENCE = [
-    :SwnAtmosphere,
-    :SwnTemperature,
-    :SwnBiosphere,
-    :SwnPopulation,
-    :SwnWorldTags
-  ]
-
-  MAP = {
-    stars_without_number: STARS_WITHOUT_NUMBER_SEQUENCE,
-    traveller_security: TRAVELLER_SECURITY_SEQUENCE,
-    traveller: TRAVELLER_SEQUENCE
-  }
-
-  def self.generate(sources: MAP.keys, buffer: $stdout)
-    sequence = sources.map { |s| MAP.fetch(s) }.flatten
-    generator = Generator.new
-    sequence.each do |attribute|
-      generator.get!(attribute)
+  # @param packages [Array<Symbol>]
+  # @param generator [Twn::Generator]
+  #
+  # @note The order of the given packages may matter.  The :Core
+  #       package before :SWN would mean that the generator would not
+  #       apply any of the :SWN constraints to the :Core attribute
+  #       generation.
+  #
+  # @raise [KeyError] on an unregistered package name
+  def self.generate(packages: config.package_generation_sequence, generator: default_generator)
+    packages.each do |package|
+      Attributes.packages.fetch(package).each do |attribute|
+        generator.get!(attribute)
+      end
     end
-    Renderer.new(generator: generator, buffer: buffer).to_uwp if buffer
     generator
+  end
+
+  def self.default_generator
+    require "twn/generator"
+    Generator.new
   end
 end

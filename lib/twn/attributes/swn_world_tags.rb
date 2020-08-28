@@ -17,7 +17,7 @@ Twn::Attributes.register(:SwnWorldTags, package: :SWN) do
         tag[:constraints].each do |constraint|
           if constraint[:applies_to].to_s == "TechLevel"
             if constraint[:uwp_slug_range].include?(15)
-              constraint[:uwp_slug_range] = (constraint[:uwp_slug_range] + (15..Twn::Config.max_tech_level).to_a).uniq
+              constraint[:uwp_slug_range] = (constraint[:uwp_slug_range] + (15..Twn::Config::DEFAULT_MAX_TECH_LEVEL).to_a).uniq
             end
           end
         end
