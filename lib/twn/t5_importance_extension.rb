@@ -1,4 +1,4 @@
-# Extrapolated from T5.10, Book 3, p24, table 2B
+# Extrapolated from T5.10, Book 3, p27
 Twn::Attributes.register(:T5ImportanceExtension, package: :T5) do
   table do
     row(roll: -3, importance: "Very unimportant", weekly_traffic: 0, daily_traffic: 0)

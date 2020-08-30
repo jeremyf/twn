@@ -24,6 +24,33 @@ module Twn
         dice_roller.call + modifier
       end
 
+      INTEGER_TO_UWP_SLUG = {
+        10 => "A",
+        11 => "B",
+        12 => "C",
+        13 => "D",
+        14 => "E",
+        15 => "F",
+        16 => "G",
+        17 => "H",
+        18 => "J",
+        19 => "K",
+        20 => "L",
+        21 => "M",
+        22 => "N",
+        23 => "P",
+        24 => "Q",
+        25 => "R",
+        26 => "S",
+        27 => "T",
+        28 => "U",
+        29 => "V",
+        30 => "W",
+        31 => "X",
+        32 => "Y",
+        33 => "Z"
+      }
+
       # Return the UWP for the given value
       #
       # @param value [String,Integer, #to_uwp_slug]
@@ -33,7 +60,7 @@ module Twn
         return value.to_uwp_slug if value.respond_to?(:to_uwp_slug)
         case value
         when String then value
-        when Integer then sprintf("%X",value)
+        when Integer then INTEGER_TO_UWP_SLUG.fetch(value, value).to_s.upcase
         end
       end
 
