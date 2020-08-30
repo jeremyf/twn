@@ -1,3 +1,4 @@
+# From Traveller 5.10, Book 3, Page 24, Table 2A
 Twn::Attributes.register(:T5HomestarSpectral) do
   table do
     row(roll: -6, to_uwp_slug: "O")
