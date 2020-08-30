@@ -6,5 +6,5 @@ Twn::Attributes.register(:T5PlanetoidBelts, package: :T5) do
     row(roll: 2)
     row(roll: 3)
   end
-  roller { roll("1d6", -3) }
+  roller { roll("1d6") - 3  }
 end

@@ -25,7 +25,7 @@ Twn::Attributes.register(:T5CulturalExtensionAcceptance, package: :T5) do
     result = 0
     pop = get!(:Population).roll
     if pop > 0
-      result = pop + get!(:T5ImportanceExtension)
+      result = pop + get!(:T5ImportanceExtension).roll
       result = 1 if result < 1
     end
     result
