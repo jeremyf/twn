@@ -36,7 +36,7 @@ Twn::Attributes.register(:SecurityOrbital, package: :Security) do
       return 0 if get!(:Starport).to_uwp_slug == "X"
       return 0 if get!(:Government).roll == 0
       return 0 if get!(:LawLevel).roll == 0
-      roll("2d6", -7) +
+      roll("2d6") - 7 +
         law_level_dm +
         starport_dm +
         size_dm +

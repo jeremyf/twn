@@ -18,5 +18,5 @@ Twn::Attributes.register(:Atmosphere, package: :Core) do
     row(roll: 15, atmosphere: "Unusual")
   end
 
-  roller { roll("2d6", -7) + get!(:Size).roll }
+  roller { roll("2d6") - 7 + get!(:Size).roll }
 end

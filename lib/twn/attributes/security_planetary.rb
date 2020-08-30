@@ -35,7 +35,7 @@ Twn::Attributes.register(:SecurityPlanetary, package: :Security) do
       return { roll: 0, population: 0 } if get!(:Population).roll == 0
       return 0 if get!(:Government).roll == 0
       return 0 if get!(:LawLevel).roll == 0
-       roll("2d6", -7) +
+       roll("2d6") - 7 +
         law_level_dm +
         size_dm +
         government_dm +

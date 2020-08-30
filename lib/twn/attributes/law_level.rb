@@ -10,7 +10,7 @@ Twn::Attributes.register(:LawLevel, package: :Core) do
     if population.roll == 0
       0
     else
-      roll("2d6", -7) + get!(:Government).roll
+      roll("2d6") - 7 + get!(:Government).roll
     end
   end
 end

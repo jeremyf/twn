@@ -24,7 +24,7 @@ Twn::Attributes.register(:Government, package: :Core) do
     if population.roll == 0
       0
     else
-      roll("2d6", -7) + population.roll
+      roll("2d6") - 7 + population.roll
     end
   end
 end

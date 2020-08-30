@@ -18,7 +18,7 @@ Twn::Attributes.register(:Hydrographic, package: :Core) do
     if ["0", "1"].include?(size.to_uwp_slug)
       0
     else
-      roll("2d6", -7) +
+      roll("2d6") - 7 +
         size.roll +
         HydrographicModifier.call(atmosphere: get!(:Atmosphere), temperature: get!(:Temperature))
     end

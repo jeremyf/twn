@@ -1,4 +1,4 @@
-Twn::Attributes.register(:Size, package: :Core) do
+  Twn::Attributes.register(:Size, package: :Core) do
   table do
     row(roll: 0, size: 800, surface_gravity: 0, example: "Asteroid, orbital complex")
     row(roll: 1, size: 1600, surface_gravity: 0.05, example: "")
@@ -13,5 +13,5 @@ Twn::Attributes.register(:Size, package: :Core) do
     row(roll: 10, size: 16_000, surface_gravity: 1.4, example: "")
   end
 
-  roller { roll("2d6", -2) }
+  roller { roll("2d6") - 2 }
 end

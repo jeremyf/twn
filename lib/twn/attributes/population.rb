@@ -15,5 +15,5 @@ Twn::Attributes.register(:Population, package: :Core) do
     row(roll: 12, population: "Trillions", range: "1,000,000,000+")
   end
 
-  roller { roll("2d6", -2) }
+  roller { roll("2d6") - 2 }
 end

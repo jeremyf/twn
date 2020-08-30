@@ -40,7 +40,7 @@ Twn::Attributes.register(:SecurityStance, package: :Security) do
       return { roll: 0, population: 0 } if get!(:Population).roll == 0
       return 0 if get!(:Government).roll == 0
       return 0 if get!(:LawLevel).roll == 0
-      result = roll("2d6", -7) +
+      result = roll("2d6") - 7 +
                law_level_dm +
                starport_dm +
                government_dm +
