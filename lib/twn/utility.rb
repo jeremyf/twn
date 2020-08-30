@@ -7,7 +7,8 @@ module Twn
         "1d3" => -> { rand(3) + 1 },
         "2d6" => -> { rand(6) + rand(6) + 2 },
         "1d6" => -> { rand(6) + 1 },
-        "1d100" => -> { rand(100) + 1 }
+        "1d100" => -> { rand(100) + 1 },
+        "flux"  => -> { rand(6) - rand(6) } # From T5.10
       }
 
       # Roll the given :dice and add the given :modifier.  If the dice
