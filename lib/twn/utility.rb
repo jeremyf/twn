@@ -11,19 +11,33 @@ module Twn
         "flux"  => -> { rand(6) - rand(6) } # From T5.10
       }
 
-      # Roll the given :dice and add the given :modifier.  If the dice
-      # are a registered expression, use the expression.  Otherwise
-      # send the dice the #call message.
+      # Roll the given :dice.  If the dice are a registered
+      # expression, use the expression.  Otherwise send the dice the
+      # #call message.
+      #
+      # When you provide a :result_map, any resulting original roll on
+      # that are keys in the map are then rolled.
       #
       # @param dice [String, #call]
-      # @param modifier [Integer]
+      # @param result_map [Hash] used for a chained lookup
+      # @param expression_map [Hash] used to fetch function for the
+      #        given dice expression
       #
       # @return [Integer] the results of a dice roll
-      def roll(dice, modifier = 0, expression_map: DICE_EXPRESSION_TO_ROLLER_MAP)
+      def roll(dice, result_map: {}, expression_map: DICE_EXPRESSION_TO_ROLLER_MAP)
         dice_roller = expression_map.fetch(dice) { dice }
-        dice_roller.call + modifier
+        result = dice_roller.call
+        return result unless result_map.key?(result)
+        mapped_result = result_map.fetch(result)
+        if mapped_result.is_a?(Array)
+          kwargs = mapped_result.last.merge(expression_map: expression_map)
+          roll(mapped_result.first, **kwargs)
+        else
+          roll(mapped_result, expression_map: expression_map)
+        end
       end
 
+      # The extended Hex format of T5.10
       INTEGER_TO_UWP_SLUG = {
         10 => "A",
         11 => "B",
