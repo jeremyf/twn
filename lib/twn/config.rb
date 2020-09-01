@@ -1,7 +1,7 @@
 module Twn
   class Config
     DEFAULT_MAX_TECH_LEVEL = 20
-    DEFAULT_PACKAGE_GENERATION_SEQUENCE = [:SWN, :Core, :Security, :Factions]
+    DEFAULT_PACKAGE_GENERATION_SEQUENCE = [:T5, :SWN, :Core, :Security, :Factions]
 
     def initialize
       @max_tech_level = DEFAULT_MAX_TECH_LEVEL
