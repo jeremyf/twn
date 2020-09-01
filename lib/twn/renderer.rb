@@ -1,22 +1,30 @@
-require 'twn/generator'
 require 'twn/packages'
 module Twn
   class Renderer
-    DEFAULT_PACKAGES = [:Core, :Factions, :Security, :SWN]
-    # @todo Use packages instead of the generator
-    def initialize(generator: Generator.new, buffer: $stdout, packages: DEFAULT_PACKAGES)
+    # @param generator [Twn::Generator]
+    # @param buffer [#puts]
+    # @param packages [Array<Symbol>]
+    def initialize(generator: default_generator, buffer: $stdout, packages: DEFAULT_PACKAGES)
       @generator = generator
       @buffer = buffer
       @packages = packages
     end
     attr_reader :generator, :buffer, :packages
 
-    # @todo separate the modules
+    DEFAULT_PACKAGES = [:Core, :Factions, :Security, :SWN]
+
+    def default_generator
+      require 'twn/generator'
+      Generator.new
+    end
+
+    # @return String
     def to_uwp
       string = packages.map do |package|
         Twn::Packages.render(package, generator: generator, format: :to_uwp).strip
       end.join(" ")
       buffer.puts string
+      string
     end
   end
 end
