@@ -112,3 +112,4 @@ This is a scattering of tasks, some complete and some unfinished.  It is not rep
       constraints applied to it).  **This is a nice to have feature.**
 - [ ] Review [Freelance Traveller/The RICE Archives - Doing It My Way - Extending the UWP - Government](https://www.freelancetraveller.com/features/rules/expuwp/govern.html)
 - [ ] Reviewing Mongoose Traveller (v2), the Trade system would benefit from a Commerce Atlas.
+- [ ] Determine how to overlay T5 into Mongoose
