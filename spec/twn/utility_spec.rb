@@ -9,25 +9,6 @@ module Twn
         subject { described_class.roll("1d4", expression_map: expression_map) }
         it { is_expected.to be_a Integer }
       end
-
-      context 'with a :result_map' do
-        let(:expression_map) do
-          {
-            "3d6" => -> { rand(6) + rand(6) + rand(6) + 3 },
-            "-1d2" => -> { -1 * (rand(2) + 1) },
-            "1d2" => -> { rand(2) + 1 }
-          }
-        end
-        let(:inner_result_map) { { 1 => "3d6", 2 => "3d6" } }
-        let(:result_map) do
-          {
-            -1 => ["1d2", { result_map: inner_result_map }],
-            -2 => ["1d2", { result_map: inner_result_map }]
-          }
-        end
-        subject { described_class.roll("-1d2", expression_map: expression_map, result_map: result_map) }
-        it { is_expected.to be >= 3 }
-      end
     end
 
     describe ".to_uwp_slug" do

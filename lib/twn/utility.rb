@@ -20,22 +20,13 @@ module Twn
       # that are keys in the map are then rolled.
       #
       # @param dice [String, #call]
-      # @param result_map [Hash] used for a chained lookup
       # @param expression_map [Hash] used to fetch function for the
       #        given dice expression
       #
       # @return [Integer] the results of a dice roll
-      def roll(dice, result_map: {}, expression_map: DICE_EXPRESSION_TO_ROLLER_MAP)
+      def roll(dice, expression_map: DICE_EXPRESSION_TO_ROLLER_MAP)
         dice_roller = expression_map.fetch(dice) { dice }
-        result = dice_roller.call
-        return result unless result_map.key?(result)
-        mapped_result = result_map.fetch(result)
-        if mapped_result.is_a?(Array)
-          kwargs = mapped_result.last.merge(expression_map: expression_map)
-          roll(mapped_result.first, **kwargs)
-        else
-          roll(mapped_result, expression_map: expression_map)
-        end
+        dice_roller.call
       end
 
       # The extended Hex format of T5.10
