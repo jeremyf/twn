@@ -1,24 +1,42 @@
 Twn::Attributes.register(:TradeCodes, package: :Core) do
   table do
-    row(roll: "Ag", classification: "Agricultural")
-    row(roll: "As", classification: "Asteroid")
-    row(roll: "Ba", classification: "Barren")
-    row(roll: "De", classification: "Desert")
-    row(roll: "Fl", classification: "Fluid Oceans")
-    row(roll: "Ga", classification: "Garden")
-    row(roll: "Hi", classification: "High Population")
-    row(roll: "Ht", classification: "High Technology")
-    row(roll: "IC", classification: "Ice-Capped")
-    row(roll: "In", classification: "Industrial")
-    row(roll: "Lo", classification: "Low Population")
+    row(roll: "Ag", classification: "Agricultural") # T5
+    row(roll: "As", classification: "Asteroid") # T5
+    row(roll: "Ba", classification: "Barren") # T5
+    row(roll: "De", classification: "Desert") # T5
+    row(roll: "Fl", classification: "Fluid Oceans") # T5
+    row(roll: "Ga", classification: "Garden") # T5
+    row(roll: "Hi", classification: "High Population") # T5
+    row(roll: "Ht", classification: "High Technology") # T5
+    row(roll: "IC", classification: "Ice-Capped") # T5
+    row(roll: "In", classification: "Industrial") # T5
+    row(roll: "Lo", classification: "Low Population") # T5
     row(roll: "Lt", classification: "Low Technology")
-    row(roll: "Na", classification: "Non-Agricultural")
-    row(roll: "NI", classification: "Non-Industrial")
-    row(roll: "Po", classification: "Poor")
-    row(roll: "Ri", classification: "Rich")
-    row(roll: "Va", classification: "Vacuum")
-    row(roll: "Wa", classification: "Water")
+    row(roll: "Na", classification: "Non-Agricultural") # T5
+    row(roll: "Ni", classification: "Non-Industrial") # T5
+    row(roll: "Po", classification: "Poor") # T5
+    row(roll: "Ri", classification: "Rich") # T5
+    row(roll: "Va", classification: "Vacuum") # T5
+    row(roll: "Wa", classification: "Water world") # T5
   end
+
+  # row(roll: "He", classification: "Hellworld")
+  # row(roll: "Oc", classification: "Ocean World")
+  # row(roll: "Sa", classification: "Satellite")
+  # row(roll: "Lk", classification: "Locked")
+  # row(roll: "Di", classification: "Dieback")
+  # row(roll: "Ba", classification: "Barren")
+  # row(roll: "Ph", classification: "Pre-High")
+  # row(roll: "Pa", classification: "Pre-Agricultural")
+  # row(roll: "Px", classification: "Prison or Exile Camp")
+  # row(roll: "Pi", classification: "Pre-Industrial")
+  # row(roll: "Pr", classification: "Pre-Rich")
+  # row(roll: "Fr", classification: "Frozen")
+  # row(roll: "Ho", classification: "Hot")
+  # row(roll: "Co", classification: "Cold")
+  # row(roll: "Tr", classification: "Tropic")
+  # row(roll: "Tu", classification: "Tundra")
+  # row(roll: "Tz", classification: "Twilight Zone")
 
   roller { TradeCodesBuilder.new(context: self).rolls }
 
@@ -44,7 +62,7 @@ Twn::Attributes.register(:TradeCodes, package: :Core) do
       "Lo" => { Population: (1..3) },
       "Lt" => { TechLevel: (0..5) },
       "Na" => { Atmosphere: (0..3), Hydrographic: (0..3), Population: (6..15) },
-      "NI" => { Population: (4..6) },
+      "Ni" => { Population: (4..6) },
       "Po" => { Atmosphere: (2..5), Hydrographic: (0..3) },
       "Ri" => { Atmosphere: [6, 8], Population: (6..8) },
       "Va" => { Atmosphere: 0 },

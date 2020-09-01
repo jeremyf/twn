@@ -15,6 +15,10 @@ module Twn
 
     extend Forwardable
     def_delegators :@entry, :to_uwp_slug, :roll, :constraints
+
+    def to_a
+      Array(@entry.to_uwp_slug)
+    end
   end
 
   # Some attributes (e.g. Trade Codes and SWN tags) are an Array of
@@ -44,6 +48,10 @@ module Twn
 
     def to_uwp_slug
       @entries.map(&:to_uwp_slug).join(UWP_SLUG_JOIN_CHARACTER)
+    end
+
+    def to_a
+      @entries.map(&:to_uwp_slug)
     end
 
     def roll
