@@ -11,8 +11,8 @@ module Twn
 
     # @todo separate the modules
     def to_uwp
-      string = [:Core, :Security, :SWN].map do |package_name|
-        Twn::Packages.render(package_name, generator: generator, format: :to_uwp)
+      string = [:Core, :Factions, :Security, :SWN].map do |package_name|
+        Twn::Packages.render(package_name, generator: generator, format: :to_uwp).strip
       end.join(" ")
       buffer.puts string
     end
