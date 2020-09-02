@@ -20,9 +20,9 @@ module Twn
         @base_prince = input.to_i
       end
 
-      def available(input = nil)
-        return @available unless @availabe.nil?
-        @available = input
+      def availability(input = nil)
+        return @availability unless @availability.nil?
+        @availability = input
       end
 
       def tons(dice = nil, x: 1)

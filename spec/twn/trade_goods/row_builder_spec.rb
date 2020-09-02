@@ -6,7 +6,7 @@ module Twn
     RSpec.describe RowBuilder do
       subject do
         described_class.new(roll: 11, name: "Common Electronics") do
-          available(:all)
+          availability(:all)
           tons("2d6", x: 10)
           base_price(1000)
           purchase(In: 2, HT: 3, Ri: 1)
